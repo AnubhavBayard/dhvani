@@ -178,7 +178,7 @@ device that has never seen this project.
 | B2 | ~~Generation provider undecided~~ → **resolved: Sarvam** (ADR-009) | closed 14 Aug | signup only; ~₹29 per benchmark run against the same ₹100 credits |
 | B3 | ~~Team roster for the social-posting checklist~~ → **resolved: solo** | closed 19 Aug | one person posts to Instagram, X and LinkedIn; ≥1 Instagram post public, every post tagged `#RAGInGoa` |
 | B5 | ~~Sarvam auth header shape unverified~~ → **CLOSED 19 Aug: Bearer works, the second header is ignored not rejected** (ADR-028) | closed 19 Aug | the generation client sends **both** `Authorization: Bearer` and `api-subscription-key` because no key exists to test which one the OpenAI-compatible route wants. Harmless if one is ignored; resolves itself the moment B1 does |
-| B4 | ~~Deploy host + budget~~ → **resolved: Lightsail 8 GB Mumbai, $44/mo** (ADR-010) | closed 14 Aug | needs your go-ahead on $44. Provision by Day 5. |
+| B4 | **OPEN — $44/mo spend approval.** The *host* was decided 14 Aug (Lightsail 8 GB Mumbai, ADR-010); the money was not. Struck through as "resolved" until 19 Aug, which made this table contradict its own summary — a decision being made is not the same as a blocker being cleared. | 14 Aug | your go-ahead on $44/mo. Blocks the live link, which is a submission requirement. |
 
 **Only B4 is open.** B1, B2, B3 and B5 all closed on 19 Aug. Both
 `SARVAM_API_KEY` and `GROQ_API_KEY` are in `.env` and verified against the live
