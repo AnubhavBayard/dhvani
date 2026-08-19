@@ -160,6 +160,9 @@ not something to squeeze in at midnight on the 22nd.
 - [ ] final ablation table, guardrail metrics, cache hit rate
 
 ### Day 8 — 21 Aug — videos + social
+- [x] shot list vetted against the live pipeline — [`docs/DEMO_SCRIPT.md`](DEMO_SCRIPT.md),
+      **11 answers and 5 refusals that behaved identically on 3 asks each**,
+      out of 130 candidates screened (19 Aug)
 - [ ] Video 1 — 90 s, team and process, **not** the product
 - [ ] Video 2 — end-to-end demo (the stage bar is the shot; it is why it exists)
 - [ ] both videos posted by **every member** to Instagram, X, LinkedIn
@@ -1452,3 +1455,35 @@ more than either fix.
 **Next.** B4 — and the free-tier answer is now Oracle Cloud Always Free (A1,
 24 GB, Mumbai; every pinned dependency has an aarch64 wheel) with a Cloudflare
 tunnel as the demo-day fallback. Then deploy on 20 Aug.
+
+### 2026-08-19 — the demo is vetted, not improvised
+
+`docs/DEMO_SCRIPT.md`, built by `python -m dhvani.bench.demo_script`. 130
+candidates asked against the live pipeline; the ones that answered, cited, and
+left no ungrounded sentence were asked **twice more**, and only what behaved
+identically all three times is on the list. **11 answers (3 Hindi, 3 Tamil,
+3 Bengali, 2 English) and 5 refusals.**
+
+**The screen pass rate is 0.625** — of gold-bearing questions, 37.5% fail the bar
+on the first ask. Recall@10 0.4464 again, in the form that matters for filming.
+
+**Two finalists were dropped by the repeats, which is the whole point.** "Who won
+the cricket world cup in 2026" refused, answered, then refused again across three
+asks — a coin flip that would have been chosen as an off-topic showcase on the
+strength of one good run. An English answer that passed the screen produced an
+ungrounded sentence on a later ask and went the same way.
+
+**No off-topic refusal survived**, and the shot list says so rather than
+substituting something. Off-topic is exactly the category ADR-030 switched L2 off
+for, so what is left to catch it is the model's own judgement, which is sampled at
+temperature 0.2. The measured guardrails — injection, out-of-index language — are
+decided by L1 with no model in the loop and repeat identically, which is why they
+are the refusals in the script.
+
+The list also carries what each line looks like *on screen*: one Tamil answer
+draws an `ambiguous` mark, which is L4 grading itself in public and worth a line
+of narration rather than a retake.
+
+**Tests: 205, all passing** (203 before).
+
+**Next.** Oracle A1 provisioning (yours), then deploy tooling.

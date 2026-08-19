@@ -107,3 +107,33 @@ def test_one_arm_runs_end_to_end_and_reports_every_field_the_docs_quote():
     assert set(rep["quality"]) >= {"recall@10", "mrr@10", "ndcg@10"}
     # Boundary A is a span, so it cannot be smaller than the stages inside it.
     assert rep["overhead_ms"]["p50"] >= 0
+
+
+# -- demo shot list (the video is a deliverable too) ------------------------
+
+def test_a_demo_question_must_answer_cited_and_fully_grounded():
+    from dhvani.bench.demo_script import is_demo_answer
+
+    good = {"refusal_kind": None, "answer": "a cited claim [1].", "ungrounded": 0,
+            "judged": 2, "citations": 1}
+    assert is_demo_answer(good)
+    assert not is_demo_answer({**good, "refusal_kind": "model_refused"})
+    # One ungrounded sentence is a dotted underline and a ⚠ on camera.
+    assert not is_demo_answer({**good, "ungrounded": 1})
+    # Criterion 4: every claim maps to a chunk the user can click.
+    assert not is_demo_answer({**good, "citations": 0, "answer": "no cite here."})
+
+
+def test_a_question_that_only_sometimes_works_is_not_shot_list_material():
+    """Generation samples at 0.2 — one good run is an anecdote."""
+    from dhvani.bench.demo_script import stable
+
+    ok = {"refusal_kind": None, "answer": "cited [1].", "ungrounded": 0,
+          "judged": 1, "citations": 1}
+    flaky = {**ok, "refusal_kind": "model_refused"}
+    assert stable([ok, ok, ok], want_answer=True)
+    assert not stable([ok, flaky, ok], want_answer=True)
+    # A refusal demo has to refuse the *same way* every time.
+    assert stable([flaky, flaky], want_answer=False)
+    assert not stable([flaky, {**flaky, "refusal_kind": "not_grounded"}],
+                      want_answer=False)
