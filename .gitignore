@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+# `index/*`, not `index/` — git will not re-include a file whose parent
+# directory is excluded, so the negation below was silently dead and the subset
+# manifest was never going to ship (found at `git init`, 19 Aug).
+index/*
+# ...except the subset manifest. The README claims we index a documented subset;
+# that claim is only true if the document is committed (ADR-012).
+!index/subset.json
+data/
+models/
+*.onnx
+.pytest_cache/

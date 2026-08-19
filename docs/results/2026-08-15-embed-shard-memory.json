@@ -1,0 +1,120 @@
+{
+  "run_utc": "2026-08-15T08:07:30Z",
+  "what": "one embed worker, one 4096-text shard from the 300-row index, in isolation",
+  "why": "docs/results/2026-08-15-build-memory-300r-8w.json measured 2.33 GB per worker; this attributes it",
+  "box": {
+    "mem_total_gb": 15.25,
+    "swap": false,
+    "threads_per_worker": 2
+  },
+  "arms": [
+    {
+      "config": {
+        "n": 4096,
+        "batch_size": 32,
+        "threads": 2,
+        "cpu_mem_arena": false,
+        "sorted_by_length": false,
+        "max_len": 512
+      },
+      "text_chars": {
+        "p50": 91,
+        "p95": 383,
+        "max": 2000
+      },
+      "peak_rss_gb": {
+        "after_texts": 0.12,
+        "after_model": 0.54,
+        "after_encode": 1.86
+      },
+      "ru_maxrss_gb": 1.86,
+      "seconds": 98.9,
+      "chunks_per_second": 41.4,
+      "vectors": [
+        4096,
+        384
+      ]
+    },
+    {
+      "config": {
+        "n": 4096,
+        "batch_size": 32,
+        "threads": 2,
+        "cpu_mem_arena": false,
+        "sorted_by_length": true,
+        "max_len": 512
+      },
+      "text_chars": {
+        "p50": 91,
+        "p95": 383,
+        "max": 2000
+      },
+      "peak_rss_gb": {
+        "after_texts": 0.12,
+        "after_model": 0.54,
+        "after_encode": 1.69
+      },
+      "ru_maxrss_gb": 1.69,
+      "seconds": 32.0,
+      "chunks_per_second": 127.9,
+      "vectors": [
+        4096,
+        384
+      ]
+    },
+    {
+      "config": {
+        "n": 4096,
+        "batch_size": 32,
+        "threads": 2,
+        "cpu_mem_arena": true,
+        "sorted_by_length": false,
+        "max_len": 512
+      },
+      "text_chars": {
+        "p50": 91,
+        "p95": 383,
+        "max": 2000
+      },
+      "peak_rss_gb": {
+        "after_texts": 0.12,
+        "after_model": 0.54,
+        "after_encode": 2.3
+      },
+      "ru_maxrss_gb": 2.3,
+      "seconds": 89.2,
+      "chunks_per_second": 45.9,
+      "vectors": [
+        4096,
+        384
+      ]
+    },
+    {
+      "config": {
+        "n": 4096,
+        "batch_size": 32,
+        "threads": 2,
+        "cpu_mem_arena": true,
+        "sorted_by_length": true,
+        "max_len": 512
+      },
+      "text_chars": {
+        "p50": 91,
+        "p95": 383,
+        "max": 2000
+      },
+      "peak_rss_gb": {
+        "after_texts": 0.12,
+        "after_model": 0.54,
+        "after_encode": 1.69
+      },
+      "ru_maxrss_gb": 1.69,
+      "seconds": 29.0,
+      "chunks_per_second": 141.3,
+      "vectors": [
+        4096,
+        384
+      ]
+    }
+  ]
+}

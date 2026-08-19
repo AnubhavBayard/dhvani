@@ -1,0 +1,442 @@
+{
+  "dataset": "ai4bharat/MSMARCO-XI",
+  "probed_utc": "2026-08-15T05:09:49Z",
+  "method": "parquet footer via HTTP range request; row-group sample for stats",
+  "files": {
+    "train/asmtrain.parquet": {
+      "num_rows": 778638,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10150,
+      "footer_read_seconds": 2.71
+    },
+    "train/bentrain.parquet": {
+      "num_rows": 778638,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10073,
+      "footer_read_seconds": 1.91
+    },
+    "train/gujtrain.parquet": {
+      "num_rows": 778638,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10538,
+      "footer_read_seconds": 1.68
+    },
+    "train/hintrain.parquet": {
+      "num_rows": 778638,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10038,
+      "footer_read_seconds": 1.32
+    },
+    "train/kantrain.parquet": {
+      "num_rows": 778638,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 11120,
+      "footer_read_seconds": 1.32
+    },
+    "train/maltrain.parquet": {
+      "num_rows": 778638,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10842,
+      "footer_read_seconds": 1.5
+    },
+    "train/martrain.parquet": {
+      "num_rows": 765873,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 9718,
+      "footer_read_seconds": 1.23
+    },
+    "train/neptrain.parquet": {
+      "num_rows": 754154,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 9656,
+      "footer_read_seconds": 1.92
+    },
+    "train/oritrain.parquet": {
+      "num_rows": 782282,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10324,
+      "footer_read_seconds": 2.01
+    },
+    "train/pantrain.parquet": {
+      "num_rows": 778638,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10458,
+      "footer_read_seconds": 3.49
+    },
+    "train/santrain.parquet": {
+      "num_rows": 778638,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 11218,
+      "footer_read_seconds": 1.34
+    },
+    "train/tamtrain.parquet": {
+      "num_rows": 778638,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10514,
+      "footer_read_seconds": 1.74
+    },
+    "train/urdtrain.parquet": {
+      "num_rows": 770089,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 8969,
+      "footer_read_seconds": 2.64
+    },
+    "validation/asmval.parquet": {
+      "num_rows": 97941,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10049,
+      "footer_read_seconds": 1.22
+    },
+    "validation/benval.parquet": {
+      "num_rows": 97941,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10576,
+      "footer_read_seconds": 1.37
+    },
+    "validation/gujval.parquet": {
+      "num_rows": 97941,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10001,
+      "footer_read_seconds": 1.64
+    },
+    "validation/hinval.parquet": {
+      "num_rows": 97941,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10862,
+      "footer_read_seconds": 1.53
+    },
+    "validation/kanval.parquet": {
+      "num_rows": 97941,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10597,
+      "footer_read_seconds": 1.46
+    },
+    "validation/malval.parquet": {
+      "num_rows": 97941,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10418,
+      "footer_read_seconds": 1.37
+    },
+    "validation/marval.parquet": {
+      "num_rows": 97941,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 9902,
+      "footer_read_seconds": 1.34
+    },
+    "validation/nepval.parquet": {
+      "num_rows": 97941,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 9568,
+      "footer_read_seconds": 1.19
+    },
+    "validation/orival.parquet": {
+      "num_rows": 97941,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 11120,
+      "footer_read_seconds": 1.38
+    },
+    "validation/panval.parquet": {
+      "num_rows": 97941,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10039,
+      "footer_read_seconds": 1.32
+    },
+    "validation/sanval.parquet": {
+      "num_rows": 97941,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10501,
+      "footer_read_seconds": 1.41
+    },
+    "validation/tamval.parquet": {
+      "num_rows": 97941,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10509,
+      "footer_read_seconds": 1.62
+    },
+    "validation/telval.parquet": {
+      "num_rows": 97941,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 10050,
+      "footer_read_seconds": 1.92
+    },
+    "validation/urdval.parquet": {
+      "num_rows": 97941,
+      "num_row_groups": 1,
+      "num_columns": 17,
+      "serialized_size_bytes": 9601,
+      "footer_read_seconds": 1.39
+    }
+  },
+  "totals": {
+    "num_rows": 11451314,
+    "num_files": 27
+  },
+  "samples": {
+    "hin": {
+      "file": "data/raw/validation/hinval.parquet",
+      "rows_sampled": 97941,
+      "read_seconds": 1.31,
+      "target_lang_values": {
+        "hin_Deva": 97941
+      },
+      "source_lang_values": {
+        "eng_Latn": 97941
+      },
+      "query_type_values": {
+        "DESCRIPTION": 52912,
+        "NUMERIC": 24741,
+        "ENTITY": 8427,
+        "PERSON": 6206,
+        "LOCATION": 5655
+      },
+      "passages_per_row": {
+        "mean": 9.98,
+        "min": 1,
+        "max": 27,
+        "total_translated": 977545,
+        "total_english": 977545
+      },
+      "is_selected_per_row": {
+        "mean": 0.587,
+        "rows_with_zero_selected": 44046,
+        "rows_with_multiple_selected": 3031
+      },
+      "translated_passage_chars": {
+        "n": 977545,
+        "min": 1,
+        "p25": 242,
+        "p50": 292,
+        "p75": 349,
+        "p90": 472,
+        "p95": 552,
+        "p99": 708,
+        "max": 21390,
+        "mean": 324.0
+      },
+      "english_passage_chars": {
+        "n": 977545,
+        "min": 3,
+        "p25": 248,
+        "p50": 295,
+        "p75": 344,
+        "p90": 491,
+        "p95": 562,
+        "p99": 693,
+        "max": 1391,
+        "mean": 316.2
+      },
+      "query_chars": {
+        "n": 97941,
+        "min": 2,
+        "p25": 26,
+        "p50": 34,
+        "p75": 45,
+        "p90": 58,
+        "p95": 67,
+        "p99": 93,
+        "max": 9721,
+        "mean": 43.1
+      },
+      "answer_chars": {
+        "n": 97941,
+        "min": 1,
+        "p25": 20,
+        "p50": 20,
+        "p75": 79,
+        "p90": 147,
+        "p95": 197,
+        "p99": 314,
+        "max": 9529,
+        "mean": 67.1
+      },
+      "empty_translated_passages": 0,
+      "empty_answers": 0
+    },
+    "ben": {
+      "file": "data/raw/validation/benval.parquet",
+      "rows_sampled": 97941,
+      "read_seconds": 1.37,
+      "target_lang_values": {
+        "ben_Beng": 97941
+      },
+      "source_lang_values": {
+        "eng_Latn": 97941
+      },
+      "query_type_values": {
+        "DESCRIPTION": 52912,
+        "NUMERIC": 24741,
+        "ENTITY": 8427,
+        "PERSON": 6206,
+        "LOCATION": 5655
+      },
+      "passages_per_row": {
+        "mean": 9.98,
+        "min": 1,
+        "max": 27,
+        "total_translated": 977545,
+        "total_english": 977545
+      },
+      "is_selected_per_row": {
+        "mean": 0.587,
+        "rows_with_zero_selected": 44046,
+        "rows_with_multiple_selected": 3031
+      },
+      "translated_passage_chars": {
+        "n": 977545,
+        "min": 5,
+        "p25": 236,
+        "p50": 285,
+        "p75": 343,
+        "p90": 467,
+        "p95": 549,
+        "p99": 722,
+        "max": 12127,
+        "mean": 313.9
+      },
+      "english_passage_chars": {
+        "n": 977545,
+        "min": 3,
+        "p25": 248,
+        "p50": 295,
+        "p75": 344,
+        "p90": 491,
+        "p95": 562,
+        "p99": 693,
+        "max": 1391,
+        "mean": 316.2
+      },
+      "query_chars": {
+        "n": 97941,
+        "min": 2,
+        "p25": 24,
+        "p50": 33,
+        "p75": 43,
+        "p90": 55,
+        "p95": 64,
+        "p99": 87,
+        "max": 4093,
+        "mean": 37.8
+      },
+      "answer_chars": {
+        "n": 97941,
+        "min": 2,
+        "p25": 15,
+        "p50": 16,
+        "p75": 79,
+        "p90": 143,
+        "p95": 192,
+        "p99": 305,
+        "max": 4095,
+        "mean": 60.0
+      },
+      "empty_translated_passages": 0,
+      "empty_answers": 0
+    },
+    "tam": {
+      "file": "data/raw/validation/tamval.parquet",
+      "rows_sampled": 97941,
+      "read_seconds": 1.66,
+      "target_lang_values": {
+        "tam_Taml": 97941
+      },
+      "source_lang_values": {
+        "eng_Latn": 97941
+      },
+      "query_type_values": {
+        "DESCRIPTION": 52912,
+        "NUMERIC": 24741,
+        "ENTITY": 8427,
+        "PERSON": 6206,
+        "LOCATION": 5655
+      },
+      "passages_per_row": {
+        "mean": 9.98,
+        "min": 1,
+        "max": 27,
+        "total_translated": 977545,
+        "total_english": 977545
+      },
+      "is_selected_per_row": {
+        "mean": 0.587,
+        "rows_with_zero_selected": 44046,
+        "rows_with_multiple_selected": 3031
+      },
+      "translated_passage_chars": {
+        "n": 977545,
+        "min": 10,
+        "p25": 275,
+        "p50": 334,
+        "p75": 404,
+        "p90": 552,
+        "p95": 653,
+        "p99": 995,
+        "max": 12844,
+        "mean": 379.4
+      },
+      "english_passage_chars": {
+        "n": 977545,
+        "min": 3,
+        "p25": 248,
+        "p50": 295,
+        "p75": 344,
+        "p90": 491,
+        "p95": 562,
+        "p99": 693,
+        "max": 1391,
+        "mean": 316.2
+      },
+      "query_chars": {
+        "n": 97941,
+        "min": 3,
+        "p25": 32,
+        "p50": 42,
+        "p75": 54,
+        "p90": 69,
+        "p95": 80,
+        "p99": 110,
+        "max": 3721,
+        "mean": 49.7
+      },
+      "answer_chars": {
+        "n": 97941,
+        "min": 2,
+        "p25": 19,
+        "p50": 19,
+        "p75": 93,
+        "p90": 169,
+        "p95": 226,
+        "p99": 366,
+        "max": 3566,
+        "mean": 71.8
+      },
+      "empty_translated_passages": 0,
+      "empty_answers": 0
+    }
+  }
+}

@@ -1,0 +1,762 @@
+{
+  "run_utc": "2026-08-18T14:46:21Z",
+  "index": "index/full",
+  "queries": "eval/queries.jsonl",
+  "n_queries": 500,
+  "n_gold_queries": 289,
+  "reps": 3,
+  "warmup": 50,
+  "k": 10,
+  "hardware": {
+    "cpu": "13th Gen Intel(R) Core(TM) i5-13450HX",
+    "cores": 16,
+    "mem_total_gb": 15.25,
+    "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.35",
+    "python": "3.11.15"
+  },
+  "boundary_a_covers": [
+    "stage3_embed",
+    "stage3_retrieve",
+    "stage3_fuse",
+    "stage3_signals",
+    "harness"
+  ],
+  "not_yet_in_boundary_a": [
+    "stage4_rewrite",
+    "stage5_expansion",
+    "stage6_rerank",
+    "stage7_context",
+    "guardrails_l1_l2_l3"
+  ],
+  "cold_start": {
+    "index_load_s": 1.65,
+    "first_query_ms": 179.06
+  },
+  "arms": {
+    "full": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": true,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 136.468,
+            "p70": 148.331,
+            "p95": 172.672,
+            "p100": 198.535
+          },
+          "mean_ms": 132.668,
+          "overhead_ms": {
+            "p50": 0.106,
+            "p100": 0.173
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.418,
+              "p100": 6.167
+            },
+            "stage3_retrieve": {
+              "p50": 132.46,
+              "p100": 194.571
+            },
+            "stage3_fuse": {
+              "p50": 0.133,
+              "p100": 0.282
+            },
+            "stage3_signals": {
+              "p50": 0.038,
+              "p100": 0.235
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4048,
+            "recall@10_any_lang": 0.4221,
+            "mrr@10": 0.184,
+            "ndcg@10": 0.4185
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 142.154,
+            "p70": 152.383,
+            "p95": 179.48,
+            "p100": 204.361
+          },
+          "mean_ms": 137.263,
+          "overhead_ms": {
+            "p50": 0.11,
+            "p100": 0.18
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.435,
+              "p100": 5.859
+            },
+            "stage3_retrieve": {
+              "p50": 138.483,
+              "p100": 200.78
+            },
+            "stage3_fuse": {
+              "p50": 0.136,
+              "p100": 0.439
+            },
+            "stage3_signals": {
+              "p50": 0.038,
+              "p100": 0.319
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4048,
+            "recall@10_any_lang": 0.4221,
+            "mrr@10": 0.184,
+            "ndcg@10": 0.4185
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 141.294,
+            "p70": 152.778,
+            "p95": 180.107,
+            "p100": 249.272
+          },
+          "mean_ms": 137.181,
+          "overhead_ms": {
+            "p50": 0.109,
+            "p100": 0.179
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.436,
+              "p100": 7.027
+            },
+            "stage3_retrieve": {
+              "p50": 137.325,
+              "p100": 244.711
+            },
+            "stage3_fuse": {
+              "p50": 0.137,
+              "p100": 0.295
+            },
+            "stage3_signals": {
+              "p50": 0.038,
+              "p100": 0.229
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4048,
+            "recall@10_any_lang": 0.4221,
+            "mrr@10": 0.184,
+            "ndcg@10": 0.4185
+          }
+        }
+      ],
+      "p50_spread_ms": 5.686,
+      "quality_stable": true
+    },
+    "dense_only": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": true,
+        "bm25": false,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 3.93,
+            "p70": 4.224,
+            "p95": 4.959,
+            "p100": 6.556
+          },
+          "mean_ms": 3.989,
+          "overhead_ms": {
+            "p50": 0.075,
+            "p100": 0.233
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.297,
+              "p100": 5.821
+            },
+            "stage3_retrieve": {
+              "p50": 0.433,
+              "p100": 1.204
+            },
+            "stage3_fuse": {
+              "p50": 0.102,
+              "p100": 0.388
+            },
+            "stage3_signals": {
+              "p50": 0.021,
+              "p100": 0.082
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.3772,
+            "recall@10_any_lang": 0.4083,
+            "mrr@10": 0.2429,
+            "ndcg@10": 0.4996
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 3.898,
+            "p70": 4.164,
+            "p95": 4.835,
+            "p100": 6.441
+          },
+          "mean_ms": 3.956,
+          "overhead_ms": {
+            "p50": 0.076,
+            "p100": 0.121
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.268,
+              "p100": 5.748
+            },
+            "stage3_retrieve": {
+              "p50": 0.435,
+              "p100": 0.969
+            },
+            "stage3_fuse": {
+              "p50": 0.102,
+              "p100": 0.182
+            },
+            "stage3_signals": {
+              "p50": 0.021,
+              "p100": 0.04
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.3772,
+            "recall@10_any_lang": 0.4083,
+            "mrr@10": 0.2429,
+            "ndcg@10": 0.4996
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 3.801,
+            "p70": 4.061,
+            "p95": 4.744,
+            "p100": 6.249
+          },
+          "mean_ms": 3.851,
+          "overhead_ms": {
+            "p50": 0.071,
+            "p100": 0.126
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.223,
+              "p100": 5.586
+            },
+            "stage3_retrieve": {
+              "p50": 0.403,
+              "p100": 0.808
+            },
+            "stage3_fuse": {
+              "p50": 0.1,
+              "p100": 0.178
+            },
+            "stage3_signals": {
+              "p50": 0.021,
+              "p100": 0.035
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.3772,
+            "recall@10_any_lang": 0.4083,
+            "mrr@10": 0.2429,
+            "ndcg@10": 0.4996
+          }
+        }
+      ],
+      "p50_spread_ms": 0.129,
+      "quality_stable": true
+    },
+    "bm25_only": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": false,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 137.534,
+            "p70": 149.899,
+            "p95": 177.656,
+            "p100": 194.305
+          },
+          "mean_ms": 134.013,
+          "overhead_ms": {
+            "p50": 0.101,
+            "p100": 0.141
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.405,
+              "p100": 6.096
+            },
+            "stage3_retrieve": {
+              "p50": 134.005,
+              "p100": 190.137
+            },
+            "stage3_fuse": {
+              "p50": 0.106,
+              "p100": 0.235
+            },
+            "stage3_signals": {
+              "p50": 0.026,
+              "p100": 0.055
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.2284,
+            "recall@10_any_lang": 0.2284,
+            "mrr@10": 0.1234,
+            "ndcg@10": 0.2462
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 136.125,
+            "p70": 147.272,
+            "p95": 178.801,
+            "p100": 196.916
+          },
+          "mean_ms": 132.303,
+          "overhead_ms": {
+            "p50": 0.099,
+            "p100": 0.231
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.377,
+              "p100": 5.753
+            },
+            "stage3_retrieve": {
+              "p50": 132.606,
+              "p100": 192.616
+            },
+            "stage3_fuse": {
+              "p50": 0.105,
+              "p100": 0.21
+            },
+            "stage3_signals": {
+              "p50": 0.026,
+              "p100": 0.05
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.2284,
+            "recall@10_any_lang": 0.2284,
+            "mrr@10": 0.1234,
+            "ndcg@10": 0.2462
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 135.186,
+            "p70": 143.934,
+            "p95": 168.26,
+            "p100": 195.865
+          },
+          "mean_ms": 130.201,
+          "overhead_ms": {
+            "p50": 0.1,
+            "p100": 0.134
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.316,
+              "p100": 5.656
+            },
+            "stage3_retrieve": {
+              "p50": 131.633,
+              "p100": 191.578
+            },
+            "stage3_fuse": {
+              "p50": 0.106,
+              "p100": 0.168
+            },
+            "stage3_signals": {
+              "p50": 0.026,
+              "p100": 0.042
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.2284,
+            "recall@10_any_lang": 0.2284,
+            "mrr@10": 0.1234,
+            "ndcg@10": 0.2462
+          }
+        }
+      ],
+      "p50_spread_ms": 2.348,
+      "quality_stable": true
+    },
+    "ef_search_256": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 256,
+        "dense": true,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 136.893,
+            "p70": 145.824,
+            "p95": 173.835,
+            "p100": 191.722
+          },
+          "mean_ms": 132.32,
+          "overhead_ms": {
+            "p50": 0.105,
+            "p100": 0.195
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.361,
+              "p100": 5.818
+            },
+            "stage3_retrieve": {
+              "p50": 133.343,
+              "p100": 188.424
+            },
+            "stage3_fuse": {
+              "p50": 0.137,
+              "p100": 0.204
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.248
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4671,
+            "mrr@10": 0.2244,
+            "ndcg@10": 0.4912
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 136.048,
+            "p70": 148.254,
+            "p95": 174.799,
+            "p100": 204.18
+          },
+          "mean_ms": 132.683,
+          "overhead_ms": {
+            "p50": 0.105,
+            "p100": 0.173
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.41,
+              "p100": 5.728
+            },
+            "stage3_retrieve": {
+              "p50": 132.213,
+              "p100": 199.916
+            },
+            "stage3_fuse": {
+              "p50": 0.138,
+              "p100": 0.233
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.24
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4671,
+            "mrr@10": 0.2244,
+            "ndcg@10": 0.4912
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 145.511,
+            "p70": 161.534,
+            "p95": 181.331,
+            "p100": 206.702
+          },
+          "mean_ms": 139.372,
+          "overhead_ms": {
+            "p50": 0.105,
+            "p100": 0.19
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.444,
+              "p100": 6.062
+            },
+            "stage3_retrieve": {
+              "p50": 141.63,
+              "p100": 202.214
+            },
+            "stage3_fuse": {
+              "p50": 0.136,
+              "p100": 0.275
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.239
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4671,
+            "mrr@10": 0.2244,
+            "ndcg@10": 0.4912
+          }
+        }
+      ],
+      "p50_spread_ms": 9.463,
+      "quality_stable": true
+    },
+    "k_dense_200": {
+      "config": {
+        "k_dense": 200,
+        "k_bm25": 200,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": true,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 138.294,
+            "p70": 151.211,
+            "p95": 178.069,
+            "p100": 200.992
+          },
+          "mean_ms": 134.935,
+          "overhead_ms": {
+            "p50": 0.107,
+            "p100": 0.14
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.35,
+              "p100": 5.677
+            },
+            "stage3_retrieve": {
+              "p50": 134.413,
+              "p100": 195.944
+            },
+            "stage3_fuse": {
+              "p50": 0.18,
+              "p100": 0.286
+            },
+            "stage3_signals": {
+              "p50": 0.052,
+              "p100": 0.571
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4083,
+            "recall@10_any_lang": 0.4256,
+            "mrr@10": 0.1804,
+            "ndcg@10": 0.4201
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 136.191,
+            "p70": 147.967,
+            "p95": 170.777,
+            "p100": 199.188
+          },
+          "mean_ms": 131.711,
+          "overhead_ms": {
+            "p50": 0.106,
+            "p100": 0.161
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.364,
+              "p100": 5.673
+            },
+            "stage3_retrieve": {
+              "p50": 132.443,
+              "p100": 195.56
+            },
+            "stage3_fuse": {
+              "p50": 0.18,
+              "p100": 0.31
+            },
+            "stage3_signals": {
+              "p50": 0.052,
+              "p100": 0.592
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4083,
+            "recall@10_any_lang": 0.4256,
+            "mrr@10": 0.1804,
+            "ndcg@10": 0.4201
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 137.734,
+            "p70": 147.697,
+            "p95": 171.197,
+            "p100": 196.832
+          },
+          "mean_ms": 132.331,
+          "overhead_ms": {
+            "p50": 0.106,
+            "p100": 0.227
+          },
+          "stage_ms": {
+            "stage3_embed": {
+              "p50": 3.399,
+              "p100": 5.744
+            },
+            "stage3_retrieve": {
+              "p50": 133.73,
+              "p100": 193.04
+            },
+            "stage3_fuse": {
+              "p50": 0.182,
+              "p100": 0.326
+            },
+            "stage3_signals": {
+              "p50": 0.053,
+              "p100": 0.596
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4083,
+            "recall@10_any_lang": 0.4256,
+            "mrr@10": 0.1804,
+            "ndcg@10": 0.4201
+          }
+        }
+      ],
+      "p50_spread_ms": 2.103,
+      "quality_stable": true
+    }
+  }
+}

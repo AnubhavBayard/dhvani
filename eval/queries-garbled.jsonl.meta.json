@@ -1,0 +1,23 @@
+{
+  "built_utc": "2026-08-18T15:43:21Z",
+  "seed": 20260818,
+  "n": 500,
+  "subset": "index/subset.json",
+  "by_corpus": {
+    "eng": 125,
+    "ben": 125,
+    "tam": 125,
+    "hin": 125
+  },
+  "by_query_type": {
+    "ENTITY": 43,
+    "DESCRIPTION": 270,
+    "LOCATION": 27,
+    "NUMERIC": 128,
+    "PERSON": 32
+  },
+  "with_gold": 289,
+  "with_gold_share": 0.578,
+  "garble_rate": 0.35,
+  "garbled_queries": 393
+}

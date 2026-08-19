@@ -1,0 +1,1191 @@
+{
+  "run_utc": "2026-08-15T08:26:25Z",
+  "config": {
+    "rows": 2000,
+    "workers": 8,
+    "threads": 2,
+    "langs": [],
+    "mem_total_gb": 15.25,
+    "swap": false
+  },
+  "chunks": null,
+  "seconds": 169.5,
+  "returncode": 1,
+  "peak_parent_gb": 1.24,
+  "peak_worker_gb": 1.65,
+  "peak_workers_sum_gb": 10.84,
+  "peak_total_gb": 12.01,
+  "min_mem_available_gb": 0.05,
+  "max_workers_live": 9,
+  "timeline": [
+    {
+      "t": 0.0,
+      "parent_gb": 0.0,
+      "workers": 0,
+      "workers_gb": 0.0,
+      "avail_gb": 11.6
+    },
+    {
+      "t": 1.0,
+      "parent_gb": 0.79,
+      "workers": 0,
+      "workers_gb": 0.0,
+      "avail_gb": 10.87
+    },
+    {
+      "t": 2.0,
+      "parent_gb": 0.88,
+      "workers": 0,
+      "workers_gb": 0.0,
+      "avail_gb": 10.74
+    },
+    {
+      "t": 3.0,
+      "parent_gb": 0.97,
+      "workers": 0,
+      "workers_gb": 0.0,
+      "avail_gb": 10.67
+    },
+    {
+      "t": 4.0,
+      "parent_gb": 1.05,
+      "workers": 0,
+      "workers_gb": 0.0,
+      "avail_gb": 10.58
+    },
+    {
+      "t": 5.0,
+      "parent_gb": 1.05,
+      "workers": 9,
+      "workers_gb": 3.33,
+      "avail_gb": 7.67
+    },
+    {
+      "t": 6.0,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.16,
+      "avail_gb": 6.81
+    },
+    {
+      "t": 7.0,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.22,
+      "avail_gb": 6.77
+    },
+    {
+      "t": 8.0,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.24,
+      "avail_gb": 6.76
+    },
+    {
+      "t": 9.0,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.25,
+      "avail_gb": 6.75
+    },
+    {
+      "t": 10.0,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.26,
+      "avail_gb": 6.75
+    },
+    {
+      "t": 11.0,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.26,
+      "avail_gb": 6.73
+    },
+    {
+      "t": 12.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.27,
+      "avail_gb": 6.73
+    },
+    {
+      "t": 13.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.27,
+      "avail_gb": 6.72
+    },
+    {
+      "t": 14.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.28,
+      "avail_gb": 6.71
+    },
+    {
+      "t": 15.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.29,
+      "avail_gb": 6.71
+    },
+    {
+      "t": 16.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.29,
+      "avail_gb": 6.72
+    },
+    {
+      "t": 17.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.33,
+      "avail_gb": 6.68
+    },
+    {
+      "t": 18.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.39,
+      "avail_gb": 6.62
+    },
+    {
+      "t": 19.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.42,
+      "avail_gb": 6.59
+    },
+    {
+      "t": 20.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.43,
+      "avail_gb": 6.59
+    },
+    {
+      "t": 21.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.45,
+      "avail_gb": 6.56
+    },
+    {
+      "t": 22.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.46,
+      "avail_gb": 6.67
+    },
+    {
+      "t": 23.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.46,
+      "avail_gb": 6.67
+    },
+    {
+      "t": 24.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.48,
+      "avail_gb": 6.67
+    },
+    {
+      "t": 25.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.48,
+      "avail_gb": 6.68
+    },
+    {
+      "t": 26.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.49,
+      "avail_gb": 6.68
+    },
+    {
+      "t": 27.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.5,
+      "avail_gb": 6.68
+    },
+    {
+      "t": 28.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.5,
+      "avail_gb": 6.69
+    },
+    {
+      "t": 29.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.51,
+      "avail_gb": 6.69
+    },
+    {
+      "t": 30.1,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.52,
+      "avail_gb": 6.69
+    },
+    {
+      "t": 31.2,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.52,
+      "avail_gb": 6.66
+    },
+    {
+      "t": 32.2,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.53,
+      "avail_gb": 6.67
+    },
+    {
+      "t": 33.2,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.54,
+      "avail_gb": 6.67
+    },
+    {
+      "t": 34.2,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.54,
+      "avail_gb": 6.67
+    },
+    {
+      "t": 35.2,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.55,
+      "avail_gb": 6.66
+    },
+    {
+      "t": 36.2,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.57,
+      "avail_gb": 6.64
+    },
+    {
+      "t": 37.2,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.64,
+      "avail_gb": 6.57
+    },
+    {
+      "t": 38.2,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.65,
+      "avail_gb": 6.55
+    },
+    {
+      "t": 39.2,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.69,
+      "avail_gb": 6.51
+    },
+    {
+      "t": 40.2,
+      "parent_gb": 1.06,
+      "workers": 9,
+      "workers_gb": 4.7,
+      "avail_gb": 6.51
+    },
+    {
+      "t": 41.2,
+      "parent_gb": 1.09,
+      "workers": 9,
+      "workers_gb": 5.58,
+      "avail_gb": 5.59
+    },
+    {
+      "t": 42.2,
+      "parent_gb": 1.09,
+      "workers": 9,
+      "workers_gb": 5.79,
+      "avail_gb": 5.37
+    },
+    {
+      "t": 43.2,
+      "parent_gb": 1.09,
+      "workers": 9,
+      "workers_gb": 5.85,
+      "avail_gb": 5.32
+    },
+    {
+      "t": 44.2,
+      "parent_gb": 1.09,
+      "workers": 9,
+      "workers_gb": 5.9,
+      "avail_gb": 5.28
+    },
+    {
+      "t": 45.2,
+      "parent_gb": 1.09,
+      "workers": 9,
+      "workers_gb": 5.93,
+      "avail_gb": 5.25
+    },
+    {
+      "t": 46.2,
+      "parent_gb": 1.1,
+      "workers": 9,
+      "workers_gb": 5.97,
+      "avail_gb": 5.2
+    },
+    {
+      "t": 47.2,
+      "parent_gb": 1.11,
+      "workers": 9,
+      "workers_gb": 5.99,
+      "avail_gb": 5.18
+    },
+    {
+      "t": 48.3,
+      "parent_gb": 1.11,
+      "workers": 9,
+      "workers_gb": 6.08,
+      "avail_gb": 5.09
+    },
+    {
+      "t": 49.3,
+      "parent_gb": 1.11,
+      "workers": 9,
+      "workers_gb": 6.08,
+      "avail_gb": 5.08
+    },
+    {
+      "t": 50.3,
+      "parent_gb": 1.12,
+      "workers": 9,
+      "workers_gb": 6.11,
+      "avail_gb": 5.04
+    },
+    {
+      "t": 51.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.96
+    },
+    {
+      "t": 52.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.96
+    },
+    {
+      "t": 53.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.96
+    },
+    {
+      "t": 54.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.96
+    },
+    {
+      "t": 55.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.96
+    },
+    {
+      "t": 56.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.96
+    },
+    {
+      "t": 57.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.97
+    },
+    {
+      "t": 58.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.97
+    },
+    {
+      "t": 59.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.97
+    },
+    {
+      "t": 60.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.97
+    },
+    {
+      "t": 61.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.97
+    },
+    {
+      "t": 62.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.97
+    },
+    {
+      "t": 63.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.98
+    },
+    {
+      "t": 64.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.98
+    },
+    {
+      "t": 65.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.98
+    },
+    {
+      "t": 66.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.99
+    },
+    {
+      "t": 67.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.99
+    },
+    {
+      "t": 68.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.99
+    },
+    {
+      "t": 69.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.99
+    },
+    {
+      "t": 70.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.99
+    },
+    {
+      "t": 71.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.14,
+      "avail_gb": 4.98
+    },
+    {
+      "t": 72.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.15,
+      "avail_gb": 4.98
+    },
+    {
+      "t": 73.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.15,
+      "avail_gb": 4.97
+    },
+    {
+      "t": 74.3,
+      "parent_gb": 1.17,
+      "workers": 9,
+      "workers_gb": 6.18,
+      "avail_gb": 4.94
+    },
+    {
+      "t": 75.3,
+      "parent_gb": 1.18,
+      "workers": 9,
+      "workers_gb": 6.18,
+      "avail_gb": 4.94
+    },
+    {
+      "t": 76.3,
+      "parent_gb": 1.18,
+      "workers": 9,
+      "workers_gb": 6.18,
+      "avail_gb": 4.93
+    },
+    {
+      "t": 77.3,
+      "parent_gb": 1.18,
+      "workers": 9,
+      "workers_gb": 7.15,
+      "avail_gb": 3.95
+    },
+    {
+      "t": 78.3,
+      "parent_gb": 1.18,
+      "workers": 9,
+      "workers_gb": 7.15,
+      "avail_gb": 3.95
+    },
+    {
+      "t": 79.3,
+      "parent_gb": 1.18,
+      "workers": 9,
+      "workers_gb": 7.15,
+      "avail_gb": 3.95
+    },
+    {
+      "t": 80.3,
+      "parent_gb": 1.19,
+      "workers": 2,
+      "workers_gb": 0.46,
+      "avail_gb": 10.09
+    },
+    {
+      "t": 81.3,
+      "parent_gb": 1.22,
+      "workers": 1,
+      "workers_gb": 0.02,
+      "avail_gb": 10.45
+    },
+    {
+      "t": 82.3,
+      "parent_gb": 1.24,
+      "workers": 1,
+      "workers_gb": 0.02,
+      "avail_gb": 10.37
+    },
+    {
+      "t": 83.3,
+      "parent_gb": 1.21,
+      "workers": 9,
+      "workers_gb": 2.0,
+      "avail_gb": 8.42
+    },
+    {
+      "t": 84.3,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.13,
+      "avail_gb": 6.72
+    },
+    {
+      "t": 85.3,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.22,
+      "avail_gb": 6.69
+    },
+    {
+      "t": 86.3,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.25,
+      "avail_gb": 6.66
+    },
+    {
+      "t": 87.3,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.26,
+      "avail_gb": 6.65
+    },
+    {
+      "t": 88.3,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.27,
+      "avail_gb": 6.65
+    },
+    {
+      "t": 89.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.28,
+      "avail_gb": 6.64
+    },
+    {
+      "t": 90.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.28,
+      "avail_gb": 6.64
+    },
+    {
+      "t": 91.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.29,
+      "avail_gb": 6.62
+    },
+    {
+      "t": 92.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.31,
+      "avail_gb": 6.61
+    },
+    {
+      "t": 93.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.34,
+      "avail_gb": 6.62
+    },
+    {
+      "t": 94.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.41,
+      "avail_gb": 6.55
+    },
+    {
+      "t": 95.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.43,
+      "avail_gb": 6.53
+    },
+    {
+      "t": 96.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.44,
+      "avail_gb": 6.52
+    },
+    {
+      "t": 97.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.46,
+      "avail_gb": 6.5
+    },
+    {
+      "t": 98.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.48,
+      "avail_gb": 6.5
+    },
+    {
+      "t": 99.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.48,
+      "avail_gb": 6.49
+    },
+    {
+      "t": 100.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.49,
+      "avail_gb": 6.48
+    },
+    {
+      "t": 101.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.5,
+      "avail_gb": 6.47
+    },
+    {
+      "t": 102.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.51,
+      "avail_gb": 6.47
+    },
+    {
+      "t": 103.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.52,
+      "avail_gb": 6.47
+    },
+    {
+      "t": 104.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.52,
+      "avail_gb": 6.47
+    },
+    {
+      "t": 105.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.53,
+      "avail_gb": 6.45
+    },
+    {
+      "t": 106.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.54,
+      "avail_gb": 6.45
+    },
+    {
+      "t": 107.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.55,
+      "avail_gb": 6.45
+    },
+    {
+      "t": 108.4,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.55,
+      "avail_gb": 6.45
+    },
+    {
+      "t": 109.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.56,
+      "avail_gb": 6.45
+    },
+    {
+      "t": 110.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.57,
+      "avail_gb": 6.44
+    },
+    {
+      "t": 111.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.58,
+      "avail_gb": 6.45
+    },
+    {
+      "t": 112.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.58,
+      "avail_gb": 6.45
+    },
+    {
+      "t": 113.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.61,
+      "avail_gb": 6.41
+    },
+    {
+      "t": 114.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.68,
+      "avail_gb": 6.33
+    },
+    {
+      "t": 115.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.72,
+      "avail_gb": 6.31
+    },
+    {
+      "t": 116.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.73,
+      "avail_gb": 6.3
+    },
+    {
+      "t": 117.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.78,
+      "avail_gb": 6.24
+    },
+    {
+      "t": 118.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.84,
+      "avail_gb": 6.18
+    },
+    {
+      "t": 119.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.84,
+      "avail_gb": 6.18
+    },
+    {
+      "t": 120.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.89,
+      "avail_gb": 6.11
+    },
+    {
+      "t": 121.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.92,
+      "avail_gb": 6.09
+    },
+    {
+      "t": 122.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.94,
+      "avail_gb": 6.07
+    },
+    {
+      "t": 123.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.95,
+      "avail_gb": 6.06
+    },
+    {
+      "t": 124.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.96,
+      "avail_gb": 6.05
+    },
+    {
+      "t": 125.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.97,
+      "avail_gb": 6.03
+    },
+    {
+      "t": 126.5,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.97,
+      "avail_gb": 6.04
+    },
+    {
+      "t": 127.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.98,
+      "avail_gb": 6.04
+    },
+    {
+      "t": 128.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 4.98,
+      "avail_gb": 6.04
+    },
+    {
+      "t": 129.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.01,
+      "avail_gb": 6.01
+    },
+    {
+      "t": 130.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.02,
+      "avail_gb": 6.01
+    },
+    {
+      "t": 131.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.02,
+      "avail_gb": 6.01
+    },
+    {
+      "t": 132.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.04,
+      "avail_gb": 6.0
+    },
+    {
+      "t": 133.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.04,
+      "avail_gb": 6.0
+    },
+    {
+      "t": 134.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.04,
+      "avail_gb": 6.0
+    },
+    {
+      "t": 135.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.04,
+      "avail_gb": 6.0
+    },
+    {
+      "t": 136.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.06,
+      "avail_gb": 5.98
+    },
+    {
+      "t": 137.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.06,
+      "avail_gb": 5.98
+    },
+    {
+      "t": 138.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.09,
+      "avail_gb": 5.93
+    },
+    {
+      "t": 139.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.19,
+      "avail_gb": 5.83
+    },
+    {
+      "t": 140.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.21,
+      "avail_gb": 5.82
+    },
+    {
+      "t": 141.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.23,
+      "avail_gb": 5.8
+    },
+    {
+      "t": 142.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.24,
+      "avail_gb": 5.8
+    },
+    {
+      "t": 143.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.27,
+      "avail_gb": 5.76
+    },
+    {
+      "t": 144.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.39,
+      "avail_gb": 5.63
+    },
+    {
+      "t": 145.6,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.44,
+      "avail_gb": 5.58
+    },
+    {
+      "t": 146.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.45,
+      "avail_gb": 5.56
+    },
+    {
+      "t": 147.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.47,
+      "avail_gb": 5.53
+    },
+    {
+      "t": 148.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.55,
+      "avail_gb": 5.46
+    },
+    {
+      "t": 149.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.56,
+      "avail_gb": 5.45
+    },
+    {
+      "t": 150.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.57,
+      "avail_gb": 5.45
+    },
+    {
+      "t": 151.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.67,
+      "avail_gb": 5.32
+    },
+    {
+      "t": 152.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.71,
+      "avail_gb": 5.27
+    },
+    {
+      "t": 153.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 5.85,
+      "avail_gb": 5.13
+    },
+    {
+      "t": 154.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 6.76,
+      "avail_gb": 4.22
+    },
+    {
+      "t": 155.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 7.2,
+      "avail_gb": 3.79
+    },
+    {
+      "t": 156.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 7.2,
+      "avail_gb": 3.79
+    },
+    {
+      "t": 157.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 8.81,
+      "avail_gb": 2.16
+    },
+    {
+      "t": 158.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 8.99,
+      "avail_gb": 1.97
+    },
+    {
+      "t": 159.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 8.99,
+      "avail_gb": 1.97
+    },
+    {
+      "t": 160.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 9.02,
+      "avail_gb": 1.94
+    },
+    {
+      "t": 161.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 9.02,
+      "avail_gb": 1.96
+    },
+    {
+      "t": 162.7,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 9.82,
+      "avail_gb": 1.25
+    },
+    {
+      "t": 163.8,
+      "parent_gb": 1.23,
+      "workers": 9,
+      "workers_gb": 9.99,
+      "avail_gb": 1.04
+    },
+    {
+      "t": 164.8,
+      "parent_gb": 1.18,
+      "workers": 9,
+      "workers_gb": 10.43,
+      "avail_gb": 0.36
+    },
+    {
+      "t": 165.8,
+      "parent_gb": 1.18,
+      "workers": 9,
+      "workers_gb": 10.42,
+      "avail_gb": 0.33
+    },
+    {
+      "t": 169.0,
+      "parent_gb": 1.17,
+      "workers": 1,
+      "workers_gb": 0.01,
+      "avail_gb": 10.71
+    }
+  ]
+}

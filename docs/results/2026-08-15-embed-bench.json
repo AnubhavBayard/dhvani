@@ -1,0 +1,51 @@
+{
+  "measured_utc": "2026-08-15T07:04:05Z",
+  "host": {
+    "threads": 2,
+    "provider": "CPUExecutionProvider"
+  },
+  "eval": {
+    "dataset": "ai4bharat/MSMARCO-XI",
+    "lang": "hin",
+    "split": "validation",
+    "queries": 300,
+    "corpus_passages": 2996,
+    "seed": 20260815,
+    "max_len": 512,
+    "batch_size": 32,
+    "rows_with_gold": 53895,
+    "rows_total": 97941
+  },
+  "models": {
+    "multilingual-e5-small": {
+      "model": "intfloat/multilingual-e5-small (INT8 ONNX)",
+      "dims": 384,
+      "notes": "pre-quantized INT8, matches the deployed runtime exactly",
+      "onnx_size_mb": 118.3,
+      "monolingual": {
+        "recall@1": 0.2867,
+        "recall@5": 0.7767,
+        "recall@10": 0.89,
+        "mrr@10": 0.4824
+      },
+      "cross_lingual_query_to_english": {
+        "recall@1": 0.2767,
+        "recall@5": 0.7067,
+        "recall@10": 0.8367,
+        "mrr@10": 0.4502
+      },
+      "latency_ms_single_query": {
+        "p50": 2.86,
+        "p95": 3.96,
+        "p100": 4.99,
+        "n": 100
+      },
+      "corpus_encode": {
+        "passages": 2996,
+        "seconds": 90.1,
+        "passages_per_second": 33.2
+      },
+      "index_bytes_per_vector_int8": 384
+    }
+  }
+}

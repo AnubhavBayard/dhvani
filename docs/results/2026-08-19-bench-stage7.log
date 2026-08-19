@@ -1,0 +1,7 @@
+full           s4  75q/ 82c  p50   13.50ms  p100    33.44ms  recall@10 0.4464  mrr 0.2323  (24s)
+no_stage7      s4  75q/ 82c  p50   12.14ms  p100    18.29ms  recall@10 0.4464  mrr 0.2323  (22s)
+no_dedupe      s4  75q/ 82c  p50   13.28ms  p100    27.56ms  recall@10 0.4464  mrr 0.2323  (23s)
+budget_800     s4  75q/ 82c  p50   13.47ms  p100    22.27ms  recall@10 0.4464  mrr 0.2323  (24s)
+budget_3000    s4  75q/ 82c  p50   13.66ms  p100    21.23ms  recall@10 0.4464  mrr 0.2323  (24s)
+chunks_3       s4  75q/ 82c  p50   13.03ms  p100    20.17ms  recall@10 0.4464  mrr 0.2323  (23s)
+wrote docs/results/2026-08-19-bench-stage7.json

@@ -1,0 +1,6 @@
+full           p50  136.47ms  p100   198.53ms  recall@10 0.4048  mrr 0.1840  (206s)
+dense_only     p50    3.93ms  p100     6.56ms  recall@10 0.3772  mrr 0.2429  (8s)
+bm25_only      p50  137.53ms  p100   194.31ms  recall@10 0.2284  mrr 0.1234  (201s)
+ef_search_256  p50  136.89ms  p100   191.72ms  recall@10 0.4464  mrr 0.2244  (205s)
+k_dense_200    p50  138.29ms  p100   200.99ms  recall@10 0.4083  mrr 0.1804  (202s)
+wrote docs/results/2026-08-18-bench-stage3.json

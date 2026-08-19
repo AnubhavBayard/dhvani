@@ -1,0 +1,1051 @@
+{
+  "run_utc": "2026-08-18T15:52:27Z",
+  "index": "index/full",
+  "queries": "eval/queries.jsonl",
+  "n_queries": 500,
+  "n_gold_queries": 289,
+  "reps": 3,
+  "warmup": 50,
+  "k": 10,
+  "hardware": {
+    "cpu": "13th Gen Intel(R) Core(TM) i5-13450HX",
+    "cores": 16,
+    "mem_total_gb": 15.25,
+    "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.35",
+    "python": "3.11.15"
+  },
+  "boundary_a_covers": [
+    "stage4_rewrite",
+    "stage3_embed",
+    "stage3_retrieve",
+    "stage3_fuse",
+    "stage3_signals",
+    "harness"
+  ],
+  "not_yet_in_boundary_a": [
+    "stage5_expansion",
+    "stage6_rerank",
+    "stage7_context",
+    "guardrails_l1_l2_l3"
+  ],
+  "cold_start": {
+    "index_load_s": 3.07,
+    "first_query_ms": 18.56
+  },
+  "arms": {
+    "full": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": true,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.366,
+            "p70": 13.85,
+            "p95": 17.031,
+            "p100": 20.925
+          },
+          "mean_ms": 13.037,
+          "overhead_ms": {
+            "p50": 0.109,
+            "p100": 0.226
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.034,
+              "p100": 1.499
+            },
+            "stage3_embed": {
+              "p50": 3.399,
+              "p100": 6.18
+            },
+            "stage3_retrieve": {
+              "p50": 8.404,
+              "p100": 17.187
+            },
+            "stage3_fuse": {
+              "p50": 0.134,
+              "p100": 0.325
+            },
+            "stage3_signals": {
+              "p50": 0.041,
+              "p100": 0.228
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.243,
+            "p70": 13.559,
+            "p95": 16.576,
+            "p100": 21.476
+          },
+          "mean_ms": 12.819,
+          "overhead_ms": {
+            "p50": 0.105,
+            "p100": 0.176
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.034,
+              "p100": 1.26
+            },
+            "stage3_embed": {
+              "p50": 3.366,
+              "p100": 5.775
+            },
+            "stage3_retrieve": {
+              "p50": 8.313,
+              "p100": 17.193
+            },
+            "stage3_fuse": {
+              "p50": 0.135,
+              "p100": 0.247
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.219
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.351,
+            "p70": 13.859,
+            "p95": 16.964,
+            "p100": 19.872
+          },
+          "mean_ms": 13.058,
+          "overhead_ms": {
+            "p50": 0.112,
+            "p100": 0.215
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.035,
+              "p100": 1.221
+            },
+            "stage3_embed": {
+              "p50": 3.397,
+              "p100": 6.435
+            },
+            "stage3_retrieve": {
+              "p50": 8.44,
+              "p100": 14.238
+            },
+            "stage3_fuse": {
+              "p50": 0.138,
+              "p100": 0.271
+            },
+            "stage3_signals": {
+              "p50": 0.041,
+              "p100": 0.22
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        }
+      ],
+      "p50_spread_ms": 0.123,
+      "quality_stable": true
+    },
+    "no_stage4": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": true,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 11.911,
+            "p70": 13.39,
+            "p95": 16.278,
+            "p100": 18.592
+          },
+          "mean_ms": 12.617,
+          "overhead_ms": {
+            "p50": 0.112,
+            "p100": 0.19
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage3_embed": {
+              "p50": 3.337,
+              "p100": 6.621
+            },
+            "stage3_retrieve": {
+              "p50": 8.227,
+              "p100": 14.768
+            },
+            "stage3_fuse": {
+              "p50": 0.133,
+              "p100": 0.241
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.22
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 0,
+            "corrections": 0
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4567,
+            "recall@10_any_lang": 0.4671,
+            "mrr@10": 0.2342,
+            "ndcg@10": 0.5165
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 11.883,
+            "p70": 13.25,
+            "p95": 16.287,
+            "p100": 21.297
+          },
+          "mean_ms": 12.596,
+          "overhead_ms": {
+            "p50": 0.113,
+            "p100": 0.19
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage3_embed": {
+              "p50": 3.331,
+              "p100": 6.056
+            },
+            "stage3_retrieve": {
+              "p50": 8.2,
+              "p100": 17.354
+            },
+            "stage3_fuse": {
+              "p50": 0.136,
+              "p100": 0.29
+            },
+            "stage3_signals": {
+              "p50": 0.041,
+              "p100": 0.218
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 0,
+            "corrections": 0
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4567,
+            "recall@10_any_lang": 0.4671,
+            "mrr@10": 0.2342,
+            "ndcg@10": 0.5165
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 11.911,
+            "p70": 13.217,
+            "p95": 16.063,
+            "p100": 32.761
+          },
+          "mean_ms": 12.573,
+          "overhead_ms": {
+            "p50": 0.112,
+            "p100": 21.385
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage3_embed": {
+              "p50": 3.328,
+              "p100": 5.852
+            },
+            "stage3_retrieve": {
+              "p50": 8.166,
+              "p100": 13.364
+            },
+            "stage3_fuse": {
+              "p50": 0.135,
+              "p100": 0.257
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.226
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 0,
+            "corrections": 0
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4567,
+            "recall@10_any_lang": 0.4671,
+            "mrr@10": 0.2342,
+            "ndcg@10": 0.5165
+          }
+        }
+      ],
+      "p50_spread_ms": 0.028,
+      "quality_stable": true
+    },
+    "stage4_len3": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": true,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.093,
+            "p70": 13.675,
+            "p95": 16.17,
+            "p100": 20.528
+          },
+          "mean_ms": 12.751,
+          "overhead_ms": {
+            "p50": 0.108,
+            "p100": 0.167
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.037,
+              "p100": 1.384
+            },
+            "stage3_embed": {
+              "p50": 3.323,
+              "p100": 5.829
+            },
+            "stage3_retrieve": {
+              "p50": 8.261,
+              "p100": 15.251
+            },
+            "stage3_fuse": {
+              "p50": 0.135,
+              "p100": 0.227
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.227
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 134,
+            "corrections": 152
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.436,
+            "recall@10_any_lang": 0.4464,
+            "mrr@10": 0.2286,
+            "ndcg@10": 0.4979
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.335,
+            "p70": 13.909,
+            "p95": 16.628,
+            "p100": 20.329
+          },
+          "mean_ms": 13.017,
+          "overhead_ms": {
+            "p50": 0.11,
+            "p100": 0.174
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.038,
+              "p100": 1.324
+            },
+            "stage3_embed": {
+              "p50": 3.327,
+              "p100": 6.033
+            },
+            "stage3_retrieve": {
+              "p50": 8.471,
+              "p100": 13.903
+            },
+            "stage3_fuse": {
+              "p50": 0.137,
+              "p100": 0.26
+            },
+            "stage3_signals": {
+              "p50": 0.041,
+              "p100": 0.219
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 134,
+            "corrections": 152
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.436,
+            "recall@10_any_lang": 0.4464,
+            "mrr@10": 0.2286,
+            "ndcg@10": 0.4979
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.196,
+            "p70": 13.723,
+            "p95": 16.314,
+            "p100": 17.898
+          },
+          "mean_ms": 12.805,
+          "overhead_ms": {
+            "p50": 0.106,
+            "p100": 0.154
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.037,
+              "p100": 1.315
+            },
+            "stage3_embed": {
+              "p50": 3.307,
+              "p100": 5.781
+            },
+            "stage3_retrieve": {
+              "p50": 8.33,
+              "p100": 13.678
+            },
+            "stage3_fuse": {
+              "p50": 0.134,
+              "p100": 0.234
+            },
+            "stage3_signals": {
+              "p50": 0.039,
+              "p100": 0.26
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 134,
+            "corrections": 152
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.436,
+            "recall@10_any_lang": 0.4464,
+            "mrr@10": 0.2286,
+            "ndcg@10": 0.4979
+          }
+        }
+      ],
+      "p50_spread_ms": 0.242,
+      "quality_stable": true
+    },
+    "dense_only": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": true,
+        "bm25": false,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 3.828,
+            "p70": 4.099,
+            "p95": 4.905,
+            "p100": 6.305
+          },
+          "mean_ms": 3.889,
+          "overhead_ms": {
+            "p50": 0.072,
+            "p100": 0.122
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.03,
+              "p100": 1.327
+            },
+            "stage3_embed": {
+              "p50": 3.161,
+              "p100": 5.531
+            },
+            "stage3_retrieve": {
+              "p50": 0.395,
+              "p100": 0.717
+            },
+            "stage3_fuse": {
+              "p50": 0.098,
+              "p100": 0.142
+            },
+            "stage3_signals": {
+              "p50": 0.02,
+              "p100": 0.035
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.3668,
+            "recall@10_any_lang": 0.3979,
+            "mrr@10": 0.2332,
+            "ndcg@10": 0.4853
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 3.825,
+            "p70": 4.114,
+            "p95": 4.928,
+            "p100": 6.402
+          },
+          "mean_ms": 3.899,
+          "overhead_ms": {
+            "p50": 0.074,
+            "p100": 0.143
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.03,
+              "p100": 1.331
+            },
+            "stage3_embed": {
+              "p50": 3.149,
+              "p100": 5.748
+            },
+            "stage3_retrieve": {
+              "p50": 0.393,
+              "p100": 1.076
+            },
+            "stage3_fuse": {
+              "p50": 0.098,
+              "p100": 0.174
+            },
+            "stage3_signals": {
+              "p50": 0.019,
+              "p100": 0.036
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.3668,
+            "recall@10_any_lang": 0.3979,
+            "mrr@10": 0.2332,
+            "ndcg@10": 0.4853
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 3.789,
+            "p70": 4.088,
+            "p95": 4.89,
+            "p100": 6.317
+          },
+          "mean_ms": 3.886,
+          "overhead_ms": {
+            "p50": 0.072,
+            "p100": 0.165
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.03,
+              "p100": 1.347
+            },
+            "stage3_embed": {
+              "p50": 3.155,
+              "p100": 5.65
+            },
+            "stage3_retrieve": {
+              "p50": 0.371,
+              "p100": 2.244
+            },
+            "stage3_fuse": {
+              "p50": 0.098,
+              "p100": 0.188
+            },
+            "stage3_signals": {
+              "p50": 0.019,
+              "p100": 0.044
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.3668,
+            "recall@10_any_lang": 0.3979,
+            "mrr@10": 0.2332,
+            "ndcg@10": 0.4853
+          }
+        }
+      ],
+      "p50_spread_ms": 0.039,
+      "quality_stable": true
+    },
+    "bm25_only": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": false,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.047,
+            "p70": 13.58,
+            "p95": 16.438,
+            "p100": 18.861
+          },
+          "mean_ms": 12.74,
+          "overhead_ms": {
+            "p50": 0.1,
+            "p100": 0.171
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.033,
+              "p100": 1.355
+            },
+            "stage3_embed": {
+              "p50": 3.338,
+              "p100": 5.844
+            },
+            "stage3_retrieve": {
+              "p50": 8.307,
+              "p100": 14.942
+            },
+            "stage3_fuse": {
+              "p50": 0.106,
+              "p100": 0.197
+            },
+            "stage3_signals": {
+              "p50": 0.025,
+              "p100": 0.05
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.3875,
+            "recall@10_any_lang": 0.3875,
+            "mrr@10": 0.2101,
+            "ndcg@10": 0.4007
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.103,
+            "p70": 13.622,
+            "p95": 16.556,
+            "p100": 18.948
+          },
+          "mean_ms": 12.775,
+          "overhead_ms": {
+            "p50": 0.098,
+            "p100": 0.203
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.033,
+              "p100": 1.236
+            },
+            "stage3_embed": {
+              "p50": 3.353,
+              "p100": 5.872
+            },
+            "stage3_retrieve": {
+              "p50": 8.323,
+              "p100": 14.129
+            },
+            "stage3_fuse": {
+              "p50": 0.106,
+              "p100": 0.198
+            },
+            "stage3_signals": {
+              "p50": 0.025,
+              "p100": 0.063
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.3875,
+            "recall@10_any_lang": 0.3875,
+            "mrr@10": 0.2101,
+            "ndcg@10": 0.4007
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.248,
+            "p70": 13.687,
+            "p95": 16.587,
+            "p100": 18.755
+          },
+          "mean_ms": 12.83,
+          "overhead_ms": {
+            "p50": 0.099,
+            "p100": 0.193
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.033,
+              "p100": 1.348
+            },
+            "stage3_embed": {
+              "p50": 3.353,
+              "p100": 6.885
+            },
+            "stage3_retrieve": {
+              "p50": 8.376,
+              "p100": 13.869
+            },
+            "stage3_fuse": {
+              "p50": 0.107,
+              "p100": 0.193
+            },
+            "stage3_signals": {
+              "p50": 0.025,
+              "p100": 0.052
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.3875,
+            "recall@10_any_lang": 0.3875,
+            "mrr@10": 0.2101,
+            "ndcg@10": 0.4007
+          }
+        }
+      ],
+      "p50_spread_ms": 0.201,
+      "quality_stable": true
+    },
+    "ef_search_256": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 256,
+        "dense": true,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.314,
+            "p70": 13.828,
+            "p95": 16.617,
+            "p100": 18.496
+          },
+          "mean_ms": 12.98,
+          "overhead_ms": {
+            "p50": 0.106,
+            "p100": 0.163
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.033,
+              "p100": 1.325
+            },
+            "stage3_embed": {
+              "p50": 3.321,
+              "p100": 5.804
+            },
+            "stage3_retrieve": {
+              "p50": 8.474,
+              "p100": 13.968
+            },
+            "stage3_fuse": {
+              "p50": 0.136,
+              "p100": 0.235
+            },
+            "stage3_signals": {
+              "p50": 0.042,
+              "p100": 0.218
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4913,
+            "recall@10_any_lang": 0.5017,
+            "mrr@10": 0.2705,
+            "ndcg@10": 0.586
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.338,
+            "p70": 13.803,
+            "p95": 16.856,
+            "p100": 18.971
+          },
+          "mean_ms": 13.041,
+          "overhead_ms": {
+            "p50": 0.105,
+            "p100": 0.177
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.033,
+              "p100": 1.339
+            },
+            "stage3_embed": {
+              "p50": 3.367,
+              "p100": 6.373
+            },
+            "stage3_retrieve": {
+              "p50": 8.527,
+              "p100": 14.126
+            },
+            "stage3_fuse": {
+              "p50": 0.137,
+              "p100": 0.252
+            },
+            "stage3_signals": {
+              "p50": 0.042,
+              "p100": 0.217
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4913,
+            "recall@10_any_lang": 0.5017,
+            "mrr@10": 0.2705,
+            "ndcg@10": 0.586
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.281,
+            "p70": 13.687,
+            "p95": 16.653,
+            "p100": 20.831
+          },
+          "mean_ms": 12.903,
+          "overhead_ms": {
+            "p50": 0.107,
+            "p100": 0.193
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.033,
+              "p100": 1.345
+            },
+            "stage3_embed": {
+              "p50": 3.36,
+              "p100": 6.119
+            },
+            "stage3_retrieve": {
+              "p50": 8.398,
+              "p100": 16.223
+            },
+            "stage3_fuse": {
+              "p50": 0.136,
+              "p100": 0.259
+            },
+            "stage3_signals": {
+              "p50": 0.042,
+              "p100": 0.24
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4913,
+            "recall@10_any_lang": 0.5017,
+            "mrr@10": 0.2705,
+            "ndcg@10": 0.586
+          }
+        }
+      ],
+      "p50_spread_ms": 0.057,
+      "quality_stable": true
+    }
+  }
+}

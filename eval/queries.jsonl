@@ -1,0 +1,500 @@
+{"query_id": "811633", "query": "what is the color of a giraffe's tongue", "query_type": "ENTITY", "gold_passages": [9], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "473622", "query": "pericardial fluid definition", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "908915", "query": "ওয়াশিংটন কোন শহর?", "query_type": "LOCATION", "gold_passages": [0, 6, 7], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "528407", "query": "புல்வெளியில் உள்ள புல்லின் வகைகள்", "query_type": "ENTITY", "gold_passages": [4], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "893116", "query": "என்ன செப்டம்", "query_type": "DESCRIPTION", "gold_passages": [3], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "247968", "query": "গার্ডে পরিবর্তন করতে আপনাকে কতদিন সক্রিয় থাকতে হবে", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "251794", "query": "गहरे फ्रीजर में भोजन कितने समय तक स्वस्थ रहता है", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "393236", "query": "in an outline what does preview mean", "query_type": "DESCRIPTION", "gold_passages": [3], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "995804", "query": "which b-vitamin is needed for protein synthesis?", "query_type": "ENTITY", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "314896", "query": "how much does it cost to build a garage in san antonio", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "711748", "query": "প্রাণীর কোষ ঝিল্লি কী?", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "622355", "query": "टोड कैसे दिखते हैं", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1090112", "query": "tawang to nameri distance", "query_type": "NUMERIC", "gold_passages": [6], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "777641", "query": "ஆக்ஸிஜன் அளவு என்பது எப்போது இயல்பானது என்பதை நாம் அறிய வேண்டும்.", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "746361", "query": "what is farelam.online", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "846592", "query": "সিয়া টেলিফোন নম্বর কী?", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "789145", "query": "சிறப்பு விநியோகம் என்பது என்ன?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "350940", "query": "पहाड़ी पर नियंत्रण कैसे करें", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "196470", "query": "प्रोटीन के ग्राम पूर्व कसरत", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "893839", "query": "what should i eat before donating blood", "query_type": "ENTITY", "gold_passages": [2], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1096518", "query": "how many words are in a 2 minute speech", "query_type": "NUMERIC", "gold_passages": [3], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "879098", "query": "what mountains are in poland", "query_type": "ENTITY", "gold_passages": [0, 1, 3, 4, 6], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "852599", "query": "মার্কার ইন্টারফেসের কী ব্যবহার?", "query_type": "DESCRIPTION", "gold_passages": [6], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "567682", "query": "दुनिया में सबसे बड़ी मशीनें किस लिए इस्तेमाल की जाती हैं", "query_type": "ENTITY", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1089121", "query": "कनाडाई लोगों के लिए संपत्ति कर", "query_type": "NUMERIC", "gold_passages": [2], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "712241", "query": "what is an armed sconce?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "555498", "query": "சாற்றில் புரோபயாடிக்ஸ் குடிப்பதன் நன்மைகள் என்ன", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "759454", "query": "क्या अंदरूनी कानून है", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "967666", "query": "where can i find hamlet saying flesh would melt off", "query_type": "LOCATION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "831243", "query": "क्या मतलब है शरारतीपना?", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "569187", "query": "what are the dimensions of a usps medium flat-rate box", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "187593", "query": "মৎস্যজীবী মূল্য বৃষ্টিবন জিম পুনরুদ্ধার", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "630630", "query": "ஒரு வழக்கமான அகராதியில் என்ன சேர்க்கப்பட்டுள்ளது", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1089299", "query": "সংযোজক টিস্যু সহ পেশীর প্রকারভেদ", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1008302", "query": "ফিনিক্স অ্যাজ-এর আবহাওয়া কেমন ছিল।", "query_type": "DESCRIPTION", "gold_passages": [4, 6], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "989433", "query": "who is ricky ricardo i love lucy", "query_type": "PERSON", "gold_passages": [8], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1022141", "query": "செல் சுவர் எந்த செயல்முறையை விலங்கு செல்களுக்கு உதவுகிறது?", "query_type": "DESCRIPTION", "gold_passages": [3], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "342157", "query": "how thick is a 4 by 10 beam", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "112699", "query": "crest syndrome definition", "query_type": "DESCRIPTION", "gold_passages": [7], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "343065", "query": "पियानो मार्वल में गाने कैसे जोड़ें", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1023047", "query": "கிரைஸ்லரின் எந்தப் பகுதி அமெரிக்கர்கள்?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1095685", "query": "how much money does a engineer technologist do per month", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "711092", "query": "एक समायोज्य बांध क्या है", "query_type": "DESCRIPTION", "gold_passages": [7], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1035915", "query": "সবচেয়ে সুস্বাদু স্টেক কী?", "query_type": "ENTITY", "gold_passages": [0], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1065304", "query": "what is a vortex ring", "query_type": "DESCRIPTION", "gold_passages": [5], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "45645", "query": "গড় তাপমাত্রা সাম্বাভা সেপ্টেম্বর", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "122801", "query": "সংজ্ঞায়িত করুন", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "277267", "query": "ஏஞ்சல் ஃபுட் கேக்கில் எத்தனை கலோரிகள் இருக்கும்?", "query_type": "NUMERIC", "gold_passages": [3], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "101524", "query": "বিয়ের কেকের দাম", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "898631", "query": "ஹோபோகெனில் உள்ள நதி தெருவுக்கு அருகில் உள்ள நிலையம் என்ன?", "query_type": "ENTITY", "gold_passages": [2], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "970249", "query": "24x36 அளவிலான பெட்டியை எங்கே வாங்குவது?", "query_type": "LOCATION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1037226", "query": "அது வெளியேறும் போது அந்த கணவாய் எந்த அளவிற்கு வேகம் பெறுகிறது?", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "216125", "query": "நான் டிசியிலிருந்து அலெக்சாண்ட்ரியா வரை எப்படி செல்கிறேன்", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "426793", "query": "is the meniscus cartilage", "query_type": "DESCRIPTION", "gold_passages": [5], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "712331", "query": "সরকারের একটি অনুচ্ছেদ কী?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "210962", "query": "how can raising age limit to drive can reduce traffic congestion", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1096965", "query": "আইডাহোতে কতটা ঠাণ্ডা হয় তা নিয়ে জানতে চাইছি।", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "422609", "query": "আলস্য একটি মেজাজ স্থিতিকারী।", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "599546", "query": "what company makes folgers coffee", "query_type": "PERSON", "gold_passages": [0], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1090444", "query": "ஸ்டான்லி வாங் உடற்பயிற்சி சிகிச்சை", "query_type": "DESCRIPTION", "gold_passages": [4], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "116431", "query": "deed restrictions", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "548931", "query": "দার্শনিক হতে আপনার কোন স্তরের শিক্ষার প্রয়োজন?", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1015936", "query": "কয়লার ছাইতে কী ধরনের দূষক পদার্থ থাকে।", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "45680", "query": "গড় তাপমাত্রা উলুরু হতে পারে", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "796383", "query": "என்ன சிம்ப்ளிஃபெக்", "query_type": "DESCRIPTION", "gold_passages": [5], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "994006", "query": "যে অণুটি কোষে বিপাক হয়ে শক্তির মুদ্রা তৈরি করে এটিপি আকারে।", "query_type": "ENTITY", "gold_passages": [5], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "849244", "query": "सूर्य का प्रतीक क्या है", "query_type": "DESCRIPTION", "gold_passages": [6], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "113483", "query": "সাংস্কৃতিক সীমার সংজ্ঞা", "query_type": "DESCRIPTION", "gold_passages": [8], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1101272", "query": "மிகவும் வெப்பமான பகுதிகளில் பாதரசம் உள்ளது.", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "116984", "query": "ஒரு புதிய நட்பை வரையறுக்கவும்.", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1095638", "query": "how much money is spent on schools", "query_type": "NUMERIC", "gold_passages": [5], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "294517", "query": "कितने पुरस्कार अंक बिंग में हैं", "query_type": "NUMERIC", "gold_passages": [8], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1062075", "query": "गिरवी रखने के लिए क्या एक और नाम है", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "194531", "query": "जेरेनियम रोज़ एसेंशियल ऑयल लाभ", "query_type": "ENTITY", "gold_passages": [9], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1091351", "query": "price of lasik eye surgery in canada", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1050697", "query": "সবচেয়ে জনপ্রিয় খাবার হল", "query_type": "ENTITY", "gold_passages": [7], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "46043", "query": "औसत बचत योग्य आय", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1058295", "query": "যে শেখার গান লিখেছেন এড শেরেন।", "query_type": "PERSON", "gold_passages": [1], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "635531", "query": "কুকুরের গায়ে যে দানাদানা পড়াটা কী বোঝায়?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "570905", "query": "কুকুরের বৃহত্তম জাতগুলি কী?", "query_type": "ENTITY", "gold_passages": [0, 2, 4], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "958453", "query": "கென்னடி எப்போது பரிந்துரைக்கப்பட்டார்", "query_type": "NUMERIC", "gold_passages": [5], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1078845", "query": "बाल सहायता उसे भुगतान करता है जो", "query_type": "PERSON", "gold_passages": [2], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "212757", "query": "how did adolescent suicide prevention start", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "49729", "query": "behavioral health integration definition", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "211129", "query": "கல்வியை எப்படி மேம்படுத்தலாம்?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "407296", "query": "कॉस्टोकोंड्राइटिस ऑटोइम्यून", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "992514", "query": "வானிலை கருவி காற்றை அளவிடுகிறது", "query_type": "DESCRIPTION", "gold_passages": [7], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "279188", "query": "மார்வெல் ஹீரோக்களில் எத்தனை கதாபாத்திரங்கள் உள்ளன", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "234755", "query": "কীভাবে মসৃণ চামড়ার লোম হয়ে যায়", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "355134", "query": "how to diagnose problems with dead laptop", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "103194", "query": "cost of child psychology", "query_type": "NUMERIC", "gold_passages": [8], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "579881", "query": "২০০৫ সালের টয়োটা অ্যাভালন ব্র্যান্ডের এয়ারব্যাগগুলি কী করে।", "query_type": "ENTITY", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "151082", "query": "বিভিন্ন ধরনের ওজন ভারসাম্য বজায় রাখার চাকা", "query_type": "NUMERIC", "gold_passages": [1, 4], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1550", "query": "நீளம் 5க்கு", "query_type": "NUMERIC", "gold_passages": [1], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1048437", "query": "পারমাবান কি?", "query_type": "DESCRIPTION", "gold_passages": [3], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "589290", "query": "क्या कारण है कि एक्सी.जी. पर बाएं धुरी विचलन होता है", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "731723", "query": "what is coalescing material", "query_type": "DESCRIPTION", "gold_passages": [6], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1084141", "query": "প্রকৌশলে ব্যাম্প-এর অর্থ কী?", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "657093", "query": "விளையாட்டுகளைத் தவிர வேறு என்ன ஒற்றுமை செய்ய முடியும்", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "269782", "query": "அடுப்பில் பச்சை பருப்புகளை எவ்வளவு நேரம் சமைப்பது", "query_type": "NUMERIC", "gold_passages": [4], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "708738", "query": "घंटों के बाद क्या होता है शेयर की कीमत", "query_type": "NUMERIC", "gold_passages": [7], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "106917", "query": "cost of se university", "query_type": "NUMERIC", "gold_passages": [8], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "547121", "query": "weekend ct scan facilities in atlanta", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1095790", "query": "লভ্যাংশ অবদানে কর কতটা ছাড়?", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1084598", "query": "உங்களுக்கு பெடிக்யூர் செய்ய என்ன தேவைப்படுகிறது", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "276112", "query": "மதிய உணவில் உள்ள இறைச்சியில் எத்தனை கலோரிகள் உள்ளன", "query_type": "NUMERIC", "gold_passages": [6], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "805295", "query": "ஆய்வகத்திற்குள் உள்ள பகுதி என்ன என்று அழைக்கப்படுகிறது", "query_type": "ENTITY", "gold_passages": [4], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1090007", "query": "temperature in vladivostok", "query_type": "NUMERIC", "gold_passages": [0], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1058413", "query": "who wrote journey to the center of the earth", "query_type": "PERSON", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "896566", "query": "किस तरह का अकशेरुकी जीव केकड़ा है", "query_type": "ENTITY", "gold_passages": [7], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1096655", "query": "কংক্রিটের এক গজে কত বর্গফুট জায়গা রয়েছে।", "query_type": "NUMERIC", "gold_passages": [6], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "718018", "query": "விலங்கு பரிசோதனை மற்றும் ஆராய்ச்சி என்பது என்ன?", "query_type": "DESCRIPTION", "gold_passages": [5], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "818592", "query": "अध्ययन विधि और साक्षात्कार प्रोटोकॉल के बीच क्या अंतर है", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "247968", "query": "காவல் அணிக்கு மாறுவதற்கு எவ்வளவு காலம் செயலில் இருக்க வேண்டும்", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "74298", "query": "কিশোর-কিশোরীদের ল্যাসিক চোখের অস্ত্রোপচার করানো যেতে পারে।", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "246538", "query": "how long do roast chicken", "query_type": "NUMERIC", "gold_passages": [8], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "490310", "query": "ஆஸ்திரேலியாவின் காமன்வெல்த் வங்கியின் வழித்தடக் குறியீடு", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "10159", "query": "नैतिकता की शैक्षणिक परिभाषा", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1045715", "query": "ஸ்டீவியா ரீபாட் என்பது என்ன?", "query_type": "DESCRIPTION", "gold_passages": [6], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "538099", "query": "வாய்ப்பாட்டுக் குழு வரையறை", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1057200", "query": "what is cytology?", "query_type": "DESCRIPTION", "gold_passages": [6], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "852851", "query": "निकल का मूल्य क्या है", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1087164", "query": "বিপণন ব্যবস্থাপনার কর্মচারীদের জন্য কী সুবিধা?", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "857688", "query": "ত্রিত্বের আইনের জন্য কী র‍্যাঙ্ক", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "610196", "query": "what county is new galilee, pa", "query_type": "LOCATION", "gold_passages": [4], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "171906", "query": "does sugarless gum cause diarrhea", "query_type": "DESCRIPTION", "gold_passages": [4], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1003419", "query": "ஆர்எஸ்டபிள்யூ தொற்று காரணமாக சுவாசக் கோளாறு ஏற்படும்போது", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "918620", "query": "ஜான் கென்னடி பதவியில் இருந்தபோது அவருக்கு என்ன புனைப்பெயர் இருந்தது", "query_type": "PERSON", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "619396", "query": "what did mcpon black stand for?", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "852599", "query": "மார்க்கர் இன்டர்ஃபேஸின் பயன்பாடு என்ன?", "query_type": "DESCRIPTION", "gold_passages": [6], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1024457", "query": "সিরিয়ার বিদ্রোহীরা আসলে কারা?", "query_type": "PERSON", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "555791", "query": "मस्तिष्क संबंधी खाद्य पदार्थ क्या हैं", "query_type": "ENTITY", "gold_passages": [0, 2, 4], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1047558", "query": "क्यू.ई.डी.", "query_type": "DESCRIPTION", "gold_passages": [7], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1093550", "query": "किसी भी राज्य की राजधानी में सबसे बड़ी आबादी।", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1089684", "query": "ব্রুম ওয়েস্টার্ন অস্ট্রেলিয়া", "query_type": "LOCATION", "gold_passages": [2], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "473794", "query": "विंडोज डिफेंडर को स्थायी रूप से अक्षम कर दें", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "906996", "query": "what to do with hot feet at night", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1034715", "query": "नौसेना के लिए शिक्षा सेवा सुविधाकर्ता के लिए क्या भुगतान है", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1020852", "query": "எந்த அணிகளை '77 இல் பிளேசர்ஸ் தோற்கடித்தது", "query_type": "PERSON", "gold_passages": [9], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "418345", "query": "வரிவிலக்கு தினத்தை நான் கடைபிடிக்கிறேன்.", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1091454", "query": "फिलाडेल्फिया काउंटी की आबादी", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "518916", "query": "তারকা সমন্বিত ব্যানার উদযাপন স্তবগান", "query_type": "ENTITY", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1091062", "query": "வரி விலக்கு வீட்டு அலுவலகத்திற்கான தேவைகள்", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "733848", "query": "வீட்டின் தலைவராக வருமான வரி விதிப்பது பற்றி", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "144393", "query": "क्या लेप्टिन मोटापे को नियंत्रित करता है?", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "38298", "query": "মহিলাদের গড় আয়ু", "query_type": "NUMERIC", "gold_passages": [3], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1090946", "query": "ரியான் வரி செயல்பாட்டு தொலைபேசி எண்", "query_type": "NUMERIC", "gold_passages": [3], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "633004", "query": "সেপ্টেম্বরে জন্মগ্রহণ করা মানে কী?", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "46043", "query": "average thrifty age charge", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1086359", "query": "ऑजोनीकृत तेलों के कारण दाने हो सकते हैं।", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1029555", "query": "ஸ்டெபன்வில்லே, டெக்சாஸின் நிலப்பரப்பு", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1085217", "query": "वुड्सविले एन.एच. कौन सी काउंटी है", "query_type": "LOCATION", "gold_passages": [9], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "935439", "query": "ஐக்கிய நாடுகள் அமைப்பு எப்போது மற்றும் ஏன் நிறுவப்பட்டது", "query_type": "NUMERIC", "gold_passages": [2], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "734734", "query": "what is copd treatment", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "307939", "query": "தீயணைப்பு வீரர்களுக்கு ஆண்டுக்கு எவ்வளவு ஊதியம் வழங்கப்படுகிறது?", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "62599", "query": "একজন আইনজীবী প্রতিরক্ষা থেকে বাদী পক্ষের পর্যন্ত যেতে পারেন কি?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1089267", "query": "सर्वल प्रकार", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1090815", "query": "செட்க்விக் நன்மைகளை உரிமை கோருகிறார்", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "983543", "query": "कुत्र गुडलैंड फ्लाईट है,", "query_type": "LOCATION", "gold_passages": [1], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "749365", "query": "what is fuel.service.exe", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "264513", "query": "ছয় সপ্তাহ কতদিন হবে?", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "989672", "query": "ওকলাহোমা সিটি বিশ্ববিদ্যালয় কোথায় আছে।", "query_type": "LOCATION", "gold_passages": [1], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "582056", "query": "আমি অস্ট্রেলিয়ায় কী নিয়ে যেতে পারি", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "217707", "query": "मैं ओवन में चिकन के पैर कैसे पकाऊँ?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1102031", "query": "विटामिन में टैल्क क्यों होता है", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "274839", "query": "how many apple employees in china", "query_type": "NUMERIC", "gold_passages": [1], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "635702", "query": "டீட் என்றால் என்ன?", "query_type": "DESCRIPTION", "gold_passages": [8], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "943442", "query": "शिशुओं को कब कम नींद आती है", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "721060", "query": "எழுத்தாளர் குறிப்பு என்பது என்ன?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "743986", "query": "what is english carabao cup", "query_type": "DESCRIPTION", "gold_passages": [4], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "887080", "query": "what place serves alcohol for breakfast in hs", "query_type": "LOCATION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1102359", "query": "कुत्तों को आकर्षित क्यों करता हूँ", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "563225", "query": "what are php links", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "495680", "query": "শেলটন ওয়া পুলিশের ফোন নম্বর", "query_type": "NUMERIC", "gold_passages": [6], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1064252", "query": "why do cats have loose stool", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "662347", "query": "अगर मेरा व्यवसाय है तो मुझे किस रूप का इस्तेमाल करना चाहिए।", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "63146", "query": "can a repossession agent trespass", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "193128", "query": "2016 நவம்பர் மாதத்தில் வெளியான விளையாட்டுகளில் தங்கம் பரிசுப் பொருளாக வழங்கப்பட்டது.", "query_type": "ENTITY", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1090785", "query": "सेवर्न ट्रेंट पी.एल.सी. शेयर की कीमत", "query_type": "NUMERIC", "gold_passages": [1], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "986850", "query": "वह वाई.के.आर. पर ड्रेसर व्यक्ति था।", "query_type": "PERSON", "gold_passages": [7], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "312709", "query": "கனடாவில் ஒரு மின்சார பொறியாளர் எவ்வளவு சம்பாதிக்கிறார்", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "692523", "query": "একটি নাইট্রো কী?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "294536", "query": "how many ribs does a male human have", "query_type": "NUMERIC", "gold_passages": [2], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "952047", "query": "when is that netflix series with eleven", "query_type": "NUMERIC", "gold_passages": [2], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "823591", "query": "what is the german word for happy hour", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "385885", "query": "கூரை வழியாக நுண்ணலையை வெளியேற்றுவது எப்படி", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "595027", "query": "இந்தியாவில் இந்திரா காந்தியின் நீண்ட ஆட்சியை என்ன வகைப்படுத்தியது?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "410905", "query": "क्या गेविन न्यूज़म मांग विरोधी सदस्य हैं?", "query_type": "DESCRIPTION", "gold_passages": [8], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "710118", "query": "অ্যাম্বারগ্রিস কি?", "query_type": "DESCRIPTION", "gold_passages": [8], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "281557", "query": "how many days of missed period your hcg will show up for a test", "query_type": "NUMERIC", "gold_passages": [0], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "827454", "query": "পৃথিবীর বৃহত্তম আগ্নেয়গিরি কোনটি", "query_type": "ENTITY", "gold_passages": [20], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "680023", "query": "கியூப் ரூட் என்றால் என்ன?", "query_type": "DESCRIPTION", "gold_passages": [5], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1078845", "query": "শিশু সহায়তা যা দেয় তার জন্য অর্থ প্রদান করে।", "query_type": "PERSON", "gold_passages": [2], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "330080", "query": "how much water do dogs need", "query_type": "NUMERIC", "gold_passages": [3], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "445729", "query": "मारुति कारों के मॉडल और उनकी कीमत", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "436249", "query": "உலகின் மிகப்பெரிய கொள்கலன் கப்பல்", "query_type": "ENTITY", "gold_passages": [2], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "987045", "query": "who was an engineer who lobbied congress to pass the transcontinental railroad act but died before the railroad was finished? brainly", "query_type": "PERSON", "gold_passages": [2], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "584936", "query": "பசைவழுத்தப் புள்ளிகள் ஏற்படுவதற்கான காரணம்", "query_type": "DESCRIPTION", "gold_passages": [2, 4], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "757453", "query": "আলোকবর্ধক ধর্মবিশ্বাস", "query_type": "DESCRIPTION", "gold_passages": [3], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1030668", "query": "மேல் நாடோ என்பது என்ன?", "query_type": "DESCRIPTION", "gold_passages": [3], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1021895", "query": "वैट की दर क्या है जो वसूली की जाती है", "query_type": "NUMERIC", "gold_passages": [3], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "200524", "query": "कैरोल का हिब्रू अर्थ", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1034523", "query": "who is joker player in batman", "query_type": "PERSON", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "199314", "query": "हवाई राज्य पशु", "query_type": "ENTITY", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "40044", "query": "average pay increases for a promotion", "query_type": "NUMERIC", "gold_passages": [6], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1101360", "query": "நேரடி ஆட்சி ஏகாதிபத்தியம் என்பது பல வரையறைகளைக் கொண்டுள்ளது.", "query_type": "DESCRIPTION", "gold_passages": [8], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "381286", "query": "भार रेटिंग को कैसे बढ़ाया जाए", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1090002", "query": "তাপমাত্রা অক্টোবর মিলান ইতালি", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "467010", "query": "दमकल वाले पर आग बुझाने वाला नंबर", "query_type": "NUMERIC", "gold_passages": [3], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "63169", "query": "क्या एक गोलकृमि आपको मार सकता है", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1006100", "query": "जिस रक्त प्रकार को सार्वभौमिक दाता के रूप में जाना जाता है", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "533837", "query": "हम फोन नंबर का निरीक्षण कर रहे हैं।", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1049471", "query": "எனக்கு வெற்றி கிடைக்காததுல தோல்வியிலயே நான் அதிகம் கற்றுக்கிட்டேன்னு யாராவது சொன்னாங்களா?", "query_type": "PERSON", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "630816", "query": "what does a.s. stand for in medical term", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "871663", "query": "what lab includes potassium", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1001043", "query": "where should mp3 lame dll place", "query_type": "LOCATION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "764308", "query": "জাভা থেকে ওয়েব পরিষেবার ল্যাং কী", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "453873", "query": "பால் ஒவ்வாமை புதிதாகப் பிறந்த குழந்தைகளின் அறிகுறிகள்", "query_type": "ENTITY", "gold_passages": [5, 6], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1038860", "query": "what is the goal of plants", "query_type": "ENTITY", "gold_passages": [6], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "704437", "query": "रस्साकशी की सेवा क्या है", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "79400", "query": "எனது உரை செய்திகளை நீங்கள் மீட்டெடுக்க முடியுமா?", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1015542", "query": "ফাইব্রোকোলাজেনাসকে সংজ্ঞায়িত করুন", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "269679", "query": "சோம்பர் குக்கரில் எப்படி சோளம் மற்றும் முட்டைக்கோஸ் சமைப்பது", "query_type": "NUMERIC", "gold_passages": [8], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1092158", "query": "नॉर्वेजियन एयरलाइंस संपर्क नंबर", "query_type": "NUMERIC", "gold_passages": [0], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "544278", "query": "weather in frankfurt germany in july", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "495449", "query": "महीने के हिसाब से शंघाई का मौसम", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "47117", "query": "தெற்கு ஓரேகானில் சராசரி வானிலை", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "884419", "query": "ओकडेल, ला कौन सा इलाका है", "query_type": "LOCATION", "gold_passages": [4], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "99233", "query": "মিনিটকে সামরিক সময়ে রূপান্তর করা", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "116431", "query": "செயல் கட்டுப்பாடுகள்", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "531041", "query": "विशिष्ट अर्ध-आयाम", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "539479", "query": "வாரன் என்பது எந்த மாவட்டத்தில் உள்ளது என்பதைப் பற்றி தெரியவில்லை.", "query_type": "LOCATION", "gold_passages": [0], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1051079", "query": "what is mewtwo", "query_type": "DESCRIPTION", "gold_passages": [3], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "708043", "query": "what is adaptation in psychology", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "279215", "query": "தென்மேற்கில் எத்தனை பைகள் சரிபார்க்கப்பட்டுள்ளன", "query_type": "NUMERIC", "gold_passages": [4], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1098144", "query": "একটি চেয়ার পুনরুদ্ধার করতে কতক্ষণ সময় লাগে।", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "293023", "query": "how many people work for aecom?", "query_type": "NUMERIC", "gold_passages": [1], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "235668", "query": "ஒடிஷாவில் நான் எப்படி ஆன்லைன் ஊனத்திற்கான சான்றிதழைப் பெறுகிறேன்", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "657227", "query": "मछली को पानी के अंदर देखने में सक्षम बनाता है", "query_type": "ENTITY", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "458254", "query": "कांग्रेस में अधिकांश उदारवादी लोकतंत्रवादी", "query_type": "PERSON", "gold_passages": [8, 9], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "989500", "query": "जो रजिस्ट्री डी.बी. है", "query_type": "PERSON", "gold_passages": [8], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "332383", "query": "எவ்வளவு அடிக்கடி நீரை மாற்ற வேண்டும்", "query_type": "NUMERIC", "gold_passages": [8], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "355277", "query": "एल.एंड.एच. ब्रांडिंग आयरन को कैसे अलग करें", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "347064", "query": "how to calculate instructional time", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1083510", "query": "லாசிக்ஸ் என்ன செய்கிறது?", "query_type": "DESCRIPTION", "gold_passages": [7], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "767528", "query": "மெட்ரிக் அமைப்பில் எம்2 என்றால் என்ன?", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "389732", "query": "நீரேற்ற சுற்றுச்சூழல் விளைவுகள் வண்ணம்", "query_type": "ENTITY", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "111250", "query": "শাওয়ারে টাইল করার খরচ", "query_type": "NUMERIC", "gold_passages": [2], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "542365", "query": "ways to prevent lung cancer or reducing", "query_type": "DESCRIPTION", "gold_passages": [2, 6], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "686019", "query": "what is a growth of ivy called", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "341484", "query": "एक विश्व व्यापार केंद्र कितना ऊँचा है", "query_type": "NUMERIC", "gold_passages": [2], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "443670", "query": "லுனுலா உடல்நலக் குறிகள்", "query_type": "ENTITY", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1018007", "query": "सीमोर में क्या समय है", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "635617", "query": "ডিডিকে কী মূল্যায়ন করে।", "query_type": "DESCRIPTION", "gold_passages": [8], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "547013", "query": "वेबसाइट्स जहाँ आप फिल्में खरीदते हैं", "query_type": "ENTITY", "gold_passages": [3], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1031032", "query": "तीसरा कानून क्या है", "query_type": "DESCRIPTION", "gold_passages": [4], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "624711", "query": "what do russian people speak like", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1094940", "query": "how to compute wavelength for radio waves", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "807149", "query": "what is the average score on the psychopathy checklist", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "988033", "query": "স্টেপেনউলফ খেলেছেন কে।", "query_type": "PERSON", "gold_passages": [2], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "689841", "query": "what is a major difference between eukaryotic dna replication and prokaryotic dna replication?", "query_type": "DESCRIPTION", "gold_passages": [4], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "793911", "query": "কী বলছে চুপ করে থাকা?", "query_type": "DESCRIPTION", "gold_passages": [7], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "476664", "query": "பாலிஹெட்ரான் அடிப்பகுதியின் பக்கங்களின் எண்ணிக்கை", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1050694", "query": "what is motor starter", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1023901", "query": "who are moony, wormtail, padfoot and prongs", "query_type": "PERSON", "gold_passages": [3], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1004020", "query": "when is marcus vipsanius born", "query_type": "NUMERIC", "gold_passages": [8], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1026520", "query": "আসলে নিনা ডোব্রেভ কে খেলেছিলেন", "query_type": "PERSON", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "869891", "query": "கூட்டுறவுக் கட்சி என்பது என்ன வகையான கட்சி?", "query_type": "PERSON", "gold_passages": [8], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1087641", "query": "தூளாக்கப்பட்ட சர்க்கரையில் உள்ள கலோரிகள்", "query_type": "NUMERIC", "gold_passages": [7], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "684436", "query": "জিসিএম কী?", "query_type": "DESCRIPTION", "gold_passages": [5], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "180226", "query": "খালি বাসা বাঁধার সংজ্ঞা", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "888458", "query": "আইন মানিয়ে চলা নাগরিকদের জন্য কোন কারাগার ব্যবহার করা হতো", "query_type": "LOCATION", "gold_passages": [3], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "600370", "query": "एक लिखित अनुबंध क्या होता है", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "207859", "query": "মাসগুলো কীভাবে ঋতুতে বিভক্ত?", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "706869", "query": "ஆட் தெரபி என்பது என்ன?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1092982", "query": "செயல்பாட்டு மதிப்பீடு சோதனைகள் என்பது என்னவென்றால்", "query_type": "NUMERIC", "gold_passages": [5], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "182320", "query": "সাহিত্যে সংজ্ঞার প্রমাণ", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "411030", "query": "जॉर्ज सोरोस नास्तिक है", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1088768", "query": "watt in steelers", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1034241", "query": "জেনসেন অ্যাকলস কার সঙ্গে বিবাহিত", "query_type": "PERSON", "gold_passages": [7], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "915514", "query": "কোন ধরনের কোলন ক্যান্সার", "query_type": "ENTITY", "gold_passages": [2], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "952452", "query": "பிரிலிகி எடுக்க சிறந்த நேரம் எப்போது?", "query_type": "NUMERIC", "gold_passages": [0], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1033750", "query": "what is the purpose of contrast bath", "query_type": "DESCRIPTION", "gold_passages": [5], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "632664", "query": "प्रमाणीकरण असफल होने का क्या अर्थ है", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "58056", "query": "ক্যাফিন ঘাড়ে ব্যথা সৃষ্টি করে।", "query_type": "ENTITY", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1044859", "query": "কে বা কী অ্যান্টিফা", "query_type": "PERSON", "gold_passages": [1], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "580472", "query": "हमारी सेना ने मशीनगनों के लिए किस कैलिबर का इस्तेमाल किया?", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "878973", "query": "குதிரைப்படை என்பது என்ன?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "59426", "query": "कैलोरी केकड़े का मांस", "query_type": "NUMERIC", "gold_passages": [1], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "96749", "query": "सहवर्ती विकारों की परिभाषा", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "993975", "query": "தலைவர் எங்கே இருக்கிறார்?", "query_type": "LOCATION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1082496", "query": "টিয়া কী প্রতিনিধিত্ব করে... প্রযুক্তিগত", "query_type": "DESCRIPTION", "gold_passages": [4], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1083228", "query": "what does pomodoro mean", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "14039", "query": "age related or secondary epilepsy usually presents at what age", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1021911", "query": "कौन सा रेलमार्ग है मक्रा?", "query_type": "PERSON", "gold_passages": [0], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1029599", "query": "what is toco mean", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "455439", "query": "नम-गर्मी वाले खाना पकाने की परिभाषा", "query_type": "DESCRIPTION", "gold_passages": [6], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1052089", "query": "लेवोफ्लोक्सासिन क्या है और इसका उपयोग किस लिए किया जाता है", "query_type": "DESCRIPTION", "gold_passages": [4], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1091258", "query": "progressive insurance human resources number", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "212736", "query": "how did Zeus come to be", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "785306", "query": "what is polysys", "query_type": "DESCRIPTION", "gold_passages": [7], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "201089", "query": "हेम्प हार्ट", "query_type": "DESCRIPTION", "gold_passages": [6], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1065400", "query": "why do people think the truth is negative", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1077015", "query": "প্রস্থ অতিরিক্ত", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "990979", "query": "where is prince george bc", "query_type": "LOCATION", "gold_passages": [4], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "42869", "query": "कर देने से पहले संयुक्त राज्य अमेरिका में औसत वेतन", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1090010", "query": "ফ্লোরিডার গ্রামগুলিতে তাপমাত্রা", "query_type": "NUMERIC", "gold_passages": [8], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "530688", "query": "உணவகத்திற்கு தேவையான மக்களின் சராசரி எண்ணிக்கை", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "691308", "query": "मॉकिंगबर्ड की परिभाषा क्या है", "query_type": "DESCRIPTION", "gold_passages": [4], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1048666", "query": "मेरे पैर में दर्द के बारे में क्या कहूं।", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "349162", "query": "ভিপিএনপি কে মার্কিন যুক্তরাষ্ট্রে কীভাবে পরিবর্তন করবেন", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "483755", "query": "উদ্বেগের লক্ষণগুলি", "query_type": "ENTITY", "gold_passages": [3], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "935439", "query": "संयुक्त राष्ट्र की स्थापना कब और क्यों हुई थी", "query_type": "NUMERIC", "gold_passages": [2], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1101122", "query": "কোন কোম্পানিতে দ্বিগুণ কর আরোপ করা হয়েছে।", "query_type": "PERSON", "gold_passages": [0], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "876024", "query": "மின்னழுத்தம் என்பது என்னவென்றால், அது மின்னோட்டத்தை உருவாக்குகிறது.", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "671789", "query": "অ্যাট্রফি মানে কী?", "query_type": "DESCRIPTION", "gold_passages": [5], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1102201", "query": "why does prednisone affect dogs", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "843780", "query": "மனிதக் கண் சுற்றுப்பாதைக்கும் தாடைக்கும் இடையே என்ன தொடர்பு உள்ளது", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "707932", "query": "எந்தவொரு கடுமையான அழற்சி நோய்", "query_type": "ENTITY", "gold_passages": [9], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1102116", "query": "क्यों है आइन्स्टीनियम", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1016627", "query": "what training is required for a dpm", "query_type": "DESCRIPTION", "gold_passages": [5, 8], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "223447", "query": "ஒற்றை சாய்வுத்தாளை எவ்வாறு அச்சிடுவது", "query_type": "DESCRIPTION", "gold_passages": [3], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "859832", "query": "what is used to make cell membranes", "query_type": "DESCRIPTION", "gold_passages": [7], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "494068", "query": "seam slippage definition warranty", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "921009", "query": "सिंधु नदी घाटी में पैसे कमाने का मुख्य तरीका क्या था", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "62136", "query": "क्या एक सहसंबंधी अध्ययन प्रतिगमन विश्लेषण का उपयोग कर सकता है?", "query_type": "DESCRIPTION", "gold_passages": [6], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "642348", "query": "এলআরএম কী বোঝায়?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1019555", "query": "சுரப்பிகள் எந்த அமைப்பில் உள்ளன?", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "336710", "query": "கோல்ஃப் வீரர் பில் மிக்கெல்சன் எவ்வளவு வயது ஆனார்?", "query_type": "NUMERIC", "gold_passages": [3], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1099255", "query": "একজন অন্ডারডগ হওয়া কীভাবে সাহায্য করে।", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1026870", "query": "डेविड फेल्डमैन एम.डी. एन.पी.आई. नंबर", "query_type": "NUMERIC", "gold_passages": [2], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "428911", "query": "நரம்பியல் கோளாறுகளுக்கு பயனுள்ள ஒரு அத்தியாவசிய எண்ணெய் உள்ளதா?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1028968", "query": "who invented the concrete tilt up building", "query_type": "PERSON", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1009194", "query": "ஒரு கிராமம், ஒரு நகரம் மற்றும் ஒரு மாநகரம் ஆகியவற்றுக்கு இடையே என்ன வித்தியாசம் உள்ளது.", "query_type": "DESCRIPTION", "gold_passages": [8], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1054863", "query": "গ্যালাক্টো-অলিগোস্যাকারাইড কী?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "402369", "query": "অ্যামাইলোজ ব্রাঞ্চড বা আনব্রাঞ্চড", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "262207", "query": "একটি কিউবিট কত লম্বা?", "query_type": "NUMERIC", "gold_passages": [6], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "752621", "query": "कौन सी जड़ी-बूटी कीटनाशक है?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1084419", "query": "হাসপাতালে একজন পদার্থবিজ্ঞানী কী করেন", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "204213", "query": "ভেগাস রুমে হলিউড হোটেল", "query_type": "LOCATION", "gold_passages": [2], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "910311", "query": "what type of appraisal is used for geodesic home?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "663820", "query": "প্রস্রাব থেকে কী প্রস্রাবের গন্ধ বের হয়।", "query_type": "DESCRIPTION", "gold_passages": [6], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "365469", "query": "how to install crusader no remorse from old windows 95 disc", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "983242", "query": "கேட்ஸ்ஹெட் எங்கே உள்ளது", "query_type": "LOCATION", "gold_passages": [7], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "997591", "query": "where is the city of la sierra?", "query_type": "LOCATION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "210149", "query": "आपको लगता है कि अच्छा आहार लेने से आपको मोटापे की संभावना कैसे कम हो सकती है?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1022508", "query": "இது சார்புடைய மாறியைக் குறிக்கிறதா?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "203587", "query": "জেরোমের ঐতিহাসিক অর্থ", "query_type": "DESCRIPTION", "gold_passages": [4], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "427863", "query": "இது ஒரு இலக்கியக் கூறுகளின் கருப்பொருளாக இருக்கிறது.", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1074197", "query": "স্বাভাবিক সময়ের আগে শেয়ারের দাম কেন বদলায়।", "query_type": "NUMERIC", "gold_passages": [2], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "117474", "query": "அல்கலாய்டு என்பதை வரையறுக்கவும்.", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "768308", "query": "ஆட்டிரோட்டம் என்பது என்ன?", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "849848", "query": "குழந்தைகளுக்கான வரிக்கான வரம்பு என்ன?", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1088011", "query": "வெர்னிக் அறிகுறிகள்", "query_type": "ENTITY", "gold_passages": [5], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "661533", "query": "what foods give you gas and bloating", "query_type": "ENTITY", "gold_passages": [3, 5, 6], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1098370", "query": "how long does an impacted wisdom tooth take to heal", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1093883", "query": "bank guarantee charge definition", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1045229", "query": "क्या आप टर्मिनल एफ का उपयोग कर सकते हैं?", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1064232", "query": "why do canning jars get cloudy", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "581416", "query": "what can cause painful skin sores under the skin have a knot in it", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "84364", "query": "cause of inflamed intestines", "query_type": "DESCRIPTION", "gold_passages": [5], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "85680", "query": "causes of buzzing in head", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "773794", "query": "what is motz cheese", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "368266", "query": "কোষ থেকে অ্যারে কীভাবে তৈরি করা যায়", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1032461", "query": "शनि पर तापमान का पैमाना क्या है", "query_type": "NUMERIC", "gold_passages": [5], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "210473", "query": "এক্সপি-এ অপেরা আইকনগুলি থেকে আমি কীভাবে পরিত্রাণ পেতে পারি", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1062176", "query": "परिसंचरण का दूसरा नाम क्या है", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "643277", "query": "तैराकी के पूल में पानी में धातु क्या करती है", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "593315", "query": "शिराओं का फूलना क्या कारण होता है", "query_type": "DESCRIPTION", "gold_passages": [3], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "453512", "query": "মাইক্রোসফ্ট কলামগুলি কীভাবে লুকাতে হয় তা উৎকর্ষ করেছে।", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "511138", "query": "तकनीकी विशेषज्ञता के उदाहरण", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1093378", "query": "अंतःकला इंजेक्शनों की सूची", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "584633", "query": "रक्त वाहिकार्बुद का कारण क्या है", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "289882", "query": "কুকুরের চক্র শেষ হওয়া এবং পরবর্তী চক্রের মধ্যে কত মাস থাকে।", "query_type": "NUMERIC", "gold_passages": [9], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1049649", "query": "what is normal delivery time for mail", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "992898", "query": "जिसका अर्थ है शरीर की मध्य रेखा से दूर जाना?", "query_type": "DESCRIPTION", "gold_passages": [5], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1024417", "query": "डेबसी किस संगीत युग में था", "query_type": "ENTITY", "gold_passages": [9], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "426902", "query": "क्या शिरल का सही वर्तनी है?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "388047", "query": "কিভাবে খিলানগুলি তৈরি করা হয়েছিল", "query_type": "DESCRIPTION", "gold_passages": [3], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "79910", "query": "can you substitute onion powder for an onion", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "163857", "query": "কালো রসে অ্যান্থোসায়ানিন থাকে কিনা", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1093875", "query": "মন্টিসেলোতে খাওয়ার জায়গা আছে কি?", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "482600", "query": "program definition omb", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "871589", "query": "what kingdom hearts character", "query_type": "ENTITY", "gold_passages": [1, 2, 5], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "111995", "query": "कोर्स की परिभाषा", "query_type": "DESCRIPTION", "gold_passages": [5], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1098534", "query": "आपके रिकॉर्ड में अपराध कितने समय तक रहता है", "query_type": "NUMERIC", "gold_passages": [7], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "853500", "query": "இத்தாலியின் புளோரன்ஸில் என்ன வானிலை நிலவுகிறது", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "82508", "query": "কার্বামিনোহিমোগ্লোবিন তৈরি হয় যখন হিমোগ্লোবিন বন্ধন তৈরি করে।", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "102627", "query": "cost of attending kennesaw state university", "query_type": "NUMERIC", "gold_passages": [0], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "679000", "query": "একজন নির্মাণ ব্যবস্থাপক কী?", "query_type": "DESCRIPTION", "gold_passages": [8], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "986322", "query": "யார் செக்கோயா", "query_type": "PERSON", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1089516", "query": "डेवनपोर्ट आयोवा में क्वॉड शहर रूटर के लिए पता", "query_type": "LOCATION", "gold_passages": [6], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1084419", "query": "what does a physicist do in a hospital", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1089663", "query": "থর্ন মেডিপ্রো ভেগান", "query_type": "ENTITY", "gold_passages": [4], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "846063", "query": "what is the scope of human services?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "636521", "query": "what does ear ringing do to your brain?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "718704", "query": "எது ஆன்டிஃபோமிங் ஏஜென்ட் என்பது", "query_type": "DESCRIPTION", "gold_passages": [3], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1098492", "query": "how long do surrender charges last on annuity", "query_type": "NUMERIC", "gold_passages": [5], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "66569", "query": "ফিটনেস সদস্যপদের খরচ", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1095427", "query": "कितना शुल्क लेना है रेन को साफ करने के लिए?", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "952613", "query": "মার্কেট প্যারেড কখন শহরে হয়", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "685924", "query": "what is a group gnats called", "query_type": "ENTITY", "gold_passages": [1], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1084292", "query": "वैकल्पिक अनुपात क्या दर्शाता है", "query_type": "DESCRIPTION", "gold_passages": [6], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "263261", "query": "স্নাতক ডিগ্রি কতদিন স্থায়ী হয়?", "query_type": "NUMERIC", "gold_passages": [1, 4], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "998566", "query": "হাজার হাজার দ্বীপ কোথায়।", "query_type": "LOCATION", "gold_passages": [2], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "242787", "query": "புய் என்றால் எவ்வளவு காலம் சிறையில் இருக்க வேண்டும்?", "query_type": "NUMERIC", "gold_passages": [8], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "931940", "query": "அமேசானில் பொருட்களை விற்பதற்கும் அதன் கொள்கைகளுக்கும் என்ன கட்டணம் வசூலிக்கப்படுகிறது?", "query_type": "NUMERIC", "gold_passages": [2], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "184903", "query": "পারিবারিক চিকিৎসকের সংজ্ঞা", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "982481", "query": "ফেয়ারভিউ কোথায় আছে?", "query_type": "LOCATION", "gold_passages": [6], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "661139", "query": "what foods can carbohydrates be found in", "query_type": "ENTITY", "gold_passages": [2, 4, 6], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "220595", "query": "সময় বিলম্বিত ওষুধগুলি কীভাবে কাজ করে", "query_type": "DESCRIPTION", "gold_passages": [7], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "491775", "query": "நியூயார்க்கில் ஊதிய தொழிலாளர் சட்டங்கள்", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "499861", "query": "social work average salaries for salary desired", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "645395", "query": "বহুবর্ষজীবী ভেষজের অর্থ কী?", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "142474", "query": "উন্নয়ন ধারাবাহিকতার সংজ্ঞা", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1085826", "query": "ஜுவான் வர்காஸ் என்பது எந்தக் குழுக்கள் சார்ந்தது", "query_type": "PERSON", "gold_passages": [1], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1096046", "query": "how much does one earn for a gold medal", "query_type": "NUMERIC", "gold_passages": [1], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "991164", "query": "புட்னம் எங்கே உள்ளது?", "query_type": "LOCATION", "gold_passages": [7], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1086090", "query": "what causes rattling noise in rear of car when going over bumps?", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1097779", "query": "वास्तुकार बनने में कितना समय लगेगा", "query_type": "NUMERIC", "gold_passages": [3], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "349535", "query": "টিকিট কিভাবে দেবেন আমার কাছে আছে কিনা তা পরীক্ষা করুন।", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "597115", "query": "what college is okwu", "query_type": "PERSON", "gold_passages": [6], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "120657", "query": "ব্যায়ামের সময়কাল সংজ্ঞায়িত করুন", "query_type": "NUMERIC", "gold_passages": [0], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "94260", "query": "সমগোত্রীয় শব্দের সংজ্ঞা", "query_type": "DESCRIPTION", "gold_passages": [7], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "303718", "query": "মুরগির স্তনে কতটা কোলেস্টেরল থাকে।", "query_type": "NUMERIC", "gold_passages": [3], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "937645", "query": "ক্যালিফোর্নিয়া কখন বিনোদন শিল্পের কেন্দ্র হয়ে ওঠে?", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "802381", "query": "টার্ট কী?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "988604", "query": "कौन हमारा कृषि सचिव है", "query_type": "PERSON", "gold_passages": [1], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "379945", "query": "मेरे ग्रहण में टी.सी.पी.आई.पी. मॉनिटर कैसे सेट करें", "query_type": "DESCRIPTION", "gold_passages": [6], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1101798", "query": "வையட் மேலாண்மை வனப்பகுதிகளை", "query_type": "PERSON", "gold_passages": [8], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1007505", "query": "দার্শনিকদের সংজ্ঞা দিন", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "342794", "query": "विनपे बूट सीडी में डिस्मगुइट कैसे जोड़ें", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "487442", "query": "2010ஆம் ஆண்டில் வார்த்தைகளில் கால்குறிப்புகளை நீக்குதல்", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "352782", "query": "स्लाइस्ड हैम कैसे पकाएं", "query_type": "DESCRIPTION", "gold_passages": [7], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "152187", "query": "கண்டுபிடிப்பு சார்ந்த முடிவு சிக்கல் வரையறை", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "998081", "query": "where is palenque located today?", "query_type": "LOCATION", "gold_passages": [1], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1101415", "query": "பல்வேறு வகையான சூழலியல்", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1091790", "query": "स्वास्थ्य लाभ", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "261924", "query": "इलिनोइस राज्य में कितने समय तक मरीज़ों का रिकॉर्ड रखना होगा।", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1098932", "query": "பனிப்புயல் எப்படி உருவாகிறது", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1085570", "query": "कौन सी काउंटी एल्को में है?", "query_type": "LOCATION", "gold_passages": [0], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "341883", "query": "तापमान तेल क्षेत्रों को कैसे प्रभावित करता है", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "17565", "query": "সমস্যা সমাধান এবং সিদ্ধান্ত গ্রহণের জন্য একটি উপযুক্ত সংখ্যক লোক রয়েছে।", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "629502", "query": "तानिका दाने जैसे दिखते हैं", "query_type": "DESCRIPTION", "gold_passages": [6], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "667694", "query": "நீங்கள் ஒரு கரண்டியை நேரடியாக மைக்ரோவேவ் செய்யும்போது என்ன நடக்கும்?", "query_type": "DESCRIPTION", "gold_passages": [5], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1024750", "query": "எந்த இராணுவப் பிரிவு அந்த தழும்பைப் பயன்படுத்துகிறது", "query_type": "PERSON", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "428719", "query": "क्या विनाइल साइडिंग को रंगने का कोई तरीका है", "query_type": "DESCRIPTION", "gold_passages": [3], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1083224", "query": "வரி செலுத்திய பிறகு என்ன பொருள்", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "505902", "query": "स्वीडन कर्मचारी लाभ", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "313764", "query": "আমাজনে প্রবেশস্তরের কর্মচারীরা কত আয় করে?", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "220061", "query": "जलीय अकशेरुकी जीवों के जनसंख्या परिवर्तन पानी की गुणवत्ता के उत्तरों को कैसे दर्शाते हैं", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "425330", "query": "বায়ুবাহিত সংক্রমণের কারণে এটি ঘটে।", "query_type": "DESCRIPTION", "gold_passages": [1, 5], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "209079", "query": "কালো লাঠি কত বড়?", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "139952", "query": "நிர்வாகம் மற்றும் மேலாண்மை அறிவுக்கான வரையறை அறிக்கை", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "853890", "query": "what is the weather like in july in munich germany", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "469421", "query": "ஓப்ம் ஊதிய தரப் பட்டியல்", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "383682", "query": "গ্রীক থেকে ইংরেজিতে একটি পিডিএফ অনুবাদ করার উপায়", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "897001", "query": "எந்தெந்த மசாலாப் பொருட்கள் ஐபிஎஸ்-ஐ பாதிக்கும்", "query_type": "ENTITY", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1024048", "query": "कॉर्निंग के सबसे महत्वपूर्ण हिस्से के रूप में", "query_type": "PERSON", "gold_passages": [0, 1], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "442428", "query": "किसी की चुंबन पर सबसे लंबा समय तक चुंबन", "query_type": "ENTITY", "gold_passages": [5], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "679483", "query": "what is a cotyledon and where would you find one?", "query_type": "DESCRIPTION", "gold_passages": [3, 7], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "641799", "query": "what does jill stein stand for", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "247457", "query": "आप सूअर के मांस के एक बोस्टन बट को कितने समय तक पकाते हैं", "query_type": "NUMERIC", "gold_passages": [8], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "880151", "query": "स्कॉट जोप्लिन से कौन सी संगीत शैली विकसित हुई", "query_type": "ENTITY", "gold_passages": [5], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "1093622", "query": "பசிலிக்கா ஆஃப் மேக்சென்டியஸ் செயல்பாடு", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "419507", "query": "இது ஒரு வழங்குநர் எண் ஆகுமா?", "query_type": "DESCRIPTION", "gold_passages": [5], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "876130", "query": "যা তোমার মুখকে লবণাক্ত করে তোলে।", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "823646", "query": "மிக்ரோஃபிட்ஸில் என்ன என்று அழைக்கப்படும் அந்த பெரிய இரும்பு விலங்கு என்ன?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "245964", "query": "how long do labs grow", "query_type": "NUMERIC", "gold_passages": [5], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "990891", "query": "எங்கே அதிகளவில் பொட்டாசியம் உள்ளது", "query_type": "LOCATION", "gold_passages": [4], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1066392", "query": "এইচআইভি মাথাব্যথা কেন হয়", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "142838", "query": "diablo how to show ability damage", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "866251", "query": "what kind of animals are at the franklin park zoo", "query_type": "ENTITY", "gold_passages": [4], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "321114", "query": "1995 எல்டோராடோ என்றால் ஒரு மஃப்ளர் எவ்வளவு இருக்கும்?", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "35147", "query": "ஒரு சாண்டலியரை தொங்கவிடுவதற்கான சராசரி செலவு", "query_type": "NUMERIC", "gold_passages": [0], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1077622", "query": "মাসকুইলিয়ের কারণে ডায়রিয়া হয়", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "398012", "query": "আইপ্যাড বিয়ার অ্যাপ কীভাবে প্রিন্ট করবেন", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1085866", "query": "हर्मिट केकड़े का रंग क्या है?", "query_type": "ENTITY", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "708460", "query": "அட்வைர் என்பது என்ன?", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1018104", "query": "कितना समय है ग्रेनेडा में", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "28610", "query": "at what age should you stop getting mammograms", "query_type": "NUMERIC", "gold_passages": [], "has_gold": false, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "1002004", "query": "जब टॉड शार्प कोच वापस आएगा?", "query_type": "NUMERIC", "gold_passages": [7], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "539479", "query": "वॉरेन जिस काउंटी में है", "query_type": "LOCATION", "gold_passages": [0], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "622975", "query": "what do fats, steroids, and waxes have in common?", "query_type": "DESCRIPTION", "gold_passages": [4], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "549323", "query": "व्यक्तिगत नेतृत्व की स्थिति में परिस्थितियों के बारे में क्या?", "query_type": "DESCRIPTION", "gold_passages": [4], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "747139", "query": "வரி என்பது என்னவென்றால்", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "382523", "query": "ग्रेकल्स को स्टारलिंग्स से कैसे पहचाना जाए", "query_type": "DESCRIPTION", "gold_passages": [4], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "676027", "query": "ஒரு கேபிள் கம்பின் என்பது என்ன?", "query_type": "DESCRIPTION", "gold_passages": [5], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "754783", "query": "হার্টজ এক্সট্রা ফি কত?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "392004", "query": "தர்ப்பூசணி தோல் உரமாக பயன்படுத்துவது நல்லதா?", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1057785", "query": "जिसने नाइट बास्केटबॉल 2016 जीता था", "query_type": "PERSON", "gold_passages": [], "has_gold": false, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "562329", "query": "what are night vfr weather minimums", "query_type": "DESCRIPTION", "gold_passages": [7], "has_gold": true, "lang": "eng_Latn", "corpus": "eng"}
+{"query_id": "131315", "query": "আইনি প্রার্থী কোটা সংজ্ঞা", "query_type": "DESCRIPTION", "gold_passages": [1], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "787222", "query": "நிரல் கோப்புறை என்பது என்னவென்றால்", "query_type": "DESCRIPTION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "965647", "query": "எங்கே எழுத்து மற்றும் எண் பயிற்சி பயன்படுத்தப்படுகிறது", "query_type": "LOCATION", "gold_passages": [], "has_gold": false, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1102152", "query": "অ্যাডিসনের রোগ কেন গুরুতর।", "query_type": "DESCRIPTION", "gold_passages": [9], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "1087896", "query": "ஒரு நாய் எந்த வயதில் அதன் வயது வந்த பற்களைப் பெறுகிறது", "query_type": "NUMERIC", "gold_passages": [7], "has_gold": true, "lang": "tam_Taml", "corpus": "tam"}
+{"query_id": "1003101", "query": "শিকাগো শ্বেতাঙ্গ সক্স গঠিত হয়েছিল কখন", "query_type": "NUMERIC", "gold_passages": [8], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}
+{"query_id": "688921", "query": "एक लाइसेंस प्राप्त स्वास्थ्य देखभाल चिकित्सक क्या है", "query_type": "DESCRIPTION", "gold_passages": [2], "has_gold": true, "lang": "hin_Deva", "corpus": "hin"}
+{"query_id": "799195", "query": "যা হলো এসএসডিটি", "query_type": "DESCRIPTION", "gold_passages": [0], "has_gold": true, "lang": "ben_Beng", "corpus": "ben"}

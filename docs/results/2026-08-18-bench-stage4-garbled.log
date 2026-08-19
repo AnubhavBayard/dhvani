@@ -1,0 +1,7 @@
+full           s4 188q/245c  p50   12.27ms  p100    20.63ms  recall@10 0.3599  mrr 0.1813  (22s)
+no_stage4      s4   0q/  0c  p50   12.02ms  p100    18.50ms  recall@10 0.3564  mrr 0.1709  (22s)
+stage4_len3    s4 289q/429c  p50   12.49ms  p100    19.21ms  recall@10 0.3495  mrr 0.1777  (22s)
+dense_only     s4 188q/245c  p50    4.09ms  p100     7.47ms  recall@10 0.2630  mrr 0.1593  (9s)
+bm25_only      s4 188q/245c  p50   12.29ms  p100    19.50ms  recall@10 0.2976  mrr 0.1547  (22s)
+ef_search_256  s4 188q/245c  p50   12.43ms  p100    19.48ms  recall@10 0.4187  mrr 0.2253  (22s)
+wrote docs/results/2026-08-18-bench-stage4-garbled.json

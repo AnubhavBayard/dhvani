@@ -1,0 +1,7 @@
+full           s4  75q/ 82c  p50   12.37ms  p100    20.93ms  recall@10 0.4464  mrr 0.2323  (22s)
+no_stage4      s4   0q/  0c  p50   11.91ms  p100    18.59ms  recall@10 0.4567  mrr 0.2342  (21s)
+stage4_len3    s4 134q/152c  p50   12.09ms  p100    20.53ms  recall@10 0.4360  mrr 0.2286  (22s)
+dense_only     s4  75q/ 82c  p50    3.83ms  p100     6.30ms  recall@10 0.3668  mrr 0.2332  (8s)
+bm25_only      s4  75q/ 82c  p50   12.05ms  p100    18.86ms  recall@10 0.3875  mrr 0.2101  (22s)
+ef_search_256  s4  75q/ 82c  p50   12.31ms  p100    18.50ms  recall@10 0.4913  mrr 0.2705  (22s)
+wrote docs/results/2026-08-18-bench-stage4.json

@@ -1,0 +1,53 @@
+# Python 3.11 (ADR-013 — installed via `uv python install 3.11`).
+#   uv venv --python 3.11 .venv
+#   uv pip install --python .venv/bin/python -r requirements.txt
+#
+# Pinned exactly. Every version here is one that a measurement in docs/results/
+# was produced under; bumping one invalidates the numbers until they are re-run.
+
+# --- build-time: dataset and index construction -----------------------------
+pyarrow==25.0.1
+huggingface-hub==1.27.0
+fsspec==2026.7.0            # parquet footer reads over HTTP range requests
+
+# --- retrieval runtime ------------------------------------------------------
+numpy==2.4.6
+onnxruntime==1.28.0         # in-process embedder/reranker/NLI (ADR-004)
+tokenizers==0.23.1
+faiss-cpu==1.15.0           # IndexHNSWSQ — HNSW + int8 scalar quantizer (ADR-015)
+bm25s==0.3.10               # lexical half of hybrid retrieval (ADR-004)
+pydantic==2.13.4            # stage contracts (dhvani/harness/contracts.py)
+safetensors==0.8.0          # LaBSE's post-pooling Dense head, benchmark only
+
+# --- stage 4: phonetic query repair -----------------------------------------
+libindic-soundex==1.0.2
+libindic-utils==1.0.3       # undeclared dependency of libindic-soundex
+
+# --- transitive, pinned so the environment is reproducible ------------------
+certifi==2026.7.22
+filelock==3.32.3
+flatbuffers==25.12.19
+hf-xet==1.6.0
+httpx==0.28.1
+idna==3.18
+packaging==26.3
+protobuf==7.35.1
+pyyaml==6.0.3
+tqdm==4.70.0
+typing-extensions==4.16.0
+
+# --- serving ----------------------------------------------------------------
+fastapi==0.141.1            # app.py — POST /ask (SSE), static UI
+uvicorn==0.52.4
+starlette==1.6.0            # transitive, pinned with the two above
+python-multipart==0.0.32    # POST /stt — multipart audio upload
+annotated-doc==0.0.5        # transitive of fastapi
+
+# --- dev --------------------------------------------------------------------
+pytest==9.1.1
+
+# --- not yet installed; added as each lands, with its ADR -------------------
+# websockets       WS /ws/stt, lands with the STT provider on Day 5
+#
+# hnswlib was installed and then removed: it stores float32 with no
+# quantization option at all (ADR-015). faiss-cpu replaces it.

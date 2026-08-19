@@ -1,0 +1,1429 @@
+{
+  "run_utc": "2026-08-19T08:34:57Z",
+  "index": "index/full",
+  "queries": "eval/queries.jsonl",
+  "n_queries": 500,
+  "n_gold_queries": 289,
+  "reps": 3,
+  "warmup": 50,
+  "k": 10,
+  "hardware": {
+    "cpu": "13th Gen Intel(R) Core(TM) i5-13450HX",
+    "cores": 16,
+    "mem_total_gb": 15.24,
+    "platform": "Linux-6.8.0-136-generic-x86_64-with-glibc2.35",
+    "python": "3.11.15"
+  },
+  "boundary_a_covers": [
+    "stage4_rewrite",
+    "stage3_embed",
+    "stage3_retrieve",
+    "stage3_fuse",
+    "stage3_signals",
+    "harness",
+    "stage7_context"
+  ],
+  "not_yet_in_boundary_a": [
+    "stage5_expansion",
+    "stage6_rerank",
+    "guardrails_l1_l2_l3"
+  ],
+  "cold_start": {
+    "index_load_s": 4.58,
+    "first_query_ms": 20.72
+  },
+  "arms": {
+    "full": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": true,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.502,
+            "p70": 15.078,
+            "p95": 18.38,
+            "p100": 33.441
+          },
+          "mean_ms": 14.328,
+          "overhead_ms": {
+            "p50": 0.13,
+            "p100": 21.762
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.031,
+              "p100": 1.328
+            },
+            "stage3_embed": {
+              "p50": 3.274,
+              "p100": 6.486
+            },
+            "stage3_retrieve": {
+              "p50": 8.383,
+              "p100": 23.108
+            },
+            "stage3_fuse": {
+              "p50": 0.136,
+              "p100": 0.298
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.213
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 1.309,
+              "p100": 20.138
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 356,
+              "p100": 1498
+            },
+            "chunks_kept": {
+              "p50": 6,
+              "p100": 6
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 43,
+              "jaccard": 533,
+              "budget": 96,
+              "capped": 21332
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.698,
+            "p70": 15.264,
+            "p95": 18.38,
+            "p100": 34.523
+          },
+          "mean_ms": 14.343,
+          "overhead_ms": {
+            "p50": 0.148,
+            "p100": 0.296
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.033,
+              "p100": 1.341
+            },
+            "stage3_embed": {
+              "p50": 3.384,
+              "p100": 6.365
+            },
+            "stage3_retrieve": {
+              "p50": 8.289,
+              "p100": 17.565
+            },
+            "stage3_fuse": {
+              "p50": 0.143,
+              "p100": 0.496
+            },
+            "stage3_signals": {
+              "p50": 0.041,
+              "p100": 0.269
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 1.298,
+              "p100": 23.651
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 356,
+              "p100": 1498
+            },
+            "chunks_kept": {
+              "p50": 6,
+              "p100": 6
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 43,
+              "jaccard": 533,
+              "budget": 96,
+              "capped": 21332
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.517,
+            "p70": 14.713,
+            "p95": 18.137,
+            "p100": 30.51
+          },
+          "mean_ms": 14.105,
+          "overhead_ms": {
+            "p50": 0.137,
+            "p100": 0.247
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.032,
+              "p100": 1.314
+            },
+            "stage3_embed": {
+              "p50": 3.329,
+              "p100": 6.306
+            },
+            "stage3_retrieve": {
+              "p50": 8.251,
+              "p100": 14.883
+            },
+            "stage3_fuse": {
+              "p50": 0.14,
+              "p100": 0.555
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.218
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 1.241,
+              "p100": 20.105
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 356,
+              "p100": 1498
+            },
+            "chunks_kept": {
+              "p50": 6,
+              "p100": 6
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 43,
+              "jaccard": 533,
+              "budget": 96,
+              "capped": 21332
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        }
+      ],
+      "p50_spread_ms": 0.196,
+      "quality_stable": true
+    },
+    "no_stage7": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": true,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.14,
+            "p70": 13.521,
+            "p95": 16.531,
+            "p100": 18.292
+          },
+          "mean_ms": 12.776,
+          "overhead_ms": {
+            "p50": 0.111,
+            "p100": 0.292
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.032,
+              "p100": 1.245
+            },
+            "stage3_embed": {
+              "p50": 3.342,
+              "p100": 5.675
+            },
+            "stage3_retrieve": {
+              "p50": 8.32,
+              "p100": 13.699
+            },
+            "stage3_fuse": {
+              "p50": 0.138,
+              "p100": 0.265
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.227
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 0,
+              "p100": 0
+            },
+            "chunks_kept": {
+              "p50": 0,
+              "p100": 0
+            },
+            "empty_context": 500,
+            "dropped": {
+              "overlap": 0,
+              "jaccard": 0,
+              "budget": 0,
+              "capped": 0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.023,
+            "p70": 13.463,
+            "p95": 16.488,
+            "p100": 22.414
+          },
+          "mean_ms": 12.726,
+          "overhead_ms": {
+            "p50": 0.109,
+            "p100": 0.167
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.032,
+              "p100": 1.264
+            },
+            "stage3_embed": {
+              "p50": 3.331,
+              "p100": 5.898
+            },
+            "stage3_retrieve": {
+              "p50": 8.159,
+              "p100": 15.124
+            },
+            "stage3_fuse": {
+              "p50": 0.138,
+              "p100": 0.25
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.216
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 0,
+              "p100": 0
+            },
+            "chunks_kept": {
+              "p50": 0,
+              "p100": 0
+            },
+            "empty_context": 500,
+            "dropped": {
+              "overlap": 0,
+              "jaccard": 0,
+              "budget": 0,
+              "capped": 0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 12.217,
+            "p70": 13.683,
+            "p95": 16.754,
+            "p100": 19.056
+          },
+          "mean_ms": 12.923,
+          "overhead_ms": {
+            "p50": 0.111,
+            "p100": 0.192
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.032,
+              "p100": 1.278
+            },
+            "stage3_embed": {
+              "p50": 3.326,
+              "p100": 6.533
+            },
+            "stage3_retrieve": {
+              "p50": 8.41,
+              "p100": 14.11
+            },
+            "stage3_fuse": {
+              "p50": 0.137,
+              "p100": 0.265
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.209
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 0.0,
+              "p100": 0.0
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 0,
+              "p100": 0
+            },
+            "chunks_kept": {
+              "p50": 0,
+              "p100": 0
+            },
+            "empty_context": 500,
+            "dropped": {
+              "overlap": 0,
+              "jaccard": 0,
+              "budget": 0,
+              "capped": 0
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        }
+      ],
+      "p50_spread_ms": 0.194,
+      "quality_stable": true
+    },
+    "no_dedupe": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": true,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.28,
+            "p70": 14.73,
+            "p95": 18.015,
+            "p100": 27.558
+          },
+          "mean_ms": 13.928,
+          "overhead_ms": {
+            "p50": 0.119,
+            "p100": 0.191
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.032,
+              "p100": 1.221
+            },
+            "stage3_embed": {
+              "p50": 3.332,
+              "p100": 5.936
+            },
+            "stage3_retrieve": {
+              "p50": 8.369,
+              "p100": 15.22
+            },
+            "stage3_fuse": {
+              "p50": 0.14,
+              "p100": 0.255
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.233
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 0.975,
+              "p100": 17.259
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 355,
+              "p100": 1498
+            },
+            "chunks_kept": {
+              "p50": 6,
+              "p100": 6
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 0,
+              "jaccard": 0,
+              "budget": 100,
+              "capped": 21904
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.123,
+            "p70": 14.657,
+            "p95": 17.675,
+            "p100": 28.021
+          },
+          "mean_ms": 13.791,
+          "overhead_ms": {
+            "p50": 0.12,
+            "p100": 0.227
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.033,
+              "p100": 1.254
+            },
+            "stage3_embed": {
+              "p50": 3.345,
+              "p100": 5.845
+            },
+            "stage3_retrieve": {
+              "p50": 8.252,
+              "p100": 14.281
+            },
+            "stage3_fuse": {
+              "p50": 0.141,
+              "p100": 0.283
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.217
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 0.984,
+              "p100": 17.458
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 355,
+              "p100": 1498
+            },
+            "chunks_kept": {
+              "p50": 6,
+              "p100": 6
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 0,
+              "jaccard": 0,
+              "budget": 100,
+              "capped": 21904
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.133,
+            "p70": 14.643,
+            "p95": 17.781,
+            "p100": 28.911
+          },
+          "mean_ms": 13.785,
+          "overhead_ms": {
+            "p50": 0.121,
+            "p100": 0.191
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.032,
+              "p100": 1.313
+            },
+            "stage3_embed": {
+              "p50": 3.332,
+              "p100": 5.797
+            },
+            "stage3_retrieve": {
+              "p50": 8.236,
+              "p100": 15.026
+            },
+            "stage3_fuse": {
+              "p50": 0.143,
+              "p100": 0.269
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.225
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 0.988,
+              "p100": 18.498
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 355,
+              "p100": 1498
+            },
+            "chunks_kept": {
+              "p50": 6,
+              "p100": 6
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 0,
+              "jaccard": 0,
+              "budget": 100,
+              "capped": 21904
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        }
+      ],
+      "p50_spread_ms": 0.157,
+      "quality_stable": true
+    },
+    "budget_800": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": true,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.47,
+            "p70": 15.207,
+            "p95": 18.296,
+            "p100": 22.274
+          },
+          "mean_ms": 14.255,
+          "overhead_ms": {
+            "p50": 0.136,
+            "p100": 0.259
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.031,
+              "p100": 1.271
+            },
+            "stage3_embed": {
+              "p50": 3.335,
+              "p100": 7.191
+            },
+            "stage3_retrieve": {
+              "p50": 8.279,
+              "p100": 14.726
+            },
+            "stage3_fuse": {
+              "p50": 0.144,
+              "p100": 0.325
+            },
+            "stage3_signals": {
+              "p50": 0.041,
+              "p100": 0.221
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 1.252,
+              "p100": 10.134
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 355,
+              "p100": 800
+            },
+            "chunks_kept": {
+              "p50": 6,
+              "p100": 6
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 45,
+              "jaccard": 569,
+              "budget": 110,
+              "capped": 21284
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.5,
+            "p70": 15.026,
+            "p95": 18.214,
+            "p100": 22.662
+          },
+          "mean_ms": 14.187,
+          "overhead_ms": {
+            "p50": 0.135,
+            "p100": 0.275
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.032,
+              "p100": 1.35
+            },
+            "stage3_embed": {
+              "p50": 3.298,
+              "p100": 6.339
+            },
+            "stage3_retrieve": {
+              "p50": 8.358,
+              "p100": 17.51
+            },
+            "stage3_fuse": {
+              "p50": 0.142,
+              "p100": 0.285
+            },
+            "stage3_signals": {
+              "p50": 0.041,
+              "p100": 0.227
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 1.256,
+              "p100": 9.55
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 355,
+              "p100": 800
+            },
+            "chunks_kept": {
+              "p50": 6,
+              "p100": 6
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 45,
+              "jaccard": 569,
+              "budget": 110,
+              "capped": 21284
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.534,
+            "p70": 15.114,
+            "p95": 18.459,
+            "p100": 21.692
+          },
+          "mean_ms": 14.24,
+          "overhead_ms": {
+            "p50": 0.135,
+            "p100": 0.33
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.031,
+              "p100": 1.339
+            },
+            "stage3_embed": {
+              "p50": 3.36,
+              "p100": 5.777
+            },
+            "stage3_retrieve": {
+              "p50": 8.303,
+              "p100": 15.462
+            },
+            "stage3_fuse": {
+              "p50": 0.143,
+              "p100": 0.264
+            },
+            "stage3_signals": {
+              "p50": 0.041,
+              "p100": 0.213
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 1.24,
+              "p100": 9.408
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 355,
+              "p100": 800
+            },
+            "chunks_kept": {
+              "p50": 6,
+              "p100": 6
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 45,
+              "jaccard": 569,
+              "budget": 110,
+              "capped": 21284
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        }
+      ],
+      "p50_spread_ms": 0.064,
+      "quality_stable": true
+    },
+    "budget_3000": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": true,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.656,
+            "p70": 15.087,
+            "p95": 18.156,
+            "p100": 21.228
+          },
+          "mean_ms": 14.29,
+          "overhead_ms": {
+            "p50": 0.136,
+            "p100": 0.25
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.031,
+              "p100": 1.48
+            },
+            "stage3_embed": {
+              "p50": 3.384,
+              "p100": 5.792
+            },
+            "stage3_retrieve": {
+              "p50": 8.372,
+              "p100": 14.816
+            },
+            "stage3_fuse": {
+              "p50": 0.142,
+              "p100": 0.276
+            },
+            "stage3_signals": {
+              "p50": 0.041,
+              "p100": 0.233
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 1.249,
+              "p100": 3.166
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 356,
+              "p100": 2605
+            },
+            "chunks_kept": {
+              "p50": 6,
+              "p100": 6
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 43,
+              "jaccard": 523,
+              "budget": 0,
+              "capped": 21434
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.563,
+            "p70": 15.006,
+            "p95": 18.187,
+            "p100": 24.355
+          },
+          "mean_ms": 14.203,
+          "overhead_ms": {
+            "p50": 0.134,
+            "p100": 0.24
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.031,
+              "p100": 1.248
+            },
+            "stage3_embed": {
+              "p50": 3.341,
+              "p100": 6.59
+            },
+            "stage3_retrieve": {
+              "p50": 8.351,
+              "p100": 17.23
+            },
+            "stage3_fuse": {
+              "p50": 0.141,
+              "p100": 0.252
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.219
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 1.25,
+              "p100": 3.223
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 356,
+              "p100": 2605
+            },
+            "chunks_kept": {
+              "p50": 6,
+              "p100": 6
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 43,
+              "jaccard": 523,
+              "budget": 0,
+              "capped": 21434
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.553,
+            "p70": 15.073,
+            "p95": 18.173,
+            "p100": 25.374
+          },
+          "mean_ms": 14.243,
+          "overhead_ms": {
+            "p50": 0.135,
+            "p100": 0.208
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.032,
+              "p100": 1.295
+            },
+            "stage3_embed": {
+              "p50": 3.321,
+              "p100": 6.401
+            },
+            "stage3_retrieve": {
+              "p50": 8.404,
+              "p100": 17.053
+            },
+            "stage3_fuse": {
+              "p50": 0.143,
+              "p100": 0.306
+            },
+            "stage3_signals": {
+              "p50": 0.041,
+              "p100": 0.3
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 1.252,
+              "p100": 4.02
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 356,
+              "p100": 2605
+            },
+            "chunks_kept": {
+              "p50": 6,
+              "p100": 6
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 43,
+              "jaccard": 523,
+              "budget": 0,
+              "capped": 21434
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        }
+      ],
+      "p50_spread_ms": 0.103,
+      "quality_stable": true
+    },
+    "chunks_3": {
+      "config": {
+        "k_dense": 100,
+        "k_bm25": 100,
+        "k_out": 50,
+        "rrf_k": 60,
+        "ef_search": 64,
+        "dense": true,
+        "bm25": true,
+        "rescore_top": 0
+      },
+      "reps": [
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.025,
+            "p70": 14.417,
+            "p95": 17.606,
+            "p100": 20.168
+          },
+          "mean_ms": 13.692,
+          "overhead_ms": {
+            "p50": 0.127,
+            "p100": 0.299
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.031,
+              "p100": 2.095
+            },
+            "stage3_embed": {
+              "p50": 3.35,
+              "p100": 7.028
+            },
+            "stage3_retrieve": {
+              "p50": 8.403,
+              "p100": 15.178
+            },
+            "stage3_fuse": {
+              "p50": 0.143,
+              "p100": 0.358
+            },
+            "stage3_signals": {
+              "p50": 0.041,
+              "p100": 0.218
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 0.707,
+              "p100": 3.54
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 178,
+              "p100": 1497
+            },
+            "chunks_kept": {
+              "p50": 3,
+              "p100": 3
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 10,
+              "jaccard": 169,
+              "budget": 8,
+              "capped": 23313
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.092,
+            "p70": 14.586,
+            "p95": 17.905,
+            "p100": 20.658
+          },
+          "mean_ms": 13.821,
+          "overhead_ms": {
+            "p50": 0.126,
+            "p100": 0.217
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.031,
+              "p100": 1.334
+            },
+            "stage3_embed": {
+              "p50": 3.379,
+              "p100": 7.804
+            },
+            "stage3_retrieve": {
+              "p50": 8.521,
+              "p100": 14.755
+            },
+            "stage3_fuse": {
+              "p50": 0.143,
+              "p100": 0.259
+            },
+            "stage3_signals": {
+              "p50": 0.04,
+              "p100": 0.226
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 0.699,
+              "p100": 3.469
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 178,
+              "p100": 1497
+            },
+            "chunks_kept": {
+              "p50": 3,
+              "p100": 3
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 10,
+              "jaccard": 169,
+              "budget": 8,
+              "capped": 23313
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        },
+        {
+          "n": 500,
+          "latency_ms": {
+            "p50": 13.213,
+            "p70": 14.594,
+            "p95": 17.759,
+            "p100": 19.7
+          },
+          "mean_ms": 13.866,
+          "overhead_ms": {
+            "p50": 0.127,
+            "p100": 0.199
+          },
+          "stage_ms": {
+            "stage4_rewrite": {
+              "p50": 0.031,
+              "p100": 1.22
+            },
+            "stage3_embed": {
+              "p50": 3.389,
+              "p100": 5.848
+            },
+            "stage3_retrieve": {
+              "p50": 8.539,
+              "p100": 14.191
+            },
+            "stage3_fuse": {
+              "p50": 0.142,
+              "p100": 0.239
+            },
+            "stage3_signals": {
+              "p50": 0.041,
+              "p100": 0.245
+            },
+            "stage3_rescore": {
+              "p50": 0.0,
+              "p100": 0.0
+            },
+            "stage7_context": {
+              "p50": 0.702,
+              "p100": 3.564
+            }
+          },
+          "stage4": {
+            "queries_rewritten": 75,
+            "corrections": 82
+          },
+          "stage7": {
+            "tokens": {
+              "p50": 178,
+              "p100": 1497
+            },
+            "chunks_kept": {
+              "p50": 3,
+              "p100": 3
+            },
+            "empty_context": 0,
+            "dropped": {
+              "overlap": 10,
+              "jaccard": 169,
+              "budget": 8,
+              "capped": 23313
+            }
+          },
+          "quality": {
+            "n_gold_queries": 289,
+            "recall@10": 0.4464,
+            "recall@10_any_lang": 0.4567,
+            "mrr@10": 0.2323,
+            "ndcg@10": 0.5111
+          }
+        }
+      ],
+      "p50_spread_ms": 0.188,
+      "quality_stable": true
+    }
+  }
+}

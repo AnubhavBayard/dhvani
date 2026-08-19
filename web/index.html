@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dhvani — voice RAG over Indic MS MARCO</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<main>
+  <h1>dhvani</h1>
+  <p class="tagline">
+    Ask in Hindi, Bengali, Tamil or English. Answers come from
+    <code>ai4bharat/MSMARCO-XI</code> with citations — or a refusal, on purpose,
+    when the corpus cannot answer.
+  </p>
+
+  <div class="mic-row">
+    <button type="button" id="mic" class="mic" aria-pressed="false">
+      <span class="ring" aria-hidden="true"></span>
+      <span id="mic-label">Tap to speak</span>
+    </button>
+    <p class="mic-note" id="mic-note" role="status">
+      Hindi, Bengali, Tamil or English. Or type below.
+    </p>
+  </div>
+
+  <form id="ask">
+    <label for="q" class="visually-hidden" hidden>Your question</label>
+    <input id="q" type="text" autocomplete="off" required maxlength="500"
+           placeholder="गोवा में मौसम कैसा है">
+    <button type="submit" id="go">Ask</button>
+  </form>
+
+  <p class="heard" id="heard" hidden></p>
+
+  <p class="corrections" id="corrections" hidden></p>
+
+  <ul class="stages" id="stages" aria-live="polite" aria-label="Pipeline stages"></ul>
+  <p class="boundary" id="boundary" hidden></p>
+
+  <div class="answer" id="answer" aria-live="polite"></div>
+  <div class="refusal" id="refusal" hidden role="status"></div>
+
+  <section class="sources" id="sources" hidden>
+    <h2>Sources</h2>
+    <div id="source-list"></div>
+  </section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>

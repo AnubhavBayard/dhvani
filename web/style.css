@@ -1,0 +1,200 @@
+/* dhvani — tokens from docs/DESIGN_SYSTEM.md, which took them from hhgoa.com's
+   shipped CSS (ADR-006).
+
+   Two rules here come straight out of the contrast audit (DESIGN_SYSTEM.md,
+   run 2026-08-14) and are the reason this file does not look like the brand's
+   own marketing pages:
+
+   - magenta #ff0080 on green is 1.82:1 and fails even the 3.0 non-text floor,
+     so magenta is only ever a *fill* behind cream/white text, never a mark,
+     border, or glyph on the green.
+   - yellow #fee101 on green is 5.23 and passes AA at every size, so it carries
+     structure: headings, focus rings, active states.
+
+   Font files are not self-hosted yet (Day 6). The stacks below name the
+   intended faces first and fall through to system equivalents, so Indic text
+   renders correctly today rather than in tofu — DESIGN_SYSTEM.md's two-tier
+   stack, minus the woff2 subsets. */
+
+:root {
+  --green:  #0b6839;
+  --yellow: #fee101;
+  --magenta:#ff0080;
+  --white:  #ffffff;
+  --cream:  #fffbe8;
+
+  --font-ui: "Victor Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: "Imbue", Georgia, serif;
+  /* Indic first: Victor Mono has no Devanagari, Bengali or Tamil coverage at
+     all (R4), and leading with it produces mixed-metric lines where Latin and
+     Indic runs sit on different baselines. */
+  --font-indic: "Noto Sans Devanagari", "Noto Sans Bengali", "Noto Sans Tamil",
+                "Noto Sans", "Nirmala UI", sans-serif;
+
+  --gap: 1.25rem;
+  --rule: 1px solid rgba(255, 251, 232, 0.28);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: clamp(1.25rem, 4vw, 3rem);
+  background: var(--green);
+  color: var(--white);
+  font: 600 18px/1.5 var(--font-ui);
+  letter-spacing: -0.01em;
+}
+
+main { max-width: 62rem; margin: 0 auto; }
+
+h1 {
+  font: 500 clamp(48px, 9vw, 133px)/1.1 var(--font-display);
+  color: var(--yellow);
+  margin: 0 0 0.25em;
+}
+
+.tagline { color: var(--cream); margin: 0 0 2rem; max-width: 46ch; }
+
+/* -- ask box ------------------------------------------------------------- */
+
+form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+input[type="text"] {
+  flex: 1 1 22rem;
+  padding: 0.85rem 1rem;
+  background: rgba(0, 0, 0, 0.18);
+  color: var(--white);
+  border: 2px solid var(--yellow);
+  border-radius: 2px;
+  font: 600 20px/1.2 var(--font-indic);
+}
+input::placeholder { color: rgba(255, 251, 232, 0.55); }
+
+button {
+  padding: 0.85rem 1.6rem;
+  background: var(--yellow);
+  color: var(--green);
+  border: 0;
+  border-radius: 2px;
+  font: 600 20px/1 var(--font-ui);
+  letter-spacing: -0.015em;
+  cursor: pointer;
+}
+button[disabled] { opacity: 0.55; cursor: progress; }
+
+/* Never removed, only restyled — DESIGN_SYSTEM.md accessibility rules. */
+:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+/* -- stage bar ----------------------------------------------------------- */
+
+.stages {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  margin: 1.75rem 0 0; padding: 0; list-style: none;
+}
+.stage {
+  font: 600 13px/1 var(--font-ui);
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.5rem 0.7rem;
+  border: 1px solid rgba(255, 251, 232, 0.35);
+  border-radius: 2px;
+  color: var(--cream);
+}
+.stage b { color: var(--yellow); font-weight: 700; letter-spacing: 0; }
+/* Status is carried by a word as well as a colour — colour alone is not a
+   status indicator (accessibility pass). */
+.stage[data-status="degraded"] { border-color: var(--yellow); }
+.stage[data-status="failed"]   { background: var(--magenta); border-color: var(--magenta); color: var(--white); }
+.stage[data-status="off"]      { opacity: 0.5; }
+
+.boundary {
+  margin: 1rem 0 0; font: 600 16px/1.4 var(--font-ui); color: var(--cream);
+}
+.boundary b { color: var(--yellow); font-size: 22px; }
+.boundary small { display: block; opacity: 0.75; margin-top: 0.35rem; }
+
+/* -- answer -------------------------------------------------------------- */
+
+.answer {
+  margin: 2rem 0 0; padding-top: 1.5rem; border-top: var(--rule);
+  font: 700 22px/1.35 var(--font-indic);
+  white-space: pre-wrap;
+}
+.answer:empty { display: none; }
+
+.refusal {
+  margin: 2rem 0 0; padding: 1rem 1.25rem;
+  background: var(--magenta); color: var(--white);
+  font: 700 20px/1.3 var(--font-ui);
+  border-radius: 2px;
+}
+.refusal small { display: block; font-weight: 600; opacity: 0.9; margin-top: 0.4rem; }
+
+/* -- citations ----------------------------------------------------------- */
+
+.sources { margin: 2rem 0 0; padding-top: 1.5rem; border-top: var(--rule); }
+.sources h2 {
+  font: 600 15px/1 var(--font-ui); letter-spacing: 0.5em;
+  text-transform: uppercase; color: var(--yellow); margin: 0 0 1rem;
+}
+.source { margin: 0 0 1.1rem; display: grid; grid-template-columns: 2.5rem 1fr; gap: 0.75rem; }
+.source .n {
+  font: 700 18px/1.4 var(--font-ui); color: var(--green);
+  background: var(--yellow); border-radius: 2px;
+  text-align: center; height: 1.8em;
+}
+.source p { margin: 0; font: 400 18px/1.45 var(--font-indic); color: var(--cream); }
+.source .meta {
+  font: 600 14px/1.4 var(--font-ui); color: rgba(255, 251, 232, 0.7);
+  letter-spacing: 0; margin-top: 0.3rem;
+}
+
+.corrections { margin: 1rem 0 0; font: 600 16px/1.4 var(--font-ui); color: var(--cream); }
+.corrections ins { text-decoration: none; color: var(--yellow); }
+.corrections del { opacity: 0.65; }
+
+@media (prefers-reduced-motion: no-preference) {
+  button { transition: opacity 120ms ease; }
+}
+
+
+/* -- microphone ----------------------------------------------------------- */
+
+.mic-row { display: flex; align-items: center; gap: 1rem; margin: 0 0 1.25rem; flex-wrap: wrap; }
+
+.mic {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  padding: 0.85rem 1.5rem;
+  background: transparent; color: var(--cream);
+  border: 2px solid var(--cream); border-radius: 999px;
+  font: 600 20px/1 var(--font-ui); letter-spacing: -0.015em;
+  cursor: pointer;
+}
+/* Cream, not magenta. Magenta on green is 1.82:1 and fails even the 3.0
+   non-text floor, so it can fill a shape but never outline one — the contrast
+   audit is why this ring is not the brand's pink. */
+.mic .ring {
+  width: 0.9rem; height: 0.9rem; border-radius: 50%;
+  background: var(--cream); flex: none;
+}
+.mic[aria-pressed="true"] { background: var(--magenta); border-color: var(--magenta); color: var(--white); }
+.mic[aria-pressed="true"] .ring { background: var(--white); }
+.mic[disabled] { opacity: 0.5; cursor: not-allowed; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .mic[aria-pressed="true"] .ring { animation: pulse 1.2s ease-in-out infinite; }
+}
+@keyframes pulse { 50% { opacity: 0.25; transform: scale(0.8); } }
+
+.mic-note { margin: 0; font: 600 16px/1.4 var(--font-ui); color: var(--cream); opacity: 0.85; }
+
+.heard {
+  margin: 0 0 1.25rem; padding: 0.75rem 1rem;
+  border-left: 3px solid var(--yellow);
+  font: 400 20px/1.4 var(--font-indic); color: var(--white);
+}
+.heard[hidden] { display: none; }
+.heard small {
+  display: block; margin-top: 0.35rem;
+  font: 600 14px/1.4 var(--font-ui); color: var(--cream); opacity: 0.8;
+}
