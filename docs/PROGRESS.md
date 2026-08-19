@@ -153,7 +153,11 @@ not something to squeeze in at midnight on the 22nd.
 - [x] re-benchmark
 
 ### Day 7 — 20 Aug — deploy + measure for real
-- [ ] deploy to the Mumbai VM, live link up
+- [ ] deploy to the VM, live link up — **host changed twice on 19 Aug** (no
+      card → Lightsail out; HF Spaces docker now PRO-only → out; **Azure for
+      Students, Central India**, ADR-034). Bootstrap, systemd unit, Caddy and
+      the env-push script are written and syntax-checked; the index is already
+      in a Hub dataset repo, so the box pulls 2.5 GB at datacenter speed
 - [ ] fresh-clone build verification — nothing outside `task-2/`
 - [ ] **the benchmark run of record** on deploy hardware: 500+ queries, warmed, ×3
 - [ ] every `PLACEHOLDER` in every doc replaced with `MEASURED`

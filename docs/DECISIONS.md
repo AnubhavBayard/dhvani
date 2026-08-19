@@ -1751,3 +1751,48 @@ mmap is the right instrument, the store is the right thing to page lazily. The
 error was believing a flag did what its name suggests without measuring the
 process's RSS once. Two ADRs today (see also ADR-032) were plausible mechanisms
 that had never been checked against a running process.
+
+## ADR-034 — Deploy target, third attempt: a student-credit VM, not Lightsail, not a Space
+
+**Date:** 2026-08-19
+
+**Context.** ADR-010 chose Lightsail 8 GB in Mumbai at $44/mo and left the money
+as blocker B4. Two facts arrived on 19 Aug that the ADR could not have known:
+
+1. **There is no card.** Lightsail, Oracle, GCP and Azure's ordinary free tier
+   all require one for identity, so the decision was never between hosts — it
+   was between hosts that could be paid for and hosts that could not.
+2. **ADR-033 cut the footprint from 7.42 GB to 2.96 GB.** Below 8 GB, only a
+   paid VM would do. Below 3 GB, most of the free tier fits.
+
+**Hugging Face Spaces was tried and rejected by the platform.** It was the
+obvious answer — free, cardless, 16 GB — and it is no longer free for this:
+`hf repos create --type space --sdk docker` returns *"Static Spaces are free for
+everyone, but hosting Gradio and Docker Spaces on free cpu-basic requires a PRO
+subscription."* Verified against the account on 19 Aug: `--sdk static` creates,
+`--sdk docker` refuses, public or private. A static Space serves files and
+cannot host a Python process, so it cannot host this.
+
+**Decision.** An Ubuntu 24.04 VM on **Azure for Students** — $100 of credit
+released against a college email, no card at any point — B2ms (2 vCPU, 8 GB) in
+Central India, which is ~$6 for the judging window out of that credit.
+
+**HTTPS is not polish here.** `getUserMedia` only exists in a secure context, so
+a voice demo served over `http://<ip>` has no microphone at all. Caddy fronts the
+app on `<dashed-ip>.sslip.io` — sslip.io resolves any dashed IP to itself, so
+Let's Encrypt issues a real certificate with no domain to buy.
+
+**What survives from the previous two attempts.** All of it. The index sits in a
+private Hub dataset repo and is pulled at boot at datacenter speed rather than
+over a home uplink; `deploy/space/Dockerfile` still describes the same runtime
+for any container host; `deploy/vm/` adds the systemd unit and Caddy. Moving
+again costs the push command and nothing else.
+
+**Consequence.** B4 closes as **void**: no money was ever spent, and the
+requirement it guarded — a live link a judge can open — is met by credit that
+cost a student email. The region argument from ADR-003 survives too, since
+Central India is one hop from Sarvam rather than a Pacific crossing.
+
+**Known risk.** Student credit expires and the box stops. That is after the
+judging window, and the mitigation is documented rather than automated: the same
+bootstrap runs anywhere in about ten minutes.
