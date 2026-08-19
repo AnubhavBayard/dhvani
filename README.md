@@ -103,7 +103,8 @@ Already runnable today, against the built index:
 uvicorn dhvani.app:app                       # UI + POST /ask on :8000
 python -m dhvani.bench.benchmark --reps 3    # writes docs/results/*.json
 python -m dhvani.build.probe_dataset --langs hin ben tam   # dataset recon
-python -m pytest tests/                      # 124 checks
+python -m dhvani.bench.adversarial --generate   # guardrail catch rates
+python -m pytest tests/                      # 201 checks
 ```
 
 **What answers today:** speak or type → Sarvam STT → stage 4 (query rewrite) →
@@ -122,6 +123,23 @@ With no key the pipeline runs to the edge of the call and returns a
 **Roughly half of in-corpus questions currently refuse.** That is recall@10
 0.4464 showing up as user-visible behaviour, not a bug in the refusal path, and
 it is the strongest argument for the deferred stage 6 rerank.
+
+**Knowing when not to answer, measured.** Over the 105-item adversarial set with
+generation live: overall catch rate **0.7746**, false-refusal rate **0.35**,
+injection **1.00**, out-of-index language **1.00**
+([`docs/results/2026-08-19-adversarial.json`](docs/results/2026-08-19-adversarial.json)).
+Both numbers or neither — a system that refuses everything scores 100% on catches
+and is useless.
+
+Two of the four specified layers ship **switched off**, and that is the finding
+rather than an omission: a retrieval-score threshold separates answerable from
+unanswerable at **AUC 0.581** on this corpus, because MS MARCO is general web
+text and something is always nearby ("who won the cricket world cup in 2026"
+scores 0.80, inside the in-corpus range). They are built, traced and calibrated,
+with the operating points in the evidence file, one config value from live.
+Refusal is carried instead by L1 (script, injection) and L4 (per-sentence
+grounding against the retrieved passages, 100% catch on deliberately mismatched
+contexts). `docs/GUARDRAILS.md`, ADR-030, ADR-031.
 
 `task-2/` is self-contained: its own `requirements.txt`, its own venv, its own
 config. It shares no imports with the sibling `task-1-frame-id-generator/`.

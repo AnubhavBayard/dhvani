@@ -40,9 +40,18 @@ from dhvani.harness.contracts import PipelineTrace, Query, stage
 _SCRIPT_RANGES = (
     ("Deva", 0x0900, 0x097F), ("Beng", 0x0980, 0x09FF),
     ("Taml", 0x0B80, 0x0BFF), ("Latn", 0x0041, 0x024F),
+    # Out of subset (ADR-012), and named rather than lumped into "und": the T7
+    # refusal copy is "that sounded like {lang}", which needs the language.
+    ("Guru", 0x0A00, 0x0A7F), ("Gujr", 0x0A80, 0x0AFF),
+    ("Orya", 0x0B00, 0x0B7F), ("Telu", 0x0C00, 0x0C7F),
+    ("Knda", 0x0C80, 0x0CFF), ("Mlym", 0x0D00, 0x0D7F),
+    ("Arab", 0x0600, 0x06FF),
 )
 _SCRIPT_LANG = {"Deva": "hin_Deva", "Beng": "ben_Beng",
-                "Taml": "tam_Taml", "Latn": "eng_Latn"}
+                "Taml": "tam_Taml", "Latn": "eng_Latn",
+                "Guru": "pan_Guru", "Gujr": "guj_Gujr", "Orya": "ory_Orya",
+                "Telu": "tel_Telu", "Knda": "kan_Knda", "Mlym": "mal_Mlym",
+                "Arab": "urd_Arab"}
 
 
 @dataclass(frozen=True)

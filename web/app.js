@@ -19,10 +19,14 @@ const els = {
   corrections: $("corrections"), heard: $("heard"),
 };
 
+/* The server sends its own copy with every refusal (guardrails/checks.py), so
+ * these are the fallback for a kind this build has not seen and for `transport`,
+ * which never reaches the server at all. */
 const REFUSAL_COPY = {
   no_context: "Nothing in the indexed corpus matches this question.",
   model_refused: "The retrieved passages do not answer this question.",
   generation_unavailable: "The answer service is unavailable.",
+  not_grounded: "The draft answer could not be tied back to the passages.",
   transport: "The connection to the server failed.",
 };
 
@@ -38,6 +42,8 @@ const REFUSAL_COPY = {
  */
 
 let recorder = null, chunks = [];
+/* The <span> for the sentence currently streaming, until L4 judges it. */
+let sentence = null;
 
 function micState(recording, note) {
   mic.setAttribute("aria-pressed", String(recording));
@@ -115,6 +121,7 @@ function reset() {
   els.stages.replaceChildren();
   els.list.replaceChildren();
   els.answer.textContent = "";
+  sentence = null;
   els.boundary.hidden = els.refusal.hidden = els.sources.hidden = true;
   els.corrections.hidden = true;
 }
@@ -183,9 +190,12 @@ function renderSources(chunks) {
   }));
 }
 
-function refuse(kind, reason) {
+function refuse(kind, reason, copy) {
   els.refusal.hidden = false;
-  els.refusal.replaceChildren(REFUSAL_COPY[kind] || "Refused.");
+  // L4 replaces the answer rather than trimming it: a partially hallucinated
+  // answer with the hallucinations removed is still a broken answer.
+  if (kind === "not_grounded") els.answer.textContent = "";
+  els.refusal.replaceChildren(copy || REFUSAL_COPY[kind] || "Refused.");
   const small = document.createElement("small");
   small.textContent = reason || "";
   els.refusal.append(small);
@@ -198,12 +208,38 @@ const HANDLERS = {
     renderBoundary(ev);
     renderSources(ev.context.chunks);
   },
-  token: (ev) => { els.answer.textContent += ev.text; },
-  refusal: (ev) => refuse(ev.kind, ev.reason),
+  // One span per sentence, so L4's verdict can mark the sentence it judged.
+  // The verdict arrives immediately behind the token that closed the sentence,
+  // so "the span still open" is the sentence being judged.
+  token: (ev) => {
+    if (!sentence) els.answer.append((sentence = document.createElement("span")));
+    sentence.textContent += ev.text;
+  },
+  refusal: (ev) => refuse(ev.kind, ev.reason, ev.copy),
+  // L4, per sentence, arriving behind the tokens it judges.
+  grounding: (ev) => {
+    if (!sentence) return;
+    // Too short to carry n-grams — closed unmarked rather than marked "unknown".
+    if (ev.label === "skipped") { sentence = null; return; }
+    sentence.className = `g-${ev.label}`;
+    // Never colour alone (DESIGN_SYSTEM.md): the label is in the title, and
+    // anything not grounded carries a visible mark of its own.
+    sentence.title = `${ev.label} · overlap ${ev.overlap.toFixed(2)}` +
+                     (ev.chunk_id ? ` · ${ev.chunk_id}` : "");
+    if (ev.label === "ungrounded") sentence.append(" ⚠");
+    else if (ev.label === "ambiguous") sentence.append(" ?");
+    sentence = null;
+  },
   done: (ev) => {
     renderStages(ev.stages);
     const small = els.boundary.querySelector("small");
     if (!small) return;
+    if (ev.grounding && ev.grounding.judged) {
+      const g = ev.grounding;
+      small.textContent =
+        `grounded ${g.grounded}/${g.judged} sentences · ` +
+        `overlap ${g.mean_overlap.toFixed(2)} · ` + small.textContent;
+    }
     // B and C are reported, never targeted (README, boundary table).
     small.textContent =
       `ttft ${ev.ttft_ms === null ? "n/a" : ev.ttft_ms.toFixed(0) + " ms"} · ` +

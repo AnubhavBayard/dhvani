@@ -198,3 +198,11 @@ button[disabled] { opacity: 0.55; cursor: progress; }
   display: block; margin-top: 0.35rem;
   font: 600 14px/1.4 var(--font-ui); color: var(--cream); opacity: 0.8;
 }
+
+/* L4 grounding marks. Grounded is the default and carries no decoration —
+   marking the normal case would put a line under most of every answer. Only the
+   two exceptions are marked, by line style *and* a character, never by colour
+   alone; magenta is not available here at all (it is 1.82:1 on green and may
+   only ever be a fill — DESIGN_SYSTEM.md contrast audit). */
+#answer .g-ambiguous { text-decoration: underline 1px dashed var(--yellow); text-underline-offset: 3px; }
+#answer .g-ungrounded { text-decoration: underline 1px dotted var(--yellow); text-underline-offset: 3px; opacity: .8; }

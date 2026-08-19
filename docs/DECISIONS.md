@@ -1565,3 +1565,125 @@ inside the budget, so nothing fired.
 
 **Not decided.** Whether either tail is a Mumbai-network artifact of this dev
 box. Re-measure on Lightsail; that is the run of record.
+
+## ADR-030 — L2 and L3 ship measured, wired and switched off
+
+**Date:** 2026-08-19
+
+**Context.** `GUARDRAILS.md` specifies two score thresholds: L2 refuses a question
+outside what the corpus covers, L3 refuses when the best chunk is too weak to
+generate from. Both were `OPEN`, to be set by a calibration run rather than by
+eye. The run happened.
+
+`dense_top1` — the cosine of the best dense hit, added to `ConfidenceSignals` for
+this purpose because RRF's `top1` is a rank artefact (~1/(k+1) for anything ranked
+first, relevant or not) — separates the dataset's answerable rows from its
+`No Answer Present.` rows at **AUC 0.581** over 500 queries. RRF `top1` manages
+0.566 and `margin_1_5` 0.517. At a 5% false-refusal operating point the catch
+rate is 5.7%.
+
+A 12-query off-topic probe the same day is the sharper evidence: "who won the
+cricket world cup in 2026" scores 0.8005, "what is my name" 0.9197, "what model
+are you running on" 0.8729 — all inside the in-corpus range, all things this
+corpus cannot answer. MS MARCO is general web text; something is always nearby.
+
+**Decision.** Build both layers, trace both layers, calibrate both layers, and
+ship them with `t_scope = t_floor = 0.0` — refusing nothing. The evidence file
+carries the operating points the sweep chose (0.826 and 0.8445) so turning them
+on is one config value, not a rewrite.
+
+**Why not delete them.** The layers cost arithmetic on signals stage 3 already
+computes, they appear in every trace as rows that ran and passed, and the
+threshold they need is measured and written down. Deleting them would also delete
+the evidence for *why* a scope threshold is not the right instrument here.
+
+**Why not ship the thresholds anyway.** A refusal at AUC 0.58 is a coin flip
+wearing a number. It would refuse real questions in front of judges at close to
+the rate it catches junk, and the results table would carry a catch rate that
+means nothing. Both numbers or neither.
+
+**Consequence.** The "knows when not to answer" requirement is carried by L1
+(script and injection, 1.00 on both categories of the adversarial set) and by L4
+(grounding, 100% of deliberately mismatched contexts). The honest cost is written
+down: off-topic questions that survive L1 reach the model, and the model's own
+refusal or L4 catches them — 0.75 of the off-topic category, not 1.00.
+
+**Reversal condition.** A signal that separates. The obvious candidate is stage 6:
+a cross-encoder score is a relevance judgement rather than a nearest-neighbour
+distance, which is precisely what these thresholds needed and never had.
+
+## ADR-031 — L4 marks the stream instead of buffering it, and step 2 is not built
+
+**Date:** 2026-08-19
+
+**Context.** L4 checks each generated sentence against the selected passages. The
+obvious implementation holds a sentence until it is judged, then emits it — which
+puts the entire first sentence in front of boundary B. `ttft` is a reported
+headline number and a demo watches it.
+
+The spec's step 2, an NLI cross-encoder for sentences in the ambiguous band, was
+justified by running "on the same ONNX runtime already warm for the reranker".
+ADR-027 deferred the reranker, so that premise is gone: step 2 would now be a
+model load, a new dependency and ~15 ms on the critical path.
+
+**Decision.** Stream tokens the instant they arrive and emit a per-sentence
+verdict immediately behind the token that closed the sentence. The UI marks a
+sentence it has already drawn. Enforcement stays whole-answer: when most judged
+sentences are ungrounded the answer is replaced, which is the case where showing
+it was wrong anyway.
+
+Step 2 is not built. Sentences between `t_low` and `t_high` are labelled
+`ambiguous` and kept, never promoted to `grounded`.
+
+**Cost, stated.** For a few hundred milliseconds a hallucinated sentence is on
+screen before it is marked, and a replaced answer visibly disappears. That is the
+price of not delaying every honest answer for the dishonest one, and the numbers
+say which case is common: of 60 real answers scored against their own context,
+**zero** were genuine answers that L4 replaced.
+
+**Measured.** `t_low` 0.05 by sweep (100% catch on mismatched contexts at every
+point; 0.05 minimises replacements of real answers). Whole-answer cost P50
+0.358 ms against a spec budget of ~5 ms — n-gram set intersection over six chunks
+is cheap, and the sweep runs offline from cached answers so re-calibration costs
+nothing.
+
+**Known gap.** L4 labels the model's *prose* refusals `not_grounded` rather than
+`model_refused` — all 12 replacements in the calibration set were exactly that.
+Same user-visible outcome, wrong attribution in the trace. Fixing it means
+detecting a refusal written in four languages without a marker, which is a
+phrase-list problem of the kind this project has already decided not to
+improvise.
+
+## ADR-032 — The first-token deadline ADR-029 claimed did not exist
+
+**Date:** 2026-08-19
+
+**Context.** ADR-029 lowered `read_timeout_s` from 25 s to 10 s and reasoned that
+"httpx's read timeout is per-read, so in a streaming call it behaves as a
+first-token deadline: nothing is read until the provider emits its first frame."
+
+Measured this evening on the live server, one ordinary English question:
+**first token at 15.70 s, `ttft_ms` 15675.93, no timeout, no fallback.** The
+premise was wrong. Something *is* read before the first token — keep-alive
+frames, role-only deltas, whatever else the provider sends to hold the
+connection open — and every one of them resets the per-read clock. A provider
+that is chatty and silent at the same time never trips a per-read timeout.
+
+**Decision.** Add `first_token_deadline_s` (default 10 s) and enforce it in
+`_stream_once` as wall clock from the request until the first frame carrying
+user-visible content. On expiry it raises `httpx.ReadTimeout`, which the existing
+ladder already handles: `first` is still true, nothing has been shown, so failing
+over to the other provider costs nothing.
+
+`read_timeout_s` stays at 10 s and keeps its real job — bounding a socket that
+has genuinely gone quiet.
+
+**Reasoning does not count as progress.** A model still thinking at the deadline
+loses the turn. The user is looking at an empty screen either way, and the other
+provider is one hop away.
+
+**Consequence.** The guarantee ADR-029 described now exists. The correction is
+worth more than the fix: the original was a plausible mechanism reasoned from a
+library's documented behaviour, tested against a mock that had no keep-alives,
+and it was wrong in exactly the case it was written for. It took a live run to
+find, which is the argument for the live runs.

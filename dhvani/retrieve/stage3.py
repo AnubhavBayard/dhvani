@@ -114,10 +114,17 @@ class HybridIndex:
 
     # -- the two retrievers -------------------------------------------------
 
-    def _dense(self, vector: np.ndarray, cfg: Stage3Config) -> list[int]:
+    def _dense(self, vector: np.ndarray, cfg: Stage3Config
+               ) -> tuple[list[int], list[float]]:
+        """Ids *and* similarities. The scores are dropped by RRF, which fuses on
+        rank alone, but the guardrails need a number on a comparable scale: an
+        RRF top1 is ~1/(k+1) for every query whether the hit is relevant or not
+        (GUARDRAILS.md L2/L3). The index is inner-product over L2-normalized
+        vectors, so these are cosines in [-1, 1]."""
         self.faiss.hnsw.efSearch = cfg.ef_search
-        _, ids = self.faiss.search(vector[None, :], cfg.k_dense)
-        return [int(i) for i in ids[0] if i >= 0]
+        sims, ids = self.faiss.search(vector[None, :], cfg.k_dense)
+        keep = [(int(i), float(s)) for i, s in zip(ids[0], sims[0]) if i >= 0]
+        return [i for i, _ in keep], [s for _, s in keep]
 
     def _lexical(self, text: str, cfg: Stage3Config) -> list[int]:
         """BM25 top-k, selected over the documents the query terms actually
@@ -164,6 +171,7 @@ class HybridIndex:
             st.detail["dims"] = int(vector.shape[0])
 
         dense_ids: list[int] = []
+        dense_scores: list[float] = []
         bm25_ids: list[int] = []
         with stage(trace, "stage3_retrieve", k_dense=cfg.k_dense,
                    k_bm25=cfg.k_bm25, ef_search=cfg.ef_search) as st:
@@ -182,7 +190,7 @@ class HybridIndex:
                     errors[name] = f"{type(exc).__name__}: {exc}"
                     continue
                 if name == "dense":
-                    dense_ids = ids
+                    dense_ids, dense_scores = ids
                 else:
                     bm25_ids = ids
 
@@ -216,6 +224,7 @@ class HybridIndex:
             overlap = set(dense_ids) & set(bm25_ids)
             signals = ConfidenceSignals(
                 top1=scores[0] if scores else 0.0,
+                dense_top1=dense_scores[0] if dense_scores else 0.0,
                 # gap between the best and the fifth: a flat top-5 means the
                 # retriever has no opinion, which is what tiering keys on.
                 margin_1_5=(scores[0] - scores[4]) if len(scores) >= 5 else 0.0,

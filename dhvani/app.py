@@ -31,9 +31,9 @@ from dhvani.pipeline import BOUNDARY_A_COVERS, NOT_YET_IN_BOUNDARY_A, Dhvani
 from dhvani.stt.base import MAX_AUDIO_BYTES, STT, STTConfig, STTUnavailable
 
 WEB = Path(__file__).resolve().parent.parent / "web"
-MAX_QUERY_CHARS = 500        # L1 input guardrail is Day 5; this is the crude
-                             # length bound that belongs at the trust boundary
-                             # regardless of which layer eventually owns it
+MAX_QUERY_CHARS = 500        # The length bound belongs at the trust boundary
+                             # whatever L1 does with the text afterwards
+                             # (guardrails/checks.py owns everything else)
 
 state: dict = {}
 

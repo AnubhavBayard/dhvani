@@ -177,6 +177,10 @@ class ConfidenceSignals(BaseModel):
     arithmetic rather than a model call. These drive the tier decision."""
 
     top1: float = 0.0
+    # RRF top1 is a rank artefact (~1/(k+1) for anything ranked first, relevant
+    # or not), so the guardrails key on the dense cosine instead — the only
+    # score here on a scale that means the same thing across queries.
+    dense_top1: float = 0.0
     margin_1_5: float = 0.0
     kendall_tau: float = 0.0
     n_candidates: int = 0

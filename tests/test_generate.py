@@ -8,6 +8,7 @@ part most likely to be wrong and least likely to be exercised by hand.
 from __future__ import annotations
 
 import json
+import time
 
 import httpx
 import pytest
@@ -283,3 +284,56 @@ def test_language_is_named_in_the_prompt_not_left_to_the_model():
 
 def test_unknown_language_adds_no_instruction():
     assert "Answer in" not in build_messages("q?", ctx_of("p"), None)[1]["content"]
+
+
+# -- the first-token deadline (ADR-029, corrected 2026-08-19) ---------------
+
+class Streamed(httpx.SyncByteStream):
+    """Minimal streaming body for MockTransport: yields bytes on demand, so the
+    gaps between frames happen while the client is reading."""
+
+    def __init__(self, gen):
+        self._gen = gen
+
+    def __iter__(self):
+        yield from self._gen
+
+
+def keepalive_then(*pieces: str, n: int = 3, gap: float = 0.04):
+    """A stream that is never silent and never says anything: the shape that
+    made a per-read timeout useless. Measured 19 Aug — Sarvam's first token
+    arrived at 15.70 s under a 10 s read timeout that never fired, because
+    frames like these keep resetting the per-read clock."""
+    def body():
+        for _ in range(n):
+            yield b"data: {}\n\n"
+            time.sleep(gap)
+        for piece in pieces:
+            yield ('data: ' + json.dumps({"choices": [{"delta": {"content": piece}}]})
+                   + "\n\n").encode()
+        yield b"data: [DONE]\n\n"
+    return body()
+
+
+def test_keepalive_frames_do_not_hold_the_first_token_deadline_open():
+    """The deadline is wall clock from the request, not time since the last
+    byte — otherwise a chatty-but-silent provider holds a demo hostage."""
+    def handler(request):
+        if "sarvam" in str(request.url):
+            return httpx.Response(200, stream=Streamed(keepalive_then("late")))
+        return httpx.Response(200, content=sse("groq answered"))
+
+    trace = PipelineTrace()
+    out = "".join(client_for(handler, first_token_deadline_s=0.05, retries=0)
+                  .stream("q?", ctx_of("passage"), trace))
+    assert out == "groq answered"
+    st = trace.get("generate")
+    assert st.detail["provider_used"] == "groq" and st.degraded
+    assert any("ReadTimeout" in v for v in st.detail["fell_back_from"].values())
+
+
+def test_a_provider_that_answers_in_time_is_not_failed_over():
+    out = "".join(client_for(lambda r: httpx.Response(200, content=sse("in time")),
+                             first_token_deadline_s=30.0)
+                  .stream("q?", ctx_of("passage")))
+    assert out == "in time"

@@ -1,0 +1,18 @@
+{
+  "built_utc": "2026-08-19",
+  "n": 105,
+  "by_category": {
+    "off_topic": 20,
+    "injection": 20,
+    "unsupported_language": 11,
+    "unsupported_language_deva": 4,
+    "ambiguous": 10,
+    "benign_control": 20,
+    "unanswerable": 20
+  },
+  "not_built": [
+    "silent/noisy audio (20) — needs real recordings; the text categories are what a text harness can score",
+    "corpus-embedded injection (T5) — needs a copy of the index with synthetic injected passages"
+  ],
+  "seed": 20260819
+}

@@ -289,8 +289,12 @@ def main() -> int:
         "boundary_a_covers": ["stage4_rewrite", "stage3_embed", "stage3_retrieve",
                               "stage3_fuse", "stage3_signals", "harness"]
                              + ([] if args.no_stage7 else ["stage7_context"]),
+        # The guardrail layers are inside boundary A in `pipeline.py`, but this
+        # harness assembles the stages itself and does not run them, so they are
+        # outside *this* span. Their cost is measured separately (GUARDRAILS.md:
+        # L1 P50 0.016 ms, L2/L3 arithmetic on signals stage 3 already has).
         "not_yet_in_boundary_a": ["stage5_expansion", "stage6_rerank",
-                                  "guardrails_l1_l2_l3"]
+                                  "guardrail_l1", "guardrail_l2", "guardrail_l3"]
                                  + (["stage7_context"] if args.no_stage7 else []),
         "cold_start": {"index_load_s": round(load_s, 2),
                        "first_query_ms": round(cold_ms, 2)},

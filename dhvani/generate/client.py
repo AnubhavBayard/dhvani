@@ -109,15 +109,20 @@ class GenerationConfig:
     # answer itself is two or three sentences; the rest is headroom for thought.
     max_tokens: int = 2048
     connect_timeout_s: float = 3.0
-    # Per-read, not per-stream — which makes it a first-token deadline in
-    # practice: nothing is read until the provider emits, and once tokens are
-    # flowing the gap between them is milliseconds. Sarvam returned identical
-    # requests in 0.95 s, 4.70 s, 16.04 s and 33.65 s (measured 2026-08-19), so
-    # 25 s let a demo hang for half a minute before producing anything. At 10 s
-    # a stalled Sarvam raises ReadTimeout while `first` is still true and the
-    # ladder falls to Groq, which has stayed in 0.34–0.61 s throughout. A
-    # 10-second gap *mid*-answer is a broken stream either way.
+    # Per-read. ADR-029 assumed that made it a first-token deadline; measured
+    # 2026-08-19 it does not — Sarvam produced its first token at 15.70 s under
+    # a 10 s read timeout that never fired, because keep-alive and role-only
+    # frames arrive in between and each one resets the per-read clock. The read
+    # timeout still bounds a genuinely silent socket.
     read_timeout_s: float = 10.0
+    # The deadline ADR-029 meant: wall clock from request to the first token the
+    # user would see. Nothing has been shown yet, so failing over is free —
+    # `first` is still true and the ladder falls to the other provider. Once
+    # tokens flow this stops applying and a stalled stream is the read timeout's
+    # problem again. Reasoning does not count as progress: a model that thinks
+    # past the deadline loses the turn, because the user is staring at nothing
+    # either way and the other provider is one hop away.
+    first_token_deadline_s: float = 10.0
     retries: int = 1                    # transport faults only; 4xx never
     extra_headers: dict[str, str] = field(default_factory=dict)
 
@@ -281,7 +286,15 @@ class GenerationClient:
                 raise httpx.HTTPStatusError(f"{p.name} {r.status_code}: "
                                             f"{r.text[:200]}",
                                             request=r.request, response=r)
+            t0 = time.perf_counter()
+            seen_content = False
             for line in r.iter_lines():
+                if not seen_content and (time.perf_counter() - t0
+                                         > self.cfg.first_token_deadline_s):
+                    raise httpx.ReadTimeout(
+                        f"{p.name}: no token in "
+                        f"{self.cfg.first_token_deadline_s:g}s",
+                        request=r.request)
                 if not line.startswith("data:"):
                     continue
                 data = line[5:].strip()
@@ -298,6 +311,7 @@ class GenerationClient:
                     yield "reasoning", reasoning
                 piece = delta.get("content")
                 if piece:
+                    seen_content = True
                     yield "content", piece
 
     def _ladder(self) -> list[Provider]:

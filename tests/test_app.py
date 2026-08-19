@@ -101,7 +101,8 @@ def by_type(evs, t):
 
 def test_event_order_and_answer_assembly():
     evs = events(build())
-    assert [e["type"] for e in evs] == ["query", "retrieval", "token", "token", "done"]
+    assert [e["type"] for e in evs] == ["query", "retrieval", "token", "token",
+                                        "grounding", "done"]
     assert "".join(e["text"] for e in by_type(evs, "token")) == "answer text [1]"
 
 
@@ -219,7 +220,7 @@ def test_ask_streams_named_sse_frames(client):
     assert r.status_code == 200
     assert r.headers["content-type"].startswith("text/event-stream")
     names = [l[7:] for l in r.text.splitlines() if l.startswith("event: ")]
-    assert names == ["query", "retrieval", "token", "token", "done"]
+    assert names == ["query", "retrieval", "token", "token", "grounding", "done"]
     payloads = [json.loads(l[6:]) for l in r.text.splitlines() if l.startswith("data: ")]
     assert payloads[0]["type"] == "query"
     # ensure_ascii=False — Devanagari must survive the wire as itself
