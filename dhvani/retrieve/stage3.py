@@ -44,6 +44,39 @@ class Stage3Config:
     rescore_top: int = 0         # 0 = off; no fp32 vectors persisted (ADR-017)
 
 
+class ChunkIds:
+    """Row id -> chunk id, without 3.28M Python strings in memory.
+
+    `to_pylist()` on this column costs 0.82 GB resident and every query reads at
+    most 50 of them. Held as the Arrow column instead, off the mapped store, it
+    costs the lookup (measured 0.038 ms) and nothing else. Falls back to the
+    parquet list when an index predates `chunks.arrow` (ADR-033).
+    """
+
+    def __init__(self, column):
+        self._c = column
+
+    @classmethod
+    def load(cls, index_dir: Path) -> "ChunkIds":
+        import pyarrow.feather as feather
+        import pyarrow.parquet as pq
+
+        from dhvani.build.arrow_store import ARROW_NAME
+        if (index_dir / ARROW_NAME).exists():
+            # Whole file, then one column — a `columns=` projection is not
+            # zero-copy (see ChunkStore.load).
+            t = feather.read_table(index_dir / ARROW_NAME, memory_map=True)
+            return cls(t.column("chunk_id"))
+        return cls(pq.read_table(index_dir / "chunks.parquet",
+                                 columns=["chunk_id"]).column("chunk_id"))
+
+    def __len__(self) -> int:
+        return len(self._c)
+
+    def __getitem__(self, row: int) -> str:
+        return self._c[row].as_py()
+
+
 def rrf(rankings: list[list[int]], k: int) -> dict[int, float]:
     """Reciprocal Rank Fusion over 1-based ranks. A doc missing from a ranking
     contributes nothing from it rather than a penalty term."""
@@ -103,10 +136,11 @@ class HybridIndex:
         import pyarrow.parquet as pq
 
         d = Path(index_dir)
-        chunk_ids = pq.read_table(d / "chunks.parquet",
-                                  columns=["chunk_id"]).column("chunk_id").to_pylist()
+        chunk_ids = ChunkIds.load(d)
         index = faiss.read_index(str(d / "hnsw_sq8.faiss"))
-        retriever = bm25s.BM25.load(str(d / "bm25"), load_corpus=False)
+        # Mapped, not read: 0.68 GB resident becomes 0.22 GB, and the arrays it
+        # touches per query are the candidate rows (ADR-033).
+        retriever = bm25s.BM25.load(str(d / "bm25"), load_corpus=False, mmap=True)
         if index.ntotal != len(chunk_ids):
             raise ValueError(f"index/chunk mismatch: {index.ntotal} vectors, "
                              f"{len(chunk_ids)} chunks — rebuild")

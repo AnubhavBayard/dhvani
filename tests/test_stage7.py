@@ -134,3 +134,37 @@ def test_real_tokenizer_counts_both_scripts(text):
     except Exception as exc:  # model not downloaded on this box
         pytest.skip(f"tokenizer unavailable: {exc}")
     assert c.count(text) > 0 and "proxy" in c.name
+
+
+# -- the store's format is the footprint (ADR-033) --------------------------
+
+def test_arrow_store_round_trips_every_column(tmp_path):
+    """The serving copy must be the same table, or every citation is wrong."""
+    import pyarrow.parquet as pq
+
+    from dhvani.build.arrow_store import ARROW_NAME, write_arrow_store
+
+    rows = [{"chunk_id": f"c{i}", "text": f"text {i}", "parent_text": None,
+             "doc_id": str(i), "lang": "hin_Deva", "strategy": "s1_passage",
+             "overlap_with": []} for i in range(5)]
+    rows[2]["parent_text"] = "the wider window"
+    table = store_of(rows).t
+    pq.write_table(table, tmp_path / "chunks.parquet", compression="zstd")
+    report = write_arrow_store(tmp_path / "chunks.parquet", tmp_path / ARROW_NAME)
+
+    assert report["rows"] == 5
+    store = ChunkStore.load(tmp_path)
+    assert [store.get(i) for i in range(5)] == [store_of(rows).get(i) for i in range(5)]
+    # S2 returns the wider unit: the parent replaces the text it was scored on.
+    assert store.get(2)["text"] == "the wider window"
+
+
+def test_the_store_still_loads_from_parquet_alone(tmp_path):
+    """An index built before `chunks.arrow` existed must still serve."""
+    import pyarrow.parquet as pq
+
+    rows = [{"chunk_id": "c0", "text": "only parquet here", "parent_text": None,
+             "doc_id": "0", "lang": "eng_Latn", "strategy": "s1_passage",
+             "overlap_with": []}]
+    pq.write_table(store_of(rows).t, tmp_path / "chunks.parquet")
+    assert ChunkStore.load(tmp_path).get(0)["text"] == "only parquet here"

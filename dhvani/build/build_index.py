@@ -34,6 +34,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from dhvani.build import chunk as ch
+from dhvani.build.arrow_store import ARROW_NAME, write_arrow_store
 from dhvani.build.subset import LANGUAGES, SCRIPT
 from dhvani.embed import DEFAULT_MODEL, MODELS
 from dhvani.harness.contracts import Chunk
@@ -478,6 +479,10 @@ def merge_parts(out: Path, lang_order: list[str], state: dict, m: int,
         f"chunk store has {n_chunks}, FAISS has {index.ntotal}"
 
     report["chunk_store"] = {"bytes": (out / "chunks.parquet").stat().st_size}
+    # The serving copy. Parquet is the compact artifact and what every offline
+    # tool reads; this is the one that can actually be mapped (ADR-033).
+    report["arrow_store"] = write_arrow_store(out / "chunks.parquet",
+                                              out / ARROW_NAME)
     report["faiss"] = write_faiss(index, m, ef_construction,
                                   out / "hnsw_sq8.faiss", faiss_s)
     del index

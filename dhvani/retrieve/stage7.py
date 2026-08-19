@@ -55,14 +55,23 @@ def jaccard(a: set[str], b: set[str]) -> float:
 class ChunkStore:
     """Text and metadata for an index row, read lazily off the parquet.
 
-    `memory_map=True` is the whole design. The text column is 1.2 GB and
-    `parent_text` another 1.0 GB — resident, that is a quarter of the 8 GB
-    deploy box on top of FAISS's 1.7 GB (R5). Mapped, the pages the OS actually
-    faults in are the handful of chunks a query cites, and the kernel reclaims
-    them under pressure. This is R5's "chunk text to an mmap'd store" lever,
-    taken up front because pyarrow gives it away for free.
+    Lazy paging is the whole design — the text column is 1.2 GB and
+    `parent_text` another 1.0 GB, and resident that is half the 8 GB deploy box
+    on top of FAISS's 1.7 GB (R5). What the design needs is for the pages the OS
+    faults in to be the handful of chunks a query cites.
 
-    Measured on the dev box: 0.3 s to map, 0.06 ms per row lookup.
+    **`memory_map=True` on parquet does not do that**, which ADR-025 assumed and
+    ADR-033 measured: parquet is compressed, so every column is decompressed
+    into fresh buffers on read. Measured on the full index, **3.88 GB
+    resident** — the lever was never actually pulled.
+
+    Uncompressed Arrow IPC is the format where the file layout on disk *is* the
+    in-memory layout, so the mapping is real. Same table, same measurement:
+    **0.006 GB resident, 0.038 ms per row lookup** against the parquet store's
+    documented 0.06 ms.
+
+    Parquet remains the fallback so an index built before `chunks.arrow` existed
+    still serves — correctly, and with the old footprint.
     """
 
     COLUMNS = ["chunk_id", "text", "parent_text", "doc_id", "lang", "strategy",
@@ -73,8 +82,18 @@ class ChunkStore:
 
     @classmethod
     def load(cls, index_dir: str | Path = "index") -> "ChunkStore":
+        import pyarrow.feather as feather
         import pyarrow.parquet as pq
-        return cls(pq.read_table(Path(index_dir) / "chunks.parquet",
+
+        from dhvani.build.arrow_store import ARROW_NAME
+        d = Path(index_dir)
+        if (d / ARROW_NAME).exists():
+            # No `columns=`: pushing a projection through the reader rebuilds
+            # the selected columns into fresh buffers and puts 2.86 GB back
+            # (measured 19 Aug). Mapping the whole file and naming columns at
+            # lookup time is what stays zero-copy.
+            return cls(feather.read_table(d / ARROW_NAME, memory_map=True))
+        return cls(pq.read_table(d / "chunks.parquet",
                                  columns=cls.COLUMNS, memory_map=True))
 
     def __len__(self) -> int:

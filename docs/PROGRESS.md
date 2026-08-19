@@ -110,8 +110,8 @@ not something to squeeze in at midnight on the 22nd.
 ### Day 4 — 17 Aug — pipeline + harness
 - [ ] stages 4, 5, 6, 7 — **stage 4 done 18 Aug** (`dhvani/retrieve/stage4.py`,
       0.03 ms, ablated on clean and garbled query sets, ADR-024); **stage 7 done
-      19 Aug** (`dhvani/retrieve/stage7.py`, P50 1.31 ms, mmap'd chunk store,
-      ADR-025/026); **5 and 6 deferred by ADR-027**, specified and unbuilt
+      19 Aug** (`dhvani/retrieve/stage7.py`, P50 1.31 ms, mmap'd chunk store —
+      genuinely mapped only after ADR-033, ADR-025/026); **5 and 6 deferred by ADR-027**, specified and unbuilt
 - [ ] harness: typed contracts, retries, circuit breaker, traces, replay mode
 - [ ] tiering: early exit, escalation, per-tier percentiles
 - [x] ablation harness + first ablation table — `--arms` covers stage 3, stage 4
@@ -180,7 +180,7 @@ device that has never seen this project.
 | R2 | Stage 6 cross-encoder blows the 60 ms budget | boundary A over target | budget has 92 ms headroom; levers ready — fewer candidates, shorter `max_len`, smaller model |
 | R3 | Paid API approval delayed | generation blocked (STT is now free-tier, see B1) | replay harness benchmarks the query path from cached transcripts, so Days 3–4 are unblocked regardless |
 | R4 | ~~Victor Mono has no Indic coverage~~ — **confirmed 14 Aug, neither brand font has any Indic script** | most on-screen text is corpus text | explicit two-tier font stack specified in `DESIGN_SYSTEM.md`; **corrected 15 Aug — the cost is one Noto woff2 per *script*, not per language** (Devanagari alone covers Hindi, Marathi, Nepali, Sanskrit). ADR-012 picks three scripts deliberately, so the payload is three subsets |
-| R5 | Mumbai VM too small for the index | deploy fails on Day 7 | ~~arithmetic says 1M chunks ≈ 0.92 GB int8, so 8 GB is generous~~ — **that arithmetic was wrong by 8.6×** (15 Aug). Corrected figure is ~7.9 KB per source passage, so 8 GB is tight, not generous. Mitigated by ADR-012 sizing the subset against the corrected number *before* anything is built, and by two held levers: chunk text to an mmap'd store (~30% of index memory), then resize to 16 GB. |
+| R5 | ~~Mumbai VM too small for the index~~ — **CLOSED 19 Aug** | deploy fails on Day 7 | ~~arithmetic says 1M chunks ≈ 0.92 GB int8, so 8 GB is generous~~ — **that arithmetic was wrong by 8.6×** (15 Aug). Corrected figure is ~7.9 KB per source passage, so 8 GB is tight, not generous. Mitigated by ADR-012 sizing the subset against the corrected number *before* anything is built, and by two held levers: chunk text to an mmap'd store (~30% of index memory), then resize to 16 GB. **Closed 19 Aug by ADR-033, and the first thing the measurement found was that one of those levers had never worked: the running server held 7.42 GB, of which 3.88 GB was the "mmap'd" chunk store — `memory_map=True` on a compressed parquet decompresses into fresh buffers.** Same table as uncompressed Arrow IPC, `chunk_ids` off the mapping instead of `to_pylist()`, `bm25s` mapped: **7.42 GB → 2.96 GB**, rankings byte-identical, boundary A P50 13.11 ms. The 8 GB box now has 5 GB spare, and the resize lever is untouched. |
 | R6 | Video production underestimated | missed submission requirement | it owns a whole day, before the buffer day |
 
 ## Blockers
@@ -1396,3 +1396,51 @@ in them, which the previous mocks did not (ADR-032). One live run found what
 24 mocked tests could not.
 
 **Next.** B4, then deploy on 20 Aug.
+
+### 2026-08-19 — the mmap that was not one
+
+B4's alternatives all turn on one number nobody had measured: how much memory the
+running server actually holds. **7.42 GB**, against the 8 GB Lightsail box
+ADR-010 picked. The breakdown found the reason, and it was a doc claim rather
+than a surprise: **`ChunkStore` alone was 3.88 GB** — the store ADR-025 describes
+as mapped, held entirely resident, because `pq.read_table(memory_map=True)` maps
+a *compressed* file and then decompresses every column into fresh buffers. R5's
+"chunk text to an mmap'd store" lever had been pulled on paper and done nothing.
+
+Fixed by ADR-033: the same table as uncompressed Arrow IPC (`chunks.arrow`,
+2.85 GB, written by the build and by `python -m dhvani.build.arrow_store` for an
+index that predates it), `chunk_ids` held as the Arrow column instead of 3.28M
+Python strings, `bm25s` loaded with `mmap=True`. Parquet stays as the compact
+artifact and as the fallback.
+
+**7.42 GB → 2.96 GB. Load 4.0 s → 3.2 s.** Rankings byte-identical across 40
+queries with `bm25s` mapped and resident; sampled rows identical between the two
+stores; recall@10 unchanged at 0.4464.
+
+**A projection is not zero-copy**, which cost an hour to notice:
+`feather.read_table(columns=[...])` rebuilds the selected columns and handed
+2.86 GB of the saving straight back. The whole file is mapped and columns are
+named at lookup time.
+
+**Re-benchmarked, 500 × 3** ([`2026-08-19-bench-arrowstore.json`](results/2026-08-19-bench-arrowstore.json)):
+reps 2 and 3 at P50 13.77 / 13.73 ms against 13.70 / 13.52 before — the steady
+state is free. Rep 1 pays 15.92 ms faulting 2.85 GB of store in, which is a
+cold-start cost the 50-query warmup cannot cover and which belongs to the first
+queries after a deploy. Stage 7 P100 is 20.4 ms mapped against 20.1 ms resident,
+which kills the last explanation LATENCY.md had for that tail: it was never
+paging, because nothing was being paged.
+
+**R5 is closed**, not mitigated. 5 GB spare on the 8 GB box instead of 0.6 GB,
+the resize lever untouched, and the whole system now fits free tiers that were
+out of reach an hour ago.
+
+**Two ADRs today were plausible mechanisms that had never met a running
+process** — this one and ADR-032's first-token deadline. Both were correct
+reasoning from documented behaviour, and both were wrong. The pattern is worth
+more than either fix.
+
+**Tests: 203, all passing** (201 before).
+
+**Next.** B4 — and the free-tier answer is now Oracle Cloud Always Free (A1,
+24 GB, Mumbai; every pinned dependency has an aarch64 wheel) with a Cloudflare
+tunnel as the demo-day fallback. Then deploy on 20 Aug.

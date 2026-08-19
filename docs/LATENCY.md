@@ -101,13 +101,34 @@ was written before anything was measured; 8.38 ms for a dense HNSW search and a
 BM25 scan over 3.28M documents, in parallel, is not a number worth optimizing
 against a 186 ms surplus. It is listed as over rather than quietly rebudgeted.
 
-**Stage 7's P100 misses its budget and the cause is a deliberate trade, not a
-cold start.** Chunk text is read from an mmap'd parquet column rather than held
-resident (ADR-025), so a lookup that faults from disk costs a disk read. The
-first explanation written down was page-cache warm-up; the measurement refuted
-it — P100 is 20.1 / 23.7 / 20.1 ms across three *warmed* reps, so it recurs
-rather than decays. The alternative was 2.2 GB resident on an 8 GB box that has
-already been OOM-killed three times (R5, ADR-018, ADR-019).
+**Stage 7's P100 misses its budget, and the explanation for it was wrong twice.**
+The first was page-cache warm-up; the measurement refuted it — P100 is
+20.1 / 23.7 / 20.1 ms across three *warmed* reps, so it recurs rather than
+decays. The second was page faults against an mmap'd store, which held until
+ADR-033 measured the process and found the "mapped" parquet store fully resident
+at 3.88 GB. There were no faults to blame, because nothing was being paged.
+
+The store is genuinely mapped now (uncompressed Arrow IPC, 2.96 GB resident
+against 7.42 GB). Re-benchmarked the same day, 500 queries × 3 reps
+([`2026-08-19-bench-arrowstore.json`](results/2026-08-19-bench-arrowstore.json)):
+
+| Rep | Boundary A P50 | stage7 P50 | stage7 P100 |
+|---|---|---|---|
+| 1 | 15.92 ms | 1.85 ms | 25.4 ms |
+| 2 | 13.77 ms | 1.24 ms | 20.4 ms |
+| 3 | 13.73 ms | 1.26 ms | 20.6 ms |
+
+Reps 2 and 3 land on the pre-change numbers (13.70, 13.52) and recall@10 is
+identical at 0.4464, so **paging the store costs nothing in the steady state**.
+Rep 1 is 2.2 ms slower because it is the one paying to fault 2.85 GB of store in:
+the harness's 50-query warmup touches a few hundred rows, which does not warm a
+file this size. That is a real cold-start cost and it belongs to the first
+queries after a deploy, not to the percentile.
+
+So the P100 is not paging — it was 20.1 ms when nothing was mapped and it is
+20.4 ms now that everything is. Not warm-up either. What is left is the row-group
+layout and `parent_text` for the widest S2 windows, unmeasured. The run of record
+is still Day 7 on deploy hardware.
 
 **Both overruns are affordable and neither is hidden.** Boundary A sits at
 13.50 ms P50 against a 200 ms target — **186 ms of headroom** — so a stage that

@@ -1687,3 +1687,67 @@ worth more than the fix: the original was a plausible mechanism reasoned from a
 library's documented behaviour, tested against a mock that had no keep-alives,
 and it was wrong in exactly the case it was written for. It took a live run to
 find, which is the argument for the live runs.
+
+## ADR-033 — The chunk store is Arrow IPC, because parquet was never actually mapped
+
+**Date:** 2026-08-19
+
+**Context.** ADR-025 read the chunk store with
+`pq.read_table(..., memory_map=True)` and claimed "the pages the OS actually
+faults in are the handful of chunks a query cites". Nothing measured that claim
+until the deployment question forced it. Measured on the full index, the running
+server holds **7.42 GB resident**, against an 8 GB deploy box (R5). Broken down:
+
+| Component | Resident |
+|---|---|
+| `ChunkStore` | **3.88 GB** |
+| FAISS `hnsw_sq8` | 1.69 GB |
+| `chunk_ids` as a Python list | 0.82 GB |
+| `bm25s` | 0.68 GB |
+| embedder | 0.39 GB |
+| phonetic vocabulary | 0.13 GB |
+
+`memory_map=True` maps the *file*. Parquet is compressed, so every column is
+decompressed into fresh Arrow buffers on read — zero-copy is impossible by
+construction, and the flag bought a cheaper read, not a lazy store. The lever R5
+was holding had already been pulled, on paper, and did nothing.
+
+**Decision.** Write `chunks.arrow` — the same table as uncompressed Arrow IPC,
+where the on-disk layout *is* the in-memory layout — and serve from it.
+`chunks.parquet` stays: 337 MB against 2.85 GB, and it is what the per-corpus
+parts and every offline tool read. The build writes both; `dhvani.build.
+arrow_store` converts an index that predates this, and `ChunkStore.load` falls
+back to parquet so an old index still serves.
+
+Two more, from the same measurement: `chunk_ids` is held as the Arrow column off
+that mapping instead of `to_pylist()` (3.28M Python strings for the ≤50 ids a
+query reads), and `bm25s.BM25.load` takes `mmap=True`.
+
+**A projection is not zero-copy.** `feather.read_table(columns=[...])` rebuilds
+the selected columns into fresh buffers — 2.86 GB of the saving handed straight
+back, measured while making this change. The whole file is mapped and columns are
+named at lookup time instead.
+
+**Measured, before and after:**
+
+| | Before | After |
+|---|---|---|
+| resident, warmed | 7.42 GB | **2.96 GB** |
+| index load | 4.0 s | 3.2 s |
+| boundary A P50 | 13.50 ms | 13.11 ms |
+| row lookup | 0.06 ms | 0.038 ms |
+
+Equivalence is checked, not assumed: 40 queries produce byte-identical rankings
+under `bm25s` mapped and resident, and sampled rows are identical between the two
+stores.
+
+**Consequence.** R5 is closed rather than mitigated. The 8 GB box now has 5 GB
+free instead of 0.6 GB, which is the difference between "fits" and "fits with
+stage 6 still to come". It also puts the whole system inside free tiers that were
+out of reach at 7.42 GB, which is what B4's alternatives turn on.
+
+**What this cost to find.** Nothing was wrong with the reasoning in ADR-025 —
+mmap is the right instrument, the store is the right thing to page lazily. The
+error was believing a flag did what its name suggests without measuring the
+process's RSS once. Two ADRs today (see also ADR-032) were plausible mechanisms
+that had never been checked against a running process.
