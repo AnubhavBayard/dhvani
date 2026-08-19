@@ -191,12 +191,20 @@ device that has never seen this project.
 | B2 | ~~Generation provider undecided~~ → **resolved: Sarvam** (ADR-009) | closed 14 Aug | signup only; ~₹29 per benchmark run against the same ₹100 credits |
 | B3 | ~~Team roster for the social-posting checklist~~ → **resolved: solo** | closed 19 Aug | one person posts to Instagram, X and LinkedIn; ≥1 Instagram post public, every post tagged `#RAGInGoa` |
 | B5 | ~~Sarvam auth header shape unverified~~ → **CLOSED 19 Aug: Bearer works, the second header is ignored not rejected** (ADR-028) | closed 19 Aug | the generation client sends **both** `Authorization: Bearer` and `api-subscription-key` because no key exists to test which one the OpenAI-compatible route wants. Harmless if one is ignored; resolves itself the moment B1 does |
-| B4 | **OPEN — $44/mo spend approval.** The *host* was decided 14 Aug (Lightsail 8 GB Mumbai, ADR-010); the money was not. Struck through as "resolved" until 19 Aug, which made this table contradict its own summary — a decision being made is not the same as a blocker being cleared. | 14 Aug | your go-ahead on $44/mo. Blocks the live link, which is a submission requirement. |
+| B4 | **OPEN, but no longer blocking — $44/mo spend approval, now a fallback budget.** The *host* was decided 14 Aug (Lightsail 8 GB Mumbai, ADR-010); the money was not, and the row said "resolved" until 19 Aug — a decision being made is not the same as a blocker being cleared. **Downgraded 19 Aug by ADR-033:** the server holds 2.96 GB, not 7.42 GB, so it fits Oracle Cloud Always Free (A1, 24 GB, `ap-mumbai-1` — the same region ADR-003 argues for) at $0. Paying stopped being the only way to get a live link. | 14 Aug | nothing, to proceed. A decision by 20 Aug on which host: **Oracle free (primary)**, Lightsail (~$7–15 for the judging window, billed hourly to a monthly cap) if Oracle has no A1 capacity in Mumbai. A live link itself is **not** optional — submission checklist and success criterion 5. |
 
-**Only B4 is open.** B1, B2, B3 and B5 all closed on 19 Aug. Both
+**Nothing is blocking.** B1, B2, B3 and B5 all closed on 19 Aug. Both
 `SARVAM_API_KEY` and `GROQ_API_KEY` are in `.env` and verified against the live
-APIs, so the pipeline answers end to end. **B4 ($44 Lightsail Mumbai) is now the
-only thing between this and a live link**, which is a submission requirement.
+APIs, so the pipeline answers end to end. **B4 is open but no longer a blocker**:
+it was "approve $44/mo or there is no live link", and ADR-033's 2.96 GB footprint
+turned it into "pick a host". Oracle Always Free covers the whole system in
+Mumbai at $0; the $44 stays approved-if-needed for the case where Oracle has no
+A1 capacity, and at hourly billing the real exposure for the judging window is
+~$7–15.
+
+The requirement B4 was guarding has not moved. A live link is on the submission
+checklist and is success criterion 5 — a judge has to open a URL, speak, and see
+stages, timings and a citation without touching the repo.
 
 One caveat on the closed keys: nothing in `dhvani/` loads `.env`. There is no
 `python-dotenv` dependency and none is wanted for one line — the env is sourced
