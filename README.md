@@ -86,27 +86,44 @@ Query count, hardware, and percentile method: `docs/LATENCY.md`.
 
 ## Quickstart
 
-`PLACEHOLDER` — filled in Phase 3. Shape it will take:
+Verified from a fresh clone on 2026-08-21 — new directory, no sibling checkout,
+nothing on the box but the repo. Every command below was run, in this order.
 
 ```bash
-cd task-2
+git clone https://github.com/AnubhavBayard/dhvani.git && cd dhvani
 uv python install 3.11        # ADR-013 — self-contained CPython, ships pip and headers
 uv venv --python 3.11 .venv
 uv pip install --python .venv/bin/python -r requirements.txt
-cp .env.example .env          # SARVAM_API_KEY, generation provider key
-python -m dhvani.build_index  # downloads corpus subset, chunks, embeds, builds HNSW + BM25
-python -m dhvani.bench        # writes docs/results/*.json — the source of every number above
-uvicorn dhvani.app:app        # serves API + UI on :8000
+python -m dhvani.build.fetch_models   # 135 MB, ~35 s — models/ is gitignored
+python -m pytest tests/               # 196 passed, 17 skipped (the 17 want an index)
 ```
 
-Already runnable today, against the built index:
+That is the whole setup, and it is about a minute. `fetch_models` pulls the ONNX
+encoder every stage needs; without it the suite fails 11 checks with
+`NO_SUCHFILE` and nothing can embed. `--check` reports what is missing without
+downloading, `--all` adds the bge-m3 and LaBSE benchmark alternates (~4.1 GB,
+not on the serving path).
+
+**To answer questions you need an index**, which is 2.5 GB and not in git:
 
 ```bash
-uvicorn dhvani.app:app                       # UI + POST /ask on :8000
-python -m dhvani.bench.benchmark --reps 3    # writes docs/results/*.json
-python -m dhvani.build.probe_dataset --langs hin ben tam   # dataset recon
+cp .env.example .env          # SARVAM_API_KEY, generation provider key
+set -a; . ./.env; set +a      # nothing loads .env for you — see below
+python -m dhvani.build.build_index --help   # the dials; ADR-018 and ADR-019 are the why
+python -m dhvani.build.build_index          # downloads the corpus subset, chunks, embeds, merges
+uvicorn dhvani.app:app                      # UI + POST /ask on :8000
+```
+
+Building is ~3.1 h of CPU embedding for 3.28M chunks across four languages, and
+ADR-019 lets you split it across processes (`--no-merge` per corpus, then one
+merge run) rather than holding one process open for all of it.
+
+Once an index exists:
+
+```bash
+python -m dhvani.bench.benchmark --reps 3    # writes docs/results/*.json — every number above
 python -m dhvani.bench.adversarial --generate   # guardrail catch rates
-python -m pytest tests/                      # 201 checks
+python -m dhvani.build.probe_dataset --langs hin ben tam   # dataset recon
 ```
 
 **What answers today:** speak or type → Sarvam STT → stage 4 (query rewrite) →

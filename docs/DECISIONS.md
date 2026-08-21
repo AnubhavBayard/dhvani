@@ -1909,3 +1909,47 @@ trade of availability for a day of deadline, taken with one day left.
 **What survives.** `deploy/space/` stays: its `Dockerfile` is the runtime
 description for any container host, and it is the ten-minute path back to a real
 box if the tunnel proves untenable during judging.
+
+---
+
+## ADR-037 — The repo fetches its own models; the file list comes from `embed.py`
+
+**Date:** 2026-08-21
+
+**Context.** The fresh-clone verification (21 Aug, ADR-036 having made it
+urgent — the dev box is now the deployment, so the clone is the only thing a
+judge can inspect) found that a clean checkout cannot embed. `models/` and
+`*.onnx` are gitignored, `dhvani/embed.py` hardcodes
+`models/multilingual-e5-small/onnx/model_qint8_avx512_vnni.onnx`, and **nothing
+in the repo downloaded it.** 11 tests failed with `NO_SUCHFILE` and every
+retrieval path was dead. The gap had been invisible for the whole project because
+the dev box acquired the models by hand on Day 2 and never lost them.
+
+**Options.** Commit the weights via git-lfs — 135 MB for the default encoder,
+4.1 GB with the benchmark alternates, and a clone every judge pays for. Ship
+them inside the index dataset repo — couples the encoder to a 2.5 GB artifact
+that is rebuilt on a different schedule. Or fetch them at setup.
+
+**Decision.** `python -m dhvani.build.fetch_models` — `snapshot_download` against
+the upstream repos, default encoder only (135 MB, measured 35 s on a fresh
+clone), `--all` for bge-m3 and LaBSE, `--check` to report what is missing and
+exit non-zero without downloading.
+
+**The part worth an ADR: the file list is derived from `MODELS`, not repeated.**
+`_declared()` strips the `models/<key>/` prefix off the `onnx`, `tokenizer` and
+`dense` paths in `embed.py` and uses the remainder as the repo-relative pattern,
+because the local layout mirrors the upstream layout. A second hand-maintained
+list is exactly how this breaks again: someone repoints an `onnx=` path, the
+fetcher keeps reporting success, and the clone is broken in the same silent way
+it was today. `tests/test_fetch_models.py` asserts the two lists cannot diverge.
+
+**One trap found while writing it.** bge-m3 keeps 2.27 GB in
+`onnx/model.onnx_data` beside a 725 KB graph. Fetching only `model.onnx` yields a
+file that exists, downloads fast, and loads as a *truncated* model rather than a
+missing one — a far worse failure than `NO_SUCHFILE`. Every `.onnx` pattern is
+globbed to catch the sidecar, and that is asserted rather than remembered.
+
+**Consequence.** A fresh clone is one minute from a green suite: clone, `uv venv`,
+install, `fetch_models`, `pytest` — **196 passed, 17 skipped**, the 17 being the
+tests that want a built index. `README.md`'s Quickstart is that transcript, and
+it stops being a `PLACEHOLDER` describing a shape it might take.

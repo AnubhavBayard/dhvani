@@ -163,7 +163,10 @@ not something to squeeze in at midnight on the 22nd.
       → HF Spaces (docker now PRO-only) → Azure for Students (ADR-034, written
       but never run) → tunnel. `deploy/vm/` is deleted; `deploy/space/` stays as
       the container-runtime description and the way back to a real box
-- [ ] fresh-clone build verification — nothing outside `task-2/`
+- [x] fresh-clone build verification — **run 21 Aug, and it found a blocker**:
+      isolation was clean (zero refs outside `task-2/`, no external URLs in
+      `web/`), but no model was fetchable and 11 tests died on `NO_SUCHFILE`.
+      Fixed by ADR-037; a clean clone is now **196 passed, 17 skipped**
 - [x] **the benchmark run of record** — the dev box *is* deploy hardware now, so
       `docs/results/2026-08-19-bench-stage7.json` (500 queries × 3, warmed,
       cache disabled) is the run of record rather than a proxy for it
@@ -1624,3 +1627,67 @@ deployment.
 **Remaining, and the list is short.** Fresh-clone build verification (nothing
 outside `task-2/`), then Day 8 in full: two videos, posts to three platforms,
 `docs/SUBMISSION.md`, the form. Deadline 22 Aug 23:59 IST.
+
+### 2026-08-21 — the fresh clone, and the thing it caught
+
+**The verification was run for real, in a directory that had never seen this
+project**, and it earned its place on the checklist. ADR-036 made it urgent
+rather than routine: with the dev box now the deployment, the clone is the only
+artifact a judge can inspect independently, and the dev box is the one machine
+whose state proves nothing.
+
+**What passed.** The isolation rule this repo has enforced since Day 1 holds:
+zero references outside `task-2/` in any `.py`, `.js`, `.css`, `.html`, `.sh` or
+`.json` — no `../`, no `task-1`, no absolute dev-box path. `web/` makes zero
+external requests, so ADR-008's no-build-step frontend is also a no-CDN one. The
+clone is 4 MB, `requirements.txt` resolves and installs clean on a bare 3.11
+venv, and `dhvani.app` imports with no index present.
+
+**What failed, and it was the whole project.** `python -m pytest tests/` on the
+clean clone: **6 failed, 175 passed, 19 skipped, 5 errors**, every one of them
+the same line —
+
+```
+NO_SUCHFILE : Load model from models/multilingual-e5-small/onnx/model_qint8_avx512_vnni.onnx failed
+```
+
+`models/` and `*.onnx` are gitignored, `embed.py` hardcodes those paths, and
+**nothing in the repo downloaded them.** A judge cloning this could not embed a
+single query. The gap survived the entire project because the dev box acquired
+the models by hand on Day 2 and never lost them — the class of bug that is
+invisible from the machine that has the files. This is the argument for the rule,
+not an argument against it: the check was on the list from Day 1 and it worked.
+
+**Fixed by ADR-037.** `python -m dhvani.build.fetch_models` — 135 MB, measured
+**35 s on the fresh clone** — with `--check` (report and exit non-zero, no
+download) and `--all` for the 4.1 GB benchmark alternates. The file list is
+derived from `MODELS` rather than duplicated, so the fetcher cannot drift from
+`embed.py` while still reporting success; `tests/test_fetch_models.py` asserts
+that. Clean clone after the fix: **196 passed, 17 skipped, 0 failed**, the 17
+being index-dependent tests, which skip rather than fail — that part was already
+right.
+
+**Two smaller things the same pass found.**
+
+`python -m dhvani.build.build_index --help` crashed:
+`ValueError: unsupported format character 't' (0x74) at index 373`. A help string
+read `2.5% throughput` and argparse `%`-interpolates help strings, so the first
+thing anyone types against an unfamiliar CLI raised. One character (`%%`), and
+`tests/test_cli_help.py` now renders `--help` for all four documented entry
+points, because nothing else would ever have caught it — the flag itself worked
+and the build was always run with explicit arguments.
+
+`README.md`'s Quickstart was still `PLACEHOLDER` ("filled in Phase 3 — shape it
+will take"), and both commands in it were wrong: `dhvani.build_index` and
+`dhvani.bench`, neither of which is a module. Real paths are
+`dhvani.build.build_index` and `dhvani.bench.benchmark`. It is now the actual
+transcript of the verified run, in order, with the ~3.1 h index build separated
+from the one-minute setup so a reader knows which one they are committing to.
+
+**Still open, and it is the user's to decide.** The index dataset repo
+`Anubhav100/dhvani-index` is private, so a fresh clone's only route to an index
+is the 3.1 h rebuild. Making it public turns that into a 2.5 GB pull. Not done
+here — it is an account setting, not a repo change.
+
+**Suite on the dev box: 213 passed.** The clone is 196 + 17 skipped because the
+skips are the index tests; the dev box has an index and runs them.

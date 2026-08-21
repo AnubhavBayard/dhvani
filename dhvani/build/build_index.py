@@ -524,7 +524,7 @@ def main() -> int:
                          "every shard it is handed. Measured at 2,000 rows x 4 "
                          "corpora x 4 workers, turning it off moved peak worker "
                          "2.63 -> 1.88 GB and the MemAvailable floor 0.44 -> "
-                         "4.22 GB for 2.5% throughput, with a byte-identical "
+                         "4.22 GB for 2.5%% throughput, with a byte-identical "
                          "index (ADR-018). Kept as a flag because it is that "
                          "measurement's ablation arm.")
     ap.add_argument("--no-merge", action="store_true",
