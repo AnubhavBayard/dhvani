@@ -1900,11 +1900,20 @@ hardware" comes out of `README.md` because it is no longer true.
 
 **Known risk, accepted and not mitigated in code.** A quick tunnel's hostname is
 issued per process: restart `cloudflared` and every URL already handed out is
-dead, and closing the laptop kills the origin. A named tunnel against a free
-Cloudflare account would pin the hostname across restarts and is the documented
-upgrade path — `cloudflared tunnel create`, one credentials file, same origin —
-but the laptop stays a single point of failure either way. This is a deliberate
-trade of availability for a day of deadline, taken with one day left.
+dead, and closing the laptop kills the origin. That matters because the URL goes
+on a submission form and into video descriptions days before a judge opens it.
+
+**Corrected 21 Aug, same day:** this ADR first named a Cloudflare *named* tunnel
+as the fix. That is wrong without a domain — `cloudflared tunnel route dns`
+attaches a tunnel to a DNS record in a zone you control, so with no domain on
+Cloudflare there is no stable hostname to route to. The working fix is ngrok's
+free-tier static domain (`ngrok http 8000 --url <name>.ngrok-free.app`); ngrok
+3.39.11 is installed on the box with its authtoken already configured, so this
+costs claiming the domain in the dashboard. Tailscale Funnel (`*.ts.net`, free,
+no card) is the alternative. **Not applied — the static domain has to be claimed
+on the account first, which is not a repo change.** The laptop stays a single
+point of failure either way; this is a deliberate trade of availability for a day
+of deadline.
 
 **What survives.** `deploy/space/` stays: its `Dockerfile` is the runtime
 description for any container host, and it is the ten-minute path back to a real

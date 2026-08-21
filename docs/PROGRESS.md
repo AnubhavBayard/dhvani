@@ -231,8 +231,13 @@ link is a Cloudflare quick tunnel off the dev box, and that is the submitted
 link** — real HTTPS, so the microphone works. **The open risk it carries is
 named in ADR-036 and not mitigated:** a quick tunnel's hostname is issued per
 process, so restarting `cloudflared` kills every URL already handed out, and
-closing the laptop kills the origin. A named tunnel against a free Cloudflare
-account pins the hostname; the single point of failure stays either way.
+closing the laptop kills the origin — and that URL goes on a form and into video
+descriptions days before a judge opens it. **The fix is ngrok's free static
+domain** (`ngrok http 8000 --url <name>.ngrok-free.app`); ngrok 3.39.11 is
+installed with its authtoken configured, so it costs claiming the domain in the
+dashboard. A Cloudflare *named* tunnel does **not** fix this without a domain you
+own — `cloudflared tunnel route dns` needs a zone. The single point of failure
+stays either way.
 
 One caveat on the closed keys: nothing in `dhvani/` loads `.env`. There is no
 `python-dotenv` dependency and none is wanted for one line — the env is sourced
@@ -1747,3 +1752,40 @@ reports, for this reason.
 phrase is in `README.md` and `docs/LATENCY.md` and implies a component someone
 could switch on. There is none in `dhvani/`. Both files now say so, and Day 7's
 "cache hit rate" line item is struck as void rather than left looking unfinished.
+
+### 2026-08-21 — session close: what is done, what is left, and one correction
+
+**Four commits pushed** (`a6da65e`, `cbc6f32`, `92398bd`, `a035526`): the ADR-035
+UI change, the ADR-036 VM deletion, the ADR-037 model fetcher, and the 15-arm
+ablation run. `origin/main` now matches the working tree, which matters more than
+usual today — the dev box is the deployment, so the pushed repo is the only
+artifact a judge can inspect independently.
+
+**One correction, recorded because it was wrong in a committed ADR.** ADR-036
+first said a Cloudflare *named* tunnel would pin the hostname across restarts.
+It will not, without a domain: `cloudflared tunnel route dns` attaches a tunnel
+to a DNS record in a zone you control. With no domain on Cloudflare there is
+nothing to route to. Fixed in ADR-036 and in the B4 epilogue above. The working
+fix is ngrok's free static domain — ngrok 3.39.11 is already installed on this
+box with its authtoken configured, so it costs claiming the domain in the
+dashboard, not an install.
+
+**Open decisions, both measured and neither applied.**
+
+1. **`ef_search` 64 → 256.** +0.0449 recall@10, +0.0382 MRR, and a *lower* P100
+   (31.59 → 24.83 ms) for +0.17 ms of P50. Applying it re-baselines every
+   boundary A number in `README.md` and `LATENCY.md`, so it is a change plus a
+   re-measure, not a one-liner.
+2. **Stage 4 off.** +0.0103 recall@10; no threshold setting beats leaving the
+   rewriter alone. Same shape of decision as ADR-030's two guardrail layers.
+
+**Left before submission.** The live URL on a stable hostname; Video 1 (90 s,
+team and process) and Video 2 (end-to-end demo); both posted to Instagram, X and
+LinkedIn with `#RAGInGoa` and ≥1 public Instagram post; `docs/SUBMISSION.md`,
+which does not exist yet and should hold the live URL in exactly one place so a
+hostname change is one edit rather than three posts; then the form. Deadline
+**22 Aug 23:59 IST**, with the buffer day being the deadline day.
+
+**Not blockers, correctly labelled.** The remaining `PLACEHOLDER`s are tier rows
+(tiering is stage 5–6 work, unbuilt), the `s1_passage` chunking row, and stages
+5/6 themselves. The cache-hit-rate line is void, not pending: there is no cache.
