@@ -6,7 +6,8 @@ Speak a question in Hindi, Tamil, Bengali (or English). It transcribes, retrieve
 grounded passages from `ai4bharat/MSMARCO-XI`, and answers with citations — or
 refuses, on purpose, when the corpus can't answer.
 
-**Live link:** `TBD`
+**Live link:** [`docs/SUBMISSION.md`](docs/SUBMISSION.md) — written down in
+exactly one place, so a hostname change is one edit and not seven.
 
 ---
 
