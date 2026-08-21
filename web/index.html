@@ -28,7 +28,7 @@
   <form id="ask">
     <label for="q" class="visually-hidden" hidden>Your question</label>
     <input id="q" type="text" autocomplete="off" required maxlength="500"
-           placeholder="गोवा में मौसम कैसा है">
+           placeholder="Ask a question in Hindi, Bengali, Tamil or English">
     <button type="submit" id="go">Ask</button>
   </form>
 
@@ -36,8 +36,11 @@
 
   <p class="corrections" id="corrections" hidden></p>
 
-  <ul class="stages" id="stages" aria-live="polite" aria-label="Pipeline stages"></ul>
-  <p class="boundary" id="boundary" hidden></p>
+  <details class="details" id="details" hidden>
+    <summary>How this answer was found</summary>
+    <ul class="stages" id="stages" aria-label="Pipeline stages"></ul>
+    <p class="boundary" id="boundary" hidden></p>
+  </details>
 
   <div class="answer" id="answer" aria-live="polite"></div>
   <div class="refusal" id="refusal" hidden role="status"></div>

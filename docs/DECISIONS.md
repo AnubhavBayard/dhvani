@@ -1796,3 +1796,63 @@ Central India is one hop from Sarvam rather than a Pacific crossing.
 **Known risk.** Student credit expires and the box stops. That is after the
 judging window, and the mitigation is documented rather than automated: the same
 bootstrap runs anywhere in about ten minutes.
+
+---
+
+## ADR-035 — The page answers the question; the instrumentation is one click away
+
+**Date:** 2026-08-21
+
+**Context.** The UI shipped 19 Aug rendered everything the SSE stream carries,
+flat, at full volume: the stage bar with raw server stage ids (`stage3_embed`,
+`guardrail_l1`), the boundary-A statement with its full covers/not-yet-included
+inventory, `ttft`, wall clock, mean overlap, per-source `chunk_id · lang ·
+strategy · tokens · score`, the STT provider and its language confidence, and —
+on a refusal — the threshold that produced it (`2/2 sentences below t_low 0.05`).
+
+That was a deliberate choice and it was defensible for one audience. **It was
+tested against the other audience on 21 Aug and failed**: asked "How's the
+weather here", the page returned a correct refusal buried under four lines of
+internal vocabulary and six passages tagged with build metadata. The reaction was
+"why am I seeing all this", which is the right reaction. A first-time user cannot
+tell a refusal from an error when both arrive as a wall of jargon.
+
+**Options.**
+1. Leave it. The judge is the audience; the user is a prop in a demo video.
+2. Delete the instrumentation. Ship the answer and the citations, nothing else.
+3. Default to the answer, keep everything behind a native `<details>` disclosure.
+
+**Decision.** Option 3, plus a vocabulary pass on what remains visible.
+
+- Stage bar and boundary readout move inside `<details>` titled *How this answer
+  was found*, closed by default. `<details>` is native, needs no JS, and is
+  keyboard- and screen-reader-operable without work (ADR-008's no-build-step
+  rule survives intact).
+- Stage ids get reader-facing labels — `stage3_retrieve` renders as *search
+  corpus*, `stage7_context` as *pick passages*, `guardrail_l1` as *safety check*.
+  The map lives in `web/app.js`; an unmapped id falls through to its raw name, so
+  a new stage appears rather than disappears.
+- The boundary number survives with a sentence a reader can parse — *Searched in
+  49.09 ms · to find and select the passages, before the answer is written* —
+  instead of the covers/not-yet-included inventory. The claim is unchanged; only
+  the audience is.
+- Deleted outright, as build metadata no reader has a use for: per-source
+  `chunk_id · strategy · tokens · score`, the STT provider/confidence/latency
+  line, `ttft`, and the refusal's threshold line. `README.md` and
+  `docs/results/*.json` remain the place where those numbers are argued.
+- The chat placeholder becomes English (*Ask a question in Hindi, Bengali, Tamil
+  or English*). A Devanagari placeholder read as a broken input to anyone who
+  does not read Devanagari — the field accepts all four languages either way.
+
+**Consequences.** The demo video now needs one extra move: the disclosure has to
+be opened on camera, since the stage bar is what success criterion 5 is filmed
+around. `DEMO_SCRIPT.md` updated accordingly. Nothing about what is measured or
+claimed changes — this is a rendering decision, not a measurement one, and no
+number in any document moves.
+
+**What this does not fix.** The 21 Aug query took 3.1 s to refuse because it
+generated first: L3, the confidence floor that would have refused it in 49 ms,
+ships switched off (ADR-030), so a retrieval scoring at the RRF floor still
+reaches the model and is caught by L4 at the output instead. Correct behaviour,
+slow route. Re-opening L3 needs the calibration ADR-030 could not produce, and
+that is not a 21 Aug job.

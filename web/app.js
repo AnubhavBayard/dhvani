@@ -16,7 +16,7 @@ const mic = $("mic"), micLabel = $("mic-label"), micNote = $("mic-note");
 const els = {
   stages: $("stages"), boundary: $("boundary"), answer: $("answer"),
   refusal: $("refusal"), sources: $("sources"), list: $("source-list"),
-  corrections: $("corrections"), heard: $("heard"),
+  corrections: $("corrections"), heard: $("heard"), details: $("details"),
 };
 
 /* The server sends its own copy with every refusal (guardrails/checks.py), so
@@ -54,13 +54,6 @@ function micState(recording, note) {
 function showHeard(t) {
   els.heard.hidden = false;
   els.heard.replaceChildren(t.text);
-  const small = document.createElement("small");
-  const bits = [`heard via ${t.provider}`];
-  if (t.lang) bits.push(t.lang);
-  if (t.confidence != null) bits.push(`language confidence ${t.confidence.toFixed(2)}`);
-  bits.push(`${t.latency_ms} ms to transcribe`);
-  small.textContent = bits.join(" · ");
-  els.heard.append(small);
 }
 
 async function sendAudio(blob) {
@@ -123,17 +116,31 @@ function reset() {
   els.answer.textContent = "";
   sentence = null;
   els.boundary.hidden = els.refusal.hidden = els.sources.hidden = true;
+  els.details.hidden = true;
   els.corrections.hidden = true;
 }
 
+/* Internal stage ids are the server's vocabulary, not the reader's. */
+const STAGE_LABELS = {
+  guardrail_l1: "safety check", guardrail_l2: "scope check",
+  guardrail_l3: "confidence check", stage4_loose: "query cleanup",
+  stage4_rewrite: "query cleanup", stage3_embed: "understand question",
+  stage3_retrieve: "search corpus", stage3_fuse: "merge results",
+  stage3_rescore: "rescore", stage3_signals: "confidence",
+  stage5_expansion: "expand query", stage6_rerank: "rerank",
+  stage7_context: "pick passages", generation: "write answer",
+  harness: "overhead",
+};
+
 function renderStages(stages) {
+  els.details.hidden = false;
   els.stages.replaceChildren(...stages.map((s) => {
     const li = document.createElement("li");
     li.className = "stage";
     li.dataset.status = s.status || (s.enabled === false ? "off" : "ok");
     // Status as a word, not only a colour, and the number next to the name it
     // belongs to — a bar of coloured boxes is not a measurement.
-    li.append(s.stage.replace(/_/g, " "), " ");
+    li.append(STAGE_LABELS[s.stage] || s.stage.replace(/_/g, " "), " ");
     const b = document.createElement("b");
     b.textContent = li.dataset.status === "off"
       ? "off" : `${s.duration_ms.toFixed(2)} ms`;
@@ -150,17 +157,14 @@ function renderBoundary(ev) {
   const small = document.createElement("small");
   // The boundary statement travels with the number. A latency figure without
   // its boundary is the thing README.md exists to stop.
-  small.textContent =
-    `boundary A covers ${ev.boundary_a_covers.join(", ")} · ` +
-    `not yet included: ${ev.not_yet_in_boundary_a.join(", ")} · ` +
-    `stages sum to ${ev.summed_ms.toFixed(2)} ms, the rest is harness`;
-  els.boundary.append("boundary A ", b, small);
+  small.textContent = "to find and select the passages, before the answer is written";
+  els.boundary.append("Searched in ", b, small);
 }
 
 function renderCorrections(ev) {
   if (!ev.corrections || !ev.corrections.length) return;
   els.corrections.hidden = false;
-  els.corrections.replaceChildren("stage 4 repaired: ");
+  els.corrections.replaceChildren("corrected: ");
   ev.corrections.forEach(([before, after], i) => {
     const del = document.createElement("del"), ins = document.createElement("ins");
     del.textContent = before; ins.textContent = after;
@@ -180,11 +184,7 @@ function renderSources(chunks) {
     const body = document.createElement("div");
     const p = document.createElement("p");
     p.textContent = c.text;
-    const meta = document.createElement("p");
-    meta.className = "meta";
-    meta.textContent = `${c.chunk_id} · ${c.lang} · ${c.strategy} · ` +
-                       `${c.tokens} tokens · score ${c.score.toFixed(4)}`;
-    body.append(p, meta);
+    body.append(p);
     wrap.append(n, body);
     return wrap;
   }));
@@ -196,9 +196,6 @@ function refuse(kind, reason, copy) {
   // answer with the hallucinations removed is still a broken answer.
   if (kind === "not_grounded") els.answer.textContent = "";
   els.refusal.replaceChildren(copy || REFUSAL_COPY[kind] || "Refused.");
-  const small = document.createElement("small");
-  small.textContent = reason || "";
-  els.refusal.append(small);
 }
 
 const HANDLERS = {
@@ -234,16 +231,12 @@ const HANDLERS = {
     renderStages(ev.stages);
     const small = els.boundary.querySelector("small");
     if (!small) return;
+    const bits = [`answered in ${(ev.wall_clock_ms / 1000).toFixed(1)} s`];
     if (ev.grounding && ev.grounding.judged) {
       const g = ev.grounding;
-      small.textContent =
-        `grounded ${g.grounded}/${g.judged} sentences · ` +
-        `overlap ${g.mean_overlap.toFixed(2)} · ` + small.textContent;
+      bits.push(`${g.grounded} of ${g.judged} sentences matched to sources`);
     }
-    // B and C are reported, never targeted (README, boundary table).
-    small.textContent =
-      `ttft ${ev.ttft_ms === null ? "n/a" : ev.ttft_ms.toFixed(0) + " ms"} · ` +
-      `wall clock ${ev.wall_clock_ms.toFixed(0)} ms · ` + small.textContent;
+    small.textContent = bits.join(" · ");
   },
 };
 

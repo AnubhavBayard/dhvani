@@ -52,7 +52,7 @@ browser                         mumbai vm (single process)              external
       │                       guardrails: output layer
       │                       (citation overlap, NLI on ambiguous)
       ▼
-  render: transcript, stage bar, answer, citations, timings
+  render: transcript, answer, citations; stage bar + timings behind a disclosure
 ```
 
 ## Data flow, microphone to rendered answer
@@ -77,7 +77,9 @@ browser                         mumbai vm (single process)              external
    arrives; local NLI cross-encoder only where overlap is ambiguous.
 9. **Render.** SSE carries tokens, the per-stage timing map, and citation
    anchors. UI paints the stage bar as events land, so the pipeline is visible
-   rather than hidden behind a spinner.
+   rather than hidden behind a spinner — inside a disclosure closed by default,
+   so the answer is what a first-time reader sees and the instrumentation is one
+   click away rather than in the way (ADR-035).
 
 ## Region choice
 

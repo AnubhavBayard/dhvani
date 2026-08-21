@@ -144,11 +144,6 @@ button[disabled] { opacity: 0.55; cursor: progress; }
   text-align: center; height: 1.8em;
 }
 .source p { margin: 0; font: 400 18px/1.45 var(--font-indic); color: var(--cream); }
-.source .meta {
-  font: 600 14px/1.4 var(--font-ui); color: rgba(255, 251, 232, 0.7);
-  letter-spacing: 0; margin-top: 0.3rem;
-}
-
 .corrections { margin: 1rem 0 0; font: 600 16px/1.4 var(--font-ui); color: var(--cream); }
 .corrections ins { text-decoration: none; color: var(--yellow); }
 .corrections del { opacity: 0.65; }
@@ -206,3 +201,13 @@ button[disabled] { opacity: 0.55; cursor: progress; }
    only ever be a fill — DESIGN_SYSTEM.md contrast audit). */
 #answer .g-ambiguous { text-decoration: underline 1px dashed var(--yellow); text-underline-offset: 3px; }
 #answer .g-ungrounded { text-decoration: underline 1px dotted var(--yellow); text-underline-offset: 3px; opacity: .8; }
+
+.details { margin: 1.25rem 0; }
+.details summary {
+  cursor: pointer;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.details summary:hover { opacity: 1; }

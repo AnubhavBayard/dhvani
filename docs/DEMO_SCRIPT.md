@@ -26,7 +26,7 @@ Evidence: [`results/2026-08-19-demo-script.json`](results/2026-08-19-demo-script
 
 An `ambiguous` mark is not a defect to avoid — it is L4 grading its own sentence in public, and worth one line of narration if the take allows.
 
-What to point at, in order: the stage bar filling, the boundary-A readout, the citation numbers in the answer, then one citation clicked open. That is success criterion 5 in four moves.
+What to point at, in order: **open *How this answer was found*** — the stage bar is behind that disclosure since ADR-035, closed by default — then the stage bar filling, the boundary-A readout, the citation numbers in the answer, and one citation clicked open. That is success criterion 5 in five moves. Open the disclosure *before* asking, so the bar fills on camera instead of appearing already full.
 
 ### The answers they gave
 
@@ -108,6 +108,6 @@ Not failures — "demonstrably knows when not to answer" is scored. Injection an
 | R4 | ಜಿರಾಫೆಯ ನಾಲಿಗೆಯ ಬಣ್ಣ ಯಾವುದು | `unsupported_language` | that sounded like kannada. right now the index covers english, hindi, bengali and tamil. |
 | R5 | এলআরএম কী বোঝায়? | `not_grounded` | i drafted an answer but couldn't tie it back to the retrieved passages, so i'm not showing it. here's what was retrieved. |
 
-The injection line is the one to spend time on: it refuses **before retrieval runs**, so the stage bar shows one green guardrail cell and nothing else — the cheapest possible refusal, visible as such.
+The injection line is the one to spend time on: it refuses **before retrieval runs**, so the stage bar — disclosure open — shows one green guardrail cell and nothing else — the cheapest possible refusal, visible as such.
 
 **No off-topic line survived the repeats, and that is the true state of the system rather than a gap in this list.** Off-topic questions are the category L2 was built to catch, and ADR-030 switched L2 off because a retrieval score does not separate them on this corpus (AUC 0.581). What is left to catch them is the model's own judgement, which is sampled — "who won the cricket world cup in 2026" refused, answered, then refused again across three asks. Do not put one in the video: the take is a coin flip. If asked about it live, the honest answer is the interesting one, and it is written up in `GUARDRAILS.md`.

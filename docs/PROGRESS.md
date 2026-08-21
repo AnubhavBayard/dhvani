@@ -4,7 +4,7 @@ Source of truth for project state. Updated every session — the change log at t
 bottom is appended to, never rewritten.
 
 **Deadline:** 22 Aug 2026, 11:59 pm IST. **No resubmissions.**
-**Today:** 19 Aug 2026. **Days left:** 3.
+**Today:** 21 Aug 2026. **Days left:** 1, plus the buffer day.
 
 ## Status
 
@@ -142,7 +142,12 @@ not something to squeeze in at midnight on the 22nd.
 - [x] output guardrails on the stream — **done 19 Aug**, `dhvani/guardrails/`,
       per-sentence marks in the UI (ADR-031). Prompt caching **not started**
 - [x] UI: stage bar, answer + citations, latency readout with its boundary
-      statement, refusal states — `web/`, vanilla, no build step
+      statement, refusal states — `web/`, vanilla, no build step. **Reworked
+      21 Aug (ADR-035): the answer is the page, the instrumentation sits behind
+      a `<details>` closed by default**, stage ids render as reader-facing
+      labels, and build metadata (`chunk_id`/`strategy`/`tokens`/`score`,
+      `ttft`, STT provider + confidence, the refusal's `t_low`) is gone from the
+      page. Placeholder is English
 - [x] mic hero + transcript — **done 19 Aug**, tap-to-record, transcript shown
       and editable before it is asked
 - [x] accessibility pass on what exists — focus ring never removed, status
@@ -198,20 +203,22 @@ device that has never seen this project.
 | B2 | ~~Generation provider undecided~~ → **resolved: Sarvam** (ADR-009) | closed 14 Aug | signup only; ~₹29 per benchmark run against the same ₹100 credits |
 | B3 | ~~Team roster for the social-posting checklist~~ → **resolved: solo** | closed 19 Aug | one person posts to Instagram, X and LinkedIn; ≥1 Instagram post public, every post tagged `#RAGInGoa` |
 | B5 | ~~Sarvam auth header shape unverified~~ → **CLOSED 19 Aug: Bearer works, the second header is ignored not rejected** (ADR-028) | closed 19 Aug | the generation client sends **both** `Authorization: Bearer` and `api-subscription-key` because no key exists to test which one the OpenAI-compatible route wants. Harmless if one is ignored; resolves itself the moment B1 does |
-| B4 | **OPEN, but no longer blocking — $44/mo spend approval, now a fallback budget.** The *host* was decided 14 Aug (Lightsail 8 GB Mumbai, ADR-010); the money was not, and the row said "resolved" until 19 Aug — a decision being made is not the same as a blocker being cleared. **Downgraded 19 Aug by ADR-033:** the server holds 2.96 GB, not 7.42 GB, so it fits Oracle Cloud Always Free (A1, 24 GB, `ap-mumbai-1` — the same region ADR-003 argues for) at $0. Paying stopped being the only way to get a live link. | 14 Aug | nothing, to proceed. A decision by 20 Aug on which host: **Oracle free (primary)**, Lightsail (~$7–15 for the judging window, billed hourly to a monthly cap) if Oracle has no A1 capacity in Mumbai. A live link itself is **not** optional — submission checklist and success criterion 5. |
+| B4 | **CLOSED as void, 19 Aug (ADR-034) — no money was ever spent.** Azure for Students released $100 of credit against a college email with no card, so the host is a B2ms in Central India and the $44/mo question never had to be answered. The rest of this row is the history that got there: **OPEN, but no longer blocking — $44/mo spend approval, now a fallback budget.** The *host* was decided 14 Aug (Lightsail 8 GB Mumbai, ADR-010); the money was not, and the row said "resolved" until 19 Aug — a decision being made is not the same as a blocker being cleared. **Downgraded 19 Aug by ADR-033:** the server holds 2.96 GB, not 7.42 GB, so it fits Oracle Cloud Always Free (A1, 24 GB, `ap-mumbai-1` — the same region ADR-003 argues for) at $0. Paying stopped being the only way to get a live link. | 14 Aug | nothing. Host decided 19 Aug (ADR-034): **Azure for Students, B2ms, Central India**. Oracle Always Free and HF Spaces were both ruled out that day — Oracle wants a card for identity, HF now requires PRO for docker Spaces. Superseded plan, kept for the record: **Oracle free (primary)**, Lightsail (~$7–15 for the judging window, billed hourly to a monthly cap) if Oracle has no A1 capacity in Mumbai. A live link itself is **not** optional — submission checklist and success criterion 5. |
 
-**Nothing is blocking.** B1, B2, B3 and B5 all closed on 19 Aug. Both
+**Nothing is blocking.** B1, B2, B3, B4 and B5 all closed on 19 Aug. Both
 `SARVAM_API_KEY` and `GROQ_API_KEY` are in `.env` and verified against the live
-APIs, so the pipeline answers end to end. **B4 is open but no longer a blocker**:
-it was "approve $44/mo or there is no live link", and ADR-033's 2.96 GB footprint
-turned it into "pick a host". Oracle Always Free covers the whole system in
-Mumbai at $0; the $44 stays approved-if-needed for the case where Oracle has no
-A1 capacity, and at hourly billing the real exposure for the judging window is
-~$7–15.
+APIs, so the pipeline answers end to end. **B4 closed as void**: it was "approve
+$44/mo or there is no live link", ADR-033's 2.96 GB footprint turned it into
+"pick a host", and ADR-034 picked one that costs a college email — Azure for
+Students, B2ms, Central India. No money was spent and none is needed.
 
 The requirement B4 was guarding has not moved. A live link is on the submission
 checklist and is success criterion 5 — a judge has to open a URL, speak, and see
-stages, timings and a citation without touching the repo.
+stages, timings and a citation without touching the repo. **As of 21 Aug that
+link exists only as a Cloudflare quick tunnel off the dev box** — real HTTPS, so
+the microphone works, but the hostname changes on every restart and the box is a
+laptop. It is a stand-in for demo purposes, not the submitted link; the Azure VM
+is still Day 7's job.
 
 One caveat on the closed keys: nothing in `dhvani/` loads `.env`. There is no
 `python-dotenv` dependency and none is wanted for one line — the env is sourced
@@ -1491,3 +1498,70 @@ of narration rather than a retake.
 **Tests: 205, all passing** (203 before).
 
 **Next.** Oracle A1 provisioning (yours), then deploy tooling.
+
+### 2026-08-21 — a link a stranger can open, and a page that answers before it explains
+
+**A live URL exists for the first time.** Not the Azure box — a Cloudflare quick
+tunnel off the dev box, standing in until Day 7's VM is up. `cloudflared` was not
+installed; the whole setup was one binary download and one command against the
+uvicorn already listening on `127.0.0.1:8000`, about five minutes end to end. It
+serves real HTTPS on a `trycloudflare.com` hostname, which is the part that
+matters: `getUserMedia` only exists in a secure context, so a demo over
+`http://<ip>` has no microphone at all.
+
+Verified through the tunnel, not just locally: `/` returns 200, `POST /ask`
+streams SSE, and the first ask measured **boundary A 55.74 ms** — cold, on the
+dev box, against the warmed 13.50 ms in this file. That gap is the cold read, not
+a regression, and neither number is the benchmark run of record, which still
+belongs to deploy hardware on Day 7.
+
+What the tunnel is not: the hostname changes on every restart, and it dies with
+the laptop. It goes in no document as the submitted link.
+
+**Then the UI was used by someone who had not built it, and that went badly.**
+The query was *"How's the weather here and specify the place and time too"*. The
+system did the right thing — the corpus is MS MARCO-XI, it has no live weather
+and no idea where "here" is, retrieval came back at the RRF floor (every score
+0.0164: Bengali weather-in-Quito, wolves, Munich, a Windows how-to), generation
+wrote two sentences anyway, and L4 tied 0 of 2 back to a passage and suppressed
+the answer. Correct refusal, correct reason.
+
+It was unreadable. Above the refusal sat `ttft 987 ms · wall clock 3152 ms ·
+grounded 0/2 sentences · overlap 0.00 · boundary A covers guardrail_l1,
+stage4_rewrite, stage3_embed, …`, the refusal itself carried `2/2 sentences below
+t_low 0.05`, and each of the six passages was tagged
+`ben_Beng:1018059:7:s2_sentence_window:1 · ben_Beng · s2_sentence_window · 39
+tokens · score 0.0164`. The question that came back — "why am I seeing all this"
+— is the correct question, and it had no good answer.
+
+**ADR-035: the answer is the page; the instrumentation is one click away.** Stage
+bar and boundary readout moved inside a `<details>` titled *How this answer was
+found*, closed by default — native, no JS, keyboard- and screen-reader-operable,
+ADR-008's no-build-step rule intact. Stage ids render as labels a reader can use
+(`stage3_retrieve` → *search corpus*, `stage7_context` → *pick passages*,
+`guardrail_l1` → *safety check*), with unmapped ids falling through to their raw
+name so a new stage appears rather than vanishes. Deleted from the page
+entirely: per-source `chunk_id`/`strategy`/`tokens`/`score`, the STT
+provider/confidence/latency line, `ttft`, and the refusal's threshold. The
+boundary claim survives in English — *Searched in 49.09 ms · to find and select
+the passages, before the answer is written*. Placeholder is English now too; a
+Devanagari placeholder reads as a broken field to anyone who does not read
+Devanagari, and the input took all four languages either way.
+
+No measurement changed. This is a rendering decision, and every number it hid is
+still argued in `README.md` and `docs/results/*.json`.
+
+**One thing this does not fix, recorded rather than solved.** That refusal took
+3.1 s because it generated first. L3 — the confidence floor that would have
+refused a retrieval scoring at the RRF floor in 49 ms — ships switched off
+(ADR-030), because its calibration said the signal does not separate on this
+corpus. So the slow route through generation to L4 is currently the only route.
+Correct, and slower than it needs to be.
+
+**Also today.** The B4 row in this file still read "Oracle free (primary),
+Lightsail fallback" two days after ADR-034 voided it. Fixed. A stale blocker row
+is worse than no row: it describes a decision that was already made differently.
+
+**Next.** Day 7's actual deploy — Azure VM up, fresh-clone verification, then the
+benchmark run of record on deploy hardware. The tunnel is a bridge, not a
+destination.
