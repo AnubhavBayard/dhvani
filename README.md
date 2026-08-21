@@ -38,8 +38,9 @@ and contributes 0 ms to A. See `docs/LATENCY.md` for the per-stage budget and
 ## Headline results
 
 Per project rule, no number appears in any doc unless it came from a run we
-executed. Everything still marked `PLACEHOLDER` is waiting on the run of record
-on deploy hardware.
+executed. Everything still marked `PLACEHOLDER` is waiting on stages that are not built
+yet, not on hardware — the dev box is the deployment (ADR-036), so the numbers
+below were measured on the machine that serves the live link.
 
 Boundary A, per tier, cache disabled. **Tier rows stay `PLACEHOLDER` because
 tiering is not built** — `t_high`/`t_low`/`t_agree` are swept from the eval set,
@@ -50,8 +51,9 @@ the blended span over the stages that exist:
 queries x 3 reps, warmed, cache disabled, 16-core dev box:
 **P50 13.50 ms · P70 15.08 ms · P95 18.38 ms · P100 33.44 ms**
 ([`docs/results/2026-08-19-bench-stage7.json`](docs/results/2026-08-19-bench-stage7.json)).
-This is a **floor**, not a target comparison: stages 5 and 6 are not in it, and
-it has not run on deploy hardware. See `docs/LATENCY.md` for the per-stage table,
+This is a **floor**, not a target comparison: stages 5 and 6 are not in it. It
+*is* the run of record — the 16-core dev box is the deploy hardware (ADR-036).
+See `docs/LATENCY.md` for the per-stage table,
 including the two budgets it currently overruns.
 
 | Tier | Share of queries | P50 | P70 | P100 |

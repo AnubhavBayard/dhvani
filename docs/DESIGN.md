@@ -87,8 +87,11 @@ This is an architecture decision, not deployment trivia. The pipeline's fixed
 cost is dominated by where the compute sits relative to the user and to Sarvam.
 
 Constraints:
-- Sarvam AI is India-hosted. From a Mumbai VM the RTT is a LAN-ish hop; from
-  US-east it is a 230–280 ms round trip **each way through the audio stream**.
+- Sarvam AI is India-hosted. From anywhere in India the RTT is a LAN-ish hop;
+  from US-east it is a 230–280 ms round trip **each way through the audio
+  stream**. The argument is about the country, not the datacenter, which is why
+  it survives ADR-036 moving the host onto a box in India rather than a VM in
+  one.
 - Groq and Cerebras are US-hosted. Fast generation, far away.
 - Judges are in India.
 
@@ -127,7 +130,7 @@ Each row: what we picked, what we rejected, and the reason in latency or risk te
 | Generation | `OPEN` | — | see below |
 | Frontend | vanilla JS + CSS, no build step | Next.js, React | task-1 is Next.js and that was right for it. Here the pitch is latency; shipping a hydration bundle in front of a 40 ms retrieval path undercuts the entire submission. Target < 50 KB gzipped total. |
 | Transport | WebSocket (audio up), SSE (answer down) | polling, WS both ways | SSE is one-directional and simpler for token streaming; the browser reconnect story is free |
-| Deployment | single VM, Mumbai | serverless | the index must stay pinned in RAM. Cold-start a serverless function and you pay index load on the request that measures P100. |
+| Deployment | single long-lived process, India | serverless | the index must stay pinned in RAM. Cold-start a serverless function and you pay index load on the request that measures P100. Shipped as the dev box behind a Cloudflare tunnel (ADR-036), which satisfies both constraints — one process, in India — at the cost of laptop uptime. |
 
 ## Interface contracts
 
@@ -237,11 +240,13 @@ strictly: load index → load models → warm models with throwaway queries → 
 and warm HTTP/2 connections to Sarvam and the generation provider → *only then*
 bind the port. Nothing is lazy-loaded, so no user request ever pays initialization.
 
-**Host: AWS Lightsail 8 GB, Mumbai `ap-south-1`, $44/mo** — ADR-010. DigitalOcean
-was rejected because it has no Mumbai region, only Bangalore, and the whole
-placement argument is about sitting next to Sarvam. Index sizing arithmetic puts
-1M chunks at ~0.92 GB int8, so 8 GB is generous; resize to 16 GB ($84/mo) if
-Phase 2 measures otherwise.
+**Host: the 16-core dev box, in India, behind a Cloudflare tunnel, $0** —
+ADR-036, superseding ADR-010's Lightsail and ADR-034's Azure VM. The tunnel
+terminates TLS on a `trycloudflare.com` hostname, which is what the microphone
+actually needs (`getUserMedia` is secure-context only), and the placement
+argument survives because it was always about the country, not the datacenter.
+The server holds 2.96 GB after ADR-033, so sizing is not the constraint; uptime
+is, and the accepted risk is written down in ADR-036.
 
 **Generation: Sarvam** — ADR-009. India-hosted, same vendor as STT (one key, one
 pool to warm, one circuit breaker), and it publishes a cached-input rate, which
@@ -250,4 +255,6 @@ configured as the secondary provider; its free tier would cover a benchmark run
 at zero cost if credits run out, at the price of a slower boundary C.
 
 Both are signups against free credits, not purchases. Estimated total spend for
-the project: ~₹50 of Sarvam's ₹100 signup credits, plus $44 for one month of VM.
+the project: ~₹50 of Sarvam's ₹100 signup credits. Hosting is $0 — ADR-036 puts
+the deployment on the dev box behind a Cloudflare tunnel, so the $44/mo VM line
+that stood here is void.

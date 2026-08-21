@@ -244,9 +244,10 @@ single-query encodes over real Hindi validation queries
 |---|---|---|---|
 | query embed | **2.86 ms** | 3.96 ms | 4.99 ms |
 
-That is 5 ms under budget, on a dev box rather than the deploy box — same thread
-count, faster cores, so it is an optimistic bound and not the number of record.
-The budget line stays at 8 ms until Day 7 re-measures it on Lightsail. The
+That is 5 ms under budget, at the deploy thread count on the dev box — which
+ADR-036 makes the deploy box, so it is the number of record rather than an
+optimistic bound. The budget line stays at 8 ms regardless: the headroom is
+measured, and moving a budget to match one run hides the next regression. The
 headroom is noted because stage 6 (`TARGET 60 ms`) is the stage that will need
 it.
 

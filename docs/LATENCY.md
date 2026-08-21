@@ -55,11 +55,11 @@ One row of that table now has a number behind it.
 
 Evidence: [`docs/results/2026-08-15-embed-bench.json`](results/2026-08-15-embed-bench.json).
 
-**This is not the number of record and the budget does not move yet.** The thread
-count matches the deploy box (2 vCPU, ADR-010); the cores do not — this ran on a
-16-core dev box. Treat it as an optimistic bound that says the 8 ms budget is not
-in danger, and re-measure on Lightsail on Day 7 before anything in the total
-column changes.
+**The budget does not move yet, but this is now the number of record.** It ran
+at 2 ONNX threads on the 16-core dev box, and ADR-036 makes that box the
+deployment — so the machine that measured this is the machine that serves the
+live link. What the figure still does not cover is a warm cache and stages 5/6;
+treat the 8 ms budget as met, not as re-derived.
 
 L1 input guardrails are absent from the table because they run concurrently with
 stages 4 and 3 and finish inside their shadow. If L1 ever exceeds stage 3's
@@ -73,7 +73,8 @@ network. It is reported as its own tier with its own percentiles and hit rate.
 
 Evidence: [`docs/results/2026-08-19-bench-stage7.json`](results/2026-08-19-bench-stage7.json)
 — 500 queries x 3 reps, warmed (50 throwaway queries), cache disabled, 2 ONNX
-threads, 16-core dev box. Not the number of record; that is the Lightsail run.
+threads, 16-core dev box — which is the deploy hardware (ADR-036), so this is
+the number of record.
 
 Boundary A now covers stages **4, 3 and 7** plus the harness. Stages 5 and 6 are
 deferred (ADR-027) and **absent from the span**, so this remains a *floor* on the
@@ -127,8 +128,9 @@ queries after a deploy, not to the percentile.
 
 So the P100 is not paging — it was 20.1 ms when nothing was mapped and it is
 20.4 ms now that everything is. Not warm-up either. What is left is the row-group
-layout and `parent_text` for the widest S2 windows, unmeasured. The run of record
-is still Day 7 on deploy hardware.
+layout and `parent_text` for the widest S2 windows, unmeasured — on the same box
+that now serves the deployment (ADR-036), so there is no later hardware to blame
+it on.
 
 **Both overruns are affordable and neither is hidden.** Boundary A sits at
 13.50 ms P50 against a 200 ms target — **186 ms of headroom** — so a stage that

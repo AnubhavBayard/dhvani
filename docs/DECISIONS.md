@@ -357,6 +357,9 @@ at zero cost if credits run out, at the price of a slower boundary C.
 
 **Date:** 2026-08-14
 
+**Superseded by ADR-036 (21 Aug), via ADR-034. Kept for the reasoning, not the
+host.**
+
 **Context.** ADR-004 pins the index in process RAM, so this needs a real VM, and
 ADR-003 puts co-location with Sarvam ahead of everything else.
 
@@ -1756,6 +1759,9 @@ that had never been checked against a running process.
 
 **Date:** 2026-08-19
 
+**Superseded by ADR-036 (21 Aug). The VM was written and never run; `deploy/vm/`
+is deleted. The HTTPS argument below survives — the tunnel is how it is met.**
+
 **Context.** ADR-010 chose Lightsail 8 GB in Mumbai at $44/mo and left the money
 as blocker B4. Two facts arrived on 19 Aug that the ADR could not have known:
 
@@ -1856,3 +1862,50 @@ ships switched off (ADR-030), so a retrieval scoring at the RRF floor still
 reaches the model and is caught by L4 at the output instead. Correct behaviour,
 slow route. Re-opening L3 needs the calibration ADR-030 could not produce, and
 that is not a 21 Aug job.
+
+---
+
+## ADR-036 — The Cloudflare tunnel is the deployment, not a stand-in for one
+
+**Date:** 2026-08-21
+
+**Supersedes:** ADR-034 (and, transitively, ADR-010's Lightsail choice).
+
+**Context.** ADR-034 picked an Azure for Students B2ms in Central India and
+wrote `deploy/vm/` — bootstrap, systemd unit, Caddy on `sslip.io` — against it.
+None of it was ever run. On 21 Aug a Cloudflare quick tunnel went up off the dev
+box in about five minutes and served real HTTPS, and that changed what the VM was
+actually buying.
+
+**Decision.** The submitted live link is the Cloudflare tunnel off the dev box.
+`deploy/vm/` is deleted rather than left unrun; an unexecuted deploy script in
+the tree claims a capability the project does not have.
+
+**What the VM was buying, and what each piece costs without it.**
+
+- *HTTPS, so `getUserMedia` exists.* The tunnel already terminates TLS on a
+  `trycloudflare.com` hostname. This was ADR-034's non-negotiable and the tunnel
+  meets it without Caddy, without a certificate, and without an IP.
+- *Datacenter-speed pull of the 2.5 GB index.* Not needed. The index is already
+  on the dev box, which is where it was built.
+- *Uptime independent of one laptop.* This is the real loss, and it is not
+  recovered. See below.
+
+**Consequence for the numbers, and it is a good one.** Every latency figure in
+this repo is `MEASURED` on the 16-core dev box, and the run of record was
+deferred to "deploy hardware". The dev box *is* the deploy hardware now, so
+`docs/results/2026-08-19-bench-stage7.json` is a measurement of the deployed
+system rather than a proxy for one. The caveat "it has not run on deploy
+hardware" comes out of `README.md` because it is no longer true.
+
+**Known risk, accepted and not mitigated in code.** A quick tunnel's hostname is
+issued per process: restart `cloudflared` and every URL already handed out is
+dead, and closing the laptop kills the origin. A named tunnel against a free
+Cloudflare account would pin the hostname across restarts and is the documented
+upgrade path — `cloudflared tunnel create`, one credentials file, same origin —
+but the laptop stays a single point of failure either way. This is a deliberate
+trade of availability for a day of deadline, taken with one day left.
+
+**What survives.** `deploy/space/` stays: its `Dockerfile` is the runtime
+description for any container host, and it is the ten-minute path back to a real
+box if the tunnel proves untenable during judging.

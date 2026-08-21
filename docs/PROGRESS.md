@@ -158,14 +158,17 @@ not something to squeeze in at midnight on the 22nd.
 - [x] re-benchmark
 
 ### Day 7 — 20 Aug — deploy + measure for real
-- [ ] deploy to the VM, live link up — **host changed twice on 19 Aug** (no
-      card → Lightsail out; HF Spaces docker now PRO-only → out; **Azure for
-      Students, Central India**, ADR-034). Bootstrap, systemd unit, Caddy and
-      the env-push script are written and syntax-checked; the index is already
-      in a Hub dataset repo, so the box pulls 2.5 GB at datacenter speed
+- [x] live link up — **the Cloudflare tunnel off the dev box is the deployment**,
+      decided 21 Aug (ADR-036). The host changed three times: Lightsail (no card)
+      → HF Spaces (docker now PRO-only) → Azure for Students (ADR-034, written
+      but never run) → tunnel. `deploy/vm/` is deleted; `deploy/space/` stays as
+      the container-runtime description and the way back to a real box
 - [ ] fresh-clone build verification — nothing outside `task-2/`
-- [ ] **the benchmark run of record** on deploy hardware: 500+ queries, warmed, ×3
-- [ ] every `PLACEHOLDER` in every doc replaced with `MEASURED`
+- [x] **the benchmark run of record** — the dev box *is* deploy hardware now, so
+      `docs/results/2026-08-19-bench-stage7.json` (500 queries × 3, warmed,
+      cache disabled) is the run of record rather than a proxy for it
+- [ ] every `PLACEHOLDER` in every doc replaced with `MEASURED` — the remaining
+      ones wait on tiering and stages 5/6, not on hardware
 - [ ] final ablation table, guardrail metrics, cache hit rate
 
 ### Day 8 — 21 Aug — videos + social
@@ -203,7 +206,7 @@ device that has never seen this project.
 | B2 | ~~Generation provider undecided~~ → **resolved: Sarvam** (ADR-009) | closed 14 Aug | signup only; ~₹29 per benchmark run against the same ₹100 credits |
 | B3 | ~~Team roster for the social-posting checklist~~ → **resolved: solo** | closed 19 Aug | one person posts to Instagram, X and LinkedIn; ≥1 Instagram post public, every post tagged `#RAGInGoa` |
 | B5 | ~~Sarvam auth header shape unverified~~ → **CLOSED 19 Aug: Bearer works, the second header is ignored not rejected** (ADR-028) | closed 19 Aug | the generation client sends **both** `Authorization: Bearer` and `api-subscription-key` because no key exists to test which one the OpenAI-compatible route wants. Harmless if one is ignored; resolves itself the moment B1 does |
-| B4 | **CLOSED as void, 19 Aug (ADR-034) — no money was ever spent.** Azure for Students released $100 of credit against a college email with no card, so the host is a B2ms in Central India and the $44/mo question never had to be answered. The rest of this row is the history that got there: **OPEN, but no longer blocking — $44/mo spend approval, now a fallback budget.** The *host* was decided 14 Aug (Lightsail 8 GB Mumbai, ADR-010); the money was not, and the row said "resolved" until 19 Aug — a decision being made is not the same as a blocker being cleared. **Downgraded 19 Aug by ADR-033:** the server holds 2.96 GB, not 7.42 GB, so it fits Oracle Cloud Always Free (A1, 24 GB, `ap-mumbai-1` — the same region ADR-003 argues for) at $0. Paying stopped being the only way to get a live link. | 14 Aug | nothing. Host decided 19 Aug (ADR-034): **Azure for Students, B2ms, Central India**. Oracle Always Free and HF Spaces were both ruled out that day — Oracle wants a card for identity, HF now requires PRO for docker Spaces. Superseded plan, kept for the record: **Oracle free (primary)**, Lightsail (~$7–15 for the judging window, billed hourly to a monthly cap) if Oracle has no A1 capacity in Mumbai. A live link itself is **not** optional — submission checklist and success criterion 5. |
+| B4 | **CLOSED as void, 19 Aug (ADR-034) — no money was ever spent.** Azure for Students released $100 of credit against a college email with no card, so the host is a B2ms in Central India and the $44/mo question never had to be answered. The rest of this row is the history that got there: **OPEN, but no longer blocking — $44/mo spend approval, now a fallback budget.** The *host* was decided 14 Aug (Lightsail 8 GB Mumbai, ADR-010); the money was not, and the row said "resolved" until 19 Aug — a decision being made is not the same as a blocker being cleared. **Downgraded 19 Aug by ADR-033:** the server holds 2.96 GB, not 7.42 GB, so it fits Oracle Cloud Always Free (A1, 24 GB, `ap-mumbai-1` — the same region ADR-003 argues for) at $0. Paying stopped being the only way to get a live link. | 14 Aug | nothing. Host decided 19 Aug (ADR-034): **Azure for Students, B2ms, Central India**. Oracle Always Free and HF Spaces were both ruled out that day — Oracle wants a card for identity, HF now requires PRO for docker Spaces. Superseded plan, kept for the record: **Oracle free (primary)**, Lightsail (~$7–15 for the judging window, billed hourly to a monthly cap) if Oracle has no A1 capacity in Mumbai. A live link itself is **not** optional — submission checklist and success criterion 5. **Superseded 21 Aug (ADR-036): the host is the Cloudflare tunnel off the dev box; `deploy/vm/` was written, never run, and is deleted.** |
 
 **Nothing is blocking.** B1, B2, B3, B4 and B5 all closed on 19 Aug. Both
 `SARVAM_API_KEY` and `GROQ_API_KEY` are in `.env` and verified against the live
@@ -211,14 +214,19 @@ APIs, so the pipeline answers end to end. **B4 closed as void**: it was "approve
 $44/mo or there is no live link", ADR-033's 2.96 GB footprint turned it into
 "pick a host", and ADR-034 picked one that costs a college email — Azure for
 Students, B2ms, Central India. No money was spent and none is needed.
+**Superseded 21 Aug by ADR-036: the host is the Cloudflare tunnel off the dev
+box, and even the college email is not spent.** The Azure VM was written
+(`deploy/vm/`) and never run; those files are deleted.
 
 The requirement B4 was guarding has not moved. A live link is on the submission
 checklist and is success criterion 5 — a judge has to open a URL, speak, and see
 stages, timings and a citation without touching the repo. **As of 21 Aug that
-link exists only as a Cloudflare quick tunnel off the dev box** — real HTTPS, so
-the microphone works, but the hostname changes on every restart and the box is a
-laptop. It is a stand-in for demo purposes, not the submitted link; the Azure VM
-is still Day 7's job.
+link is a Cloudflare quick tunnel off the dev box, and that is the submitted
+link** — real HTTPS, so the microphone works. **The open risk it carries is
+named in ADR-036 and not mitigated:** a quick tunnel's hostname is issued per
+process, so restarting `cloudflared` kills every URL already handed out, and
+closing the laptop kills the origin. A named tunnel against a free Cloudflare
+account pins the hostname; the single point of failure stays either way.
 
 One caveat on the closed keys: nothing in `dhvani/` loads `.env`. There is no
 `python-dotenv` dependency and none is wanted for one line — the env is sourced
@@ -1565,3 +1573,54 @@ is worse than no row: it describes a decision that was already made differently.
 **Next.** Day 7's actual deploy — Azure VM up, fresh-clone verification, then the
 benchmark run of record on deploy hardware. The tunnel is a bridge, not a
 destination.
+
+### 2026-08-21 — the VM that was never run, deleted
+
+**Decision: the Cloudflare tunnel is the deployment.** Not a stand-in for the
+Azure box — the deployment. ADR-036, superseding ADR-034 and, through it,
+ADR-010. `deploy/vm/` — `bootstrap.sh`, `dhvani.service`, `push_env.sh`, 147
+lines of bootstrap, systemd unit and Caddy-on-`sslip.io` — is deleted rather
+than left in the tree unrun. It was written on 19 Aug, syntax-checked, and never
+executed against a machine. A deploy script that has never run is not
+infrastructure; it is a claim about infrastructure, and it reads as the former
+to anyone browsing the repo.
+
+**What the VM was buying, priced item by item.** HTTPS so `getUserMedia` exists —
+the tunnel already terminates TLS, so this was met without Caddy, a certificate,
+or an IP. A datacenter-speed pull of the 2.5 GB index — not needed, the index is
+already on the box that built it. Uptime independent of one laptop — this one is
+a real loss and is not recovered.
+
+**The risk, stated rather than solved.** A quick tunnel's hostname is issued per
+process: restart `cloudflared` and every URL already handed out is dead, and
+closing the laptop kills the origin. A named tunnel against a free Cloudflare
+account pins the hostname across restarts and is the documented upgrade path; the
+single point of failure stays either way. With one day left this is a deliberate
+trade of availability for time, and it is written down in ADR-036 rather than
+discovered by a judge.
+
+**The good consequence: Day 7's benchmark run of record is already done.** Every
+latency figure here is `MEASURED` on the 16-core dev box, and four documents
+deferred the real numbers to "the Lightsail run" / "deploy hardware on Day 7".
+The dev box *is* deploy hardware now, so
+[`docs/results/2026-08-19-bench-stage7.json`](results/2026-08-19-bench-stage7.json)
+(500 queries × 3 reps, warmed, cache disabled) stops being a proxy and becomes
+the run of record. No number changed and none was re-run — what changed is that
+the caveat attached to them was no longer true. Corrected in `README.md`,
+`docs/LATENCY.md` (three places), `docs/RAG_PIPELINE.md` and `docs/DESIGN.md`.
+
+**One piece of staleness found on the way.** `docs/DESIGN.md` still named the
+host as "AWS Lightsail 8 GB, Mumbai, $44/mo" — ADR-010, two host decisions out
+of date, and it had survived ADR-034 unedited on 19 Aug. Same failure as the B4
+row fixed earlier today: a document stating a decision that had already been
+made differently. Now rewritten against ADR-036, along with the $44 line in the
+spend estimate, which is $0.
+
+**`deploy/space/` stays.** Its `Dockerfile` is the runtime description for any
+container host and is the ten-minute path back to a real box if the tunnel proves
+untenable during judging. Unlike `deploy/vm/`, it does not claim to be the
+deployment.
+
+**Remaining, and the list is short.** Fresh-clone build verification (nothing
+outside `task-2/`), then Day 8 in full: two videos, posts to three platforms,
+`docs/SUBMISSION.md`, the form. Deadline 22 Aug 23:59 IST.
