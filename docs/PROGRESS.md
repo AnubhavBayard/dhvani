@@ -172,7 +172,10 @@ not something to squeeze in at midnight on the 22nd.
       cache disabled) is the run of record rather than a proxy for it
 - [ ] every `PLACEHOLDER` in every doc replaced with `MEASURED` — the remaining
       ones wait on tiering and stages 5/6, not on hardware
-- [ ] final ablation table, guardrail metrics, cache hit rate
+- [x] final ablation table — **all 15 arms in one run, 21 Aug**
+      ([`results/2026-08-21-bench-ablation.json`](results/2026-08-21-bench-ablation.json));
+      guardrail metrics done 19 Aug. **Cache hit rate is void: there is no cache
+      in `dhvani/`**, so the item measured a component that was never built
 
 ### Day 8 — 21 Aug — videos + social
 - [x] shot list vetted against the live pipeline — [`docs/DEMO_SCRIPT.md`](DEMO_SCRIPT.md),
@@ -1691,3 +1694,56 @@ here — it is an account setting, not a repo change.
 
 **Suite on the dev box: 213 passed.** The clone is 196 + 17 skipped because the
 skips are the index tests; the dev box has an index and runs them.
+
+### 2026-08-21 — the ablation table, in one run, and two stages it argues against
+
+**All 15 arms, one run, one file.** Until today the ablation evidence was spread
+across three benchmark files from three days — stage 3 arms on 18 Aug, stage 4
+arms on 18 Aug, stage 7 arms on 19 Aug — which is three baselines and therefore
+not a table. `python -m dhvani.bench.benchmark --reps 3` defaults to every arm in
+`ARMS`; it had simply never been run that way. 500 queries (289 gold-labelled) ×
+3 reps × 15 arms, 50 warmup queries per arm, ~6 minutes, exit 0 —
+[`results/2026-08-21-bench-ablation.json`](results/2026-08-21-bench-ablation.json).
+Table in `docs/LATENCY.md`, five-row summary on the front page of `README.md`.
+
+**`ef_search` 64 is too low, and that is the strongest result in the table.**
+Widening the HNSW search to 256 buys **recall@10 0.4464 → 0.4913** (+0.0449,
++10% relative), MRR@10 0.2323 → 0.2705, nDCG 0.5111 → 0.5860 — and it *lowers*
+the tail, P100 31.59 → 24.83 ms, for +0.17 ms of P50. A wider search returns a
+more stable candidate set for RRF to fuse, so the fusion step stops occasionally
+doing expensive work on a ragged list. Free quality with a negative latency cost
+is not a trade, it is a mistake being corrected.
+
+**Phonetic query repair is net negative, confirmed at full scale.** Turning
+stage 4 off is worth +0.0103 recall@10. It rewrote 75 of 500 queries with 82
+corrections and beat none of them: `min_phonetic 0` and edit-distance 1 are
+*identical* to the default, `min_term_len 3` is worse (−0.0104). The 18 Aug
+finding said phonetic rewriting costs recall on this corpus; this says it at full
+scale with every threshold swept. The stage costs 0.03 ms, so this is not a
+latency question — it is the second stage this project has measured into a
+switch-off argument, after the two guardrail layers in ADR-030.
+
+**Neither change is applied here.** Retuning a default against a run and then
+publishing that run as the number of record is how a benchmark becomes a
+fabrication. Both are one-line config changes with a re-measure attached, and
+both are the user's call — flipping `ef_search` re-baselines every boundary A
+number in `LATENCY.md` and `README.md`.
+
+**What the table also shows, and what it cannot.** Hybrid fusion beats either
+half decisively (dense only −0.0796, bm25 only −0.0589), and `dense_only` makes
+the trade visible: fastest arm by far at P50 5.61 ms against 13.48, and the
+*worst* P100 at 41.44 ms, so BM25 buys tail stability as well as recall. The six
+stage 7 arms all report recall@10 0.4464 exactly, which is the harness being
+correct rather than the stage being inert — recall@10 measures retrieval and
+stage 7 runs after it. Stage 7's cost is in the tail it removes: P100 31.59 →
+18.99 ms without it, the largest single tail contribution in the pipeline.
+
+**One artifact, recorded not hidden.** The `full` arm's P50 spread across its
+three reps is 4.86 ms; every other arm is under 1.6 ms. `full` runs first and 50
+warmup queries did not fully settle it. Medians across reps are what the table
+reports, for this reason.
+
+**Also today: "cache disabled" describes a cache that does not exist.** The
+phrase is in `README.md` and `docs/LATENCY.md` and implies a component someone
+could switch on. There is none in `dhvani/`. Both files now say so, and Day 7's
+"cache hit rate" line item is struck as void rather than left looking unfinished.

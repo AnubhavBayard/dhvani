@@ -423,10 +423,14 @@ BM25 vocabulary are 57 MB of JSON between them. Boot cost, paid once.
 
 ### Not yet measured
 
-Tier percentiles (tiering is stage 5–6 work), cache hit rate (no cache yet),
-boundaries B and C (no generation provider yet), and the stage 4/5/6/7 ablation
-rows. The tables below keep their shape and stay `PLACEHOLDER` until those
-stages exist.
+Tier percentiles (tiering is stage 5–6 work), cache hit rate — **there is no
+cache in `dhvani/` at all**, so "cache disabled" throughout this file describes
+the only mode that exists rather than a switch that was flipped — and the stage
+5/6 ablation rows, those stages being unbuilt (ADR-027). The tier and cache
+tables below keep their shape and stay empty until those stages exist.
+
+The **stage 4 and stage 7 ablation rows are measured** as of 21 Aug: all 15 arms
+in one run, at the bottom of this file.
 
 
 ### Boundary A, cache disabled
@@ -457,17 +461,69 @@ stages exist.
 
 ### Ablation — quality and latency per stage
 
-| Config | recall@10 | MRR@10 | nDCG@10 | P50 A | P100 A |
-|---|---|---|---|---|---|
-| full pipeline | | | | | |
-| − stage 4 (raw transcript) | | | | | |
-| − stage 5 (no RM3) | | | | | |
-| − stage 6 (fusion order only) | | | | | |
-| − stage 7 dedupe | | | | | |
-| dense only | | | | | |
-| bm25 only | | | | | |
-| stage 4 = LLM rewrite | | | | | |
-| stage 5 = LLM multi-query | | | | | |
+**`MEASURED 2026-08-21`** — all 15 arms in one run, 500 queries (289 with gold
+labels) × 3 reps, 50 throwaway warmup queries per arm, 2 ONNX threads, 16-core
+dev box, which is the deployment (ADR-036).
+[`docs/results/2026-08-21-bench-ablation.json`](results/2026-08-21-bench-ablation.json).
+Every cell is the median across the three reps. Latency is boundary A.
+
+| Config | recall@10 | Δ | MRR@10 | nDCG@10 | P50 A | P95 A | P100 A |
+|---|---|---|---|---|---|---|---|
+| **full pipeline** | **0.4464** | — | 0.2323 | 0.5111 | 13.48 | 18.29 | 31.59 |
+| `ef_search` 256 | **0.4913** | **+0.0449** | **0.2705** | **0.5860** | 13.65 | 18.34 | **24.83** |
+| − stage 4 (raw transcript) | 0.4567 | +0.0103 | 0.2342 | 0.5165 | 13.39 | 17.96 | 30.77 |
+| stage 4, `min_phonetic` 0 | 0.4464 | +0.0000 | 0.2323 | 0.5111 | 13.48 | 18.37 | 31.14 |
+| stage 4, edit distance 1 | 0.4464 | +0.0000 | 0.2306 | 0.5082 | 13.37 | 18.22 | 30.84 |
+| stage 4, edit 1 + min len 5 | 0.4464 | +0.0000 | 0.2306 | 0.5082 | 13.48 | 18.45 | 31.70 |
+| stage 4, min term len 3 | 0.4360 | −0.0104 | 0.2286 | 0.4979 | 13.68 | 18.45 | 31.88 |
+| `k_dense`/`k_bm25` 200 | 0.4325 | −0.0139 | 0.2274 | 0.5036 | 13.67 | 18.42 | 32.02 |
+| bm25 only | 0.3875 | −0.0589 | 0.2101 | 0.4007 | 13.49 | 18.03 | 26.20 |
+| dense only | 0.3668 | −0.0796 | 0.2332 | 0.4853 | **5.61** | **7.92** | 41.44 |
+| − stage 7 (no selection) | 0.4464 | +0.0000 | 0.2323 | 0.5111 | 12.26 | 16.44 | 18.99 |
+| − stage 7 dedupe | 0.4464 | +0.0000 | 0.2323 | 0.5111 | 13.26 | 17.96 | 28.68 |
+| stage 7, budget 800 tok | 0.4464 | +0.0000 | 0.2323 | 0.5111 | 13.58 | 18.54 | 23.84 |
+| stage 7, budget 3000 tok | 0.4464 | +0.0000 | 0.2323 | 0.5111 | 13.76 | 18.26 | 23.20 |
+| stage 7, max 3 chunks | 0.4464 | +0.0000 | 0.2323 | 0.5111 | 12.70 | 17.02 | 21.39 |
+
+Stages 5 and 6 have no rows because they are not built (ADR-027). The
+LLM-rewrite and LLM-multi-query arms are specified in `RAG_PIPELINE.md` and are
+not implemented, so they are absent rather than empty.
+
+**Read the stage 7 rows as latency, not quality.** recall@10 measures retrieval,
+and stage 7 runs after retrieval to select which of the retrieved chunks reach
+the prompt — so it *cannot* move recall@10 by construction, and the six
+identical `0.4464` rows are the harness being correct rather than the stage
+doing nothing. What those rows do show is the latency it costs: removing stage 7
+entirely takes P100 from 31.59 ms to 18.99 ms, the single largest tail
+contribution in the pipeline. Its quality effect needs a groundedness metric,
+which is `calibrate_grounding.py`'s job, not this table's.
+
+**Three things this run says out loud.**
+
+1. **`ef_search` 64 is too low, and the fix is free.** 256 buys +0.0449 recall@10
+   (+10% relative), +0.0382 MRR and +0.0749 nDCG for +0.17 ms of P50 — and it
+   *lowers* P100, 31.59 → 24.83 ms, because a wider HNSW search returns a more
+   stable candidate set for fusion to work on. This is the strongest single
+   result in the table and it argues for changing the default, which would
+   re-baseline every number of record in this file. Not done in the same commit
+   that measured it.
+2. **Phonetic query repair is net negative.** Turning stage 4 off is worth
+   +0.0103 recall@10. It rewrote 75 of 500 queries (82 corrections) and no
+   setting of it beats leaving it alone: looser thresholds are identical to the
+   default, tighter ones are worse. This confirms and extends the 18 Aug finding
+   already recorded above — the stage costs 0.03 ms, so it is not a latency
+   problem, it is a correctness one.
+3. **Hybrid fusion earns its place.** Dense alone is −0.0796, BM25 alone is
+   −0.0589, and neither half reaches the fused score. Worth noting the trade the
+   table makes visible: `dense_only` is by far the fastest arm (P50 5.61 ms
+   against 13.48) and has the *worst* P100 (41.44 ms), so BM25 is buying tail
+   stability as well as recall.
+
+**One honest artifact.** The `full` arm's P50 spread across its three reps is
+4.86 ms; every other arm is under 1.6 ms. `full` runs first, and 50 warmup
+queries did not fully settle the first arm. The median across reps is reported
+for exactly this reason, and re-running with `--arms full` alone would confirm
+it — the number to trust for `full` is the one already measured on 19 Aug.
 
 ### Cold start
 

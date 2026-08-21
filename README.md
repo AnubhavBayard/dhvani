@@ -63,8 +63,34 @@ including the two budgets it currently overruns.
 | escalated (LLM rewrite) | `PLACEHOLDER` | `PLACEHOLDER` | `PLACEHOLDER` | `PLACEHOLDER` |
 | **blended** | 100% | `PLACEHOLDER` | `PLACEHOLDER` | `PLACEHOLDER` |
 
-Boundaries B and C, and the cache-enabled variant with its hit rate, are in
-`docs/LATENCY.md`. Guardrail catch rates are in `docs/GUARDRAILS.md`.
+Boundaries B and C are in `docs/LATENCY.md`; the cache-enabled variant is not
+measured because **there is no cache** — "cache disabled" names the only mode
+that exists. Guardrail catch rates are in `docs/GUARDRAILS.md`.
+
+### Ablation
+
+Every stage is toggleable, so every stage can be argued for or against with a
+number. **`MEASURED 2026-08-21`** — 15 arms in one run, 500 queries (289 gold-
+labelled) × 3 reps, warmed, on the box that serves the live link
+([`docs/results/2026-08-21-bench-ablation.json`](docs/results/2026-08-21-bench-ablation.json)).
+Full table in [`docs/LATENCY.md`](docs/LATENCY.md); the three results worth
+putting on the front page:
+
+| Arm | recall@10 | Δ vs full | P100 A |
+|---|---|---|---|
+| full pipeline | 0.4464 | — | 31.59 ms |
+| `ef_search` 64 → 256 | **0.4913** | **+0.0449** | **24.83 ms** |
+| − stage 4 (phonetic repair off) | 0.4567 | +0.0103 | 30.77 ms |
+| dense only | 0.3668 | −0.0796 | 41.44 ms |
+| bm25 only | 0.3875 | −0.0589 | 26.20 ms |
+
+Read plainly: hybrid fusion earns its place against either half; **the HNSW
+search width is set too low and correcting it is free in latency and negative in
+tail**; and **the phonetic query rewriter currently costs recall**, which is the
+second stage this project has measured into a switch-off argument (the first was
+two guardrail layers, ADR-030). Neither change is applied in the commit that
+measured it — retuning against a run and then reporting that run is how a
+benchmark becomes a fabrication.
 
 ## What is indexed — stated up front
 
