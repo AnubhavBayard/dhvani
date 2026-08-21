@@ -194,6 +194,8 @@ config. It shares no imports with the sibling `task-1-frame-id-generator/`.
 
 | File | What's in it |
 |---|---|
+| `docs/PROJECT_EXPLAINED.md` | the whole project in plain English, for a non-technical reader |
+| `docs/TECHNICAL_OVERVIEW.md` | system shape and the dependency register — every pin, why it and not the alternative |
 | `docs/PRD.md` | scope, non-goals, requirement traceability, submission checklist |
 | `docs/DESIGN.md` | architecture, region choice, interface contracts |
 | `docs/RAG_PIPELINE.md` | build-time and query-time stages, per-stage contracts |

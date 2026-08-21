@@ -1893,3 +1893,37 @@ Video 2 (end-to-end demo), six posts with `#RAGInGoa` and ≥1 public Instagram
 post, the post URLs into `SUBMISSION.md`, then the form. Deadline **22 Aug 23:59
 IST**. Open items from this session: the `LATENCY.md:503` mechanism correction,
 the uncommitted `README.md` edit, and the two optional ablation changes.
+
+### 2026-08-21 — the two explainers moved inside the repo
+
+The previous entry recorded them at `../PROJECT_EXPLAINED.md` and
+`../TECHNICAL_OVERVIEW.md`, outside `task-2/`. That is where they were written
+and the entry is left standing, because the change log is appended to and not
+rewritten — but the paths in it are now stale. Both files live in `docs/`.
+
+**Why the move is the right way round.** Outside `task-2/` they were invisible to
+the thing being judged: not in the repo, not in the fresh-clone verification, not
+in `README.md`'s doc table, and not on GitHub. They also sat in a folder
+`CLAUDE.md` says nothing may be added to. Inside `docs/` both problems close at
+once, and the isolation rule goes back to being unbroken — the root `README.md`
+row remains the only change outside this folder.
+
+**What moving cost.** Paths inside both documents were written for the old
+location and were fixed rather than left to rot: `task-2/docs/...` prose paths
+are now repo-root-relative, the reading-order list at the end of
+`TECHNICAL_OVERVIEW.md` links to `../README.md`, `PROGRESS.md`, `DECISIONS.md`
+and `LATENCY.md` as clickable relative links, and the directory tree in
+`PROJECT_EXPLAINED.md` §10 no longer describes a parent folder it is not in. All
+eight relative links in the two files were checked to resolve.
+
+The two documents now cross-link, which they did not before — `PROJECT_EXPLAINED`
+points a technical reader at `TECHNICAL_OVERVIEW` in its subtitle, and
+`TECHNICAL_OVERVIEW` already pointed back.
+
+`README.md`'s doc table gains two rows, at the top rather than the bottom: for a
+judge arriving cold, "the whole project in plain English" is a more useful first
+link than `PRD.md`.
+
+**Doc count is now fourteen**, and `PROJECT_EXPLAINED.md` §10 lists all of them —
+the earlier draft said ten and silently omitted `DEMO_SCRIPT.md` and
+`DESIGN_SYSTEM.md` along with the two new files.
