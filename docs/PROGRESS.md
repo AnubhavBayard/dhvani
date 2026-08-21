@@ -1813,3 +1813,83 @@ hostname change should be one edit rather than seven.
 **Left: the two videos, the six posts, the post URLs into `SUBMISSION.md`, and
 the form.** Deadline 22 Aug 23:59 IST. The `ef_search` and stage 4 decisions from
 the ablation are measured, recorded, and optional.
+
+### 2026-08-21 — session close: the link went down, ef_search re-read, two explainers
+
+**The live link was down when this session opened.** No `ngrok`, no `uvicorn` —
+`https://monday-elite-sustainer.ngrok-free.dev/health` and `127.0.0.1:8000/health`
+both refused the connection. The box had slept. Brought back with the command
+already recorded in `docs/SUBMISSION.md`, and verified through the public
+hostname rather than locally: `GET /` 200, `/health` reporting 3,278,022 chunks
+with Sarvam live. This is exactly the single-point-of-failure ADR-036 named and
+accepted, arriving on schedule and costing about a minute to fix. Worth noting
+before the videos are filmed and before a judge opens the form: **the link is
+only up while this laptop is awake**, and nothing monitors it.
+
+**`ef_search` 64 → 256, re-evaluated.** The 21 Aug entry recorded it as measured
+and optional. Re-read against both runs that touched it, it is stronger than that
+entry implies and the recommendation is to apply it.
+
+- **The gain replicates across two independent runs.** `2026-08-18-bench-stage4`
+  and `2026-08-21-bench-ablation` both give clean recall@10 0.4464 → **0.4913**.
+- **The garbled row is the one that matters and it was under-weighted.** On 35%-
+  corrupted transcripts, recall@10 0.3599 → **0.4187**, a **+0.0588** gain,
+  larger than the clean +0.0449. Garbled is what STT emits; that row describes
+  production for a voice product.
+- **The cost is not resolvable at this precision.** P50 13.485 → 13.648 ms
+  (+0.163 ms, median of 3 reps), P95 +0.047 ms — both under the rep-to-rep
+  spread of the arms themselves. `stage3_retrieve` p50 is *unchanged*
+  (8.367 vs 8.354). The reason is in the `dense_only` arm: its retrieve p50 is
+  **0.491 ms** against hybrid's 8.367, so **BM25 is ~94% of the retrieve stage**
+  and `ef_search` scales a component that is ~3.6% of boundary A.
+
+**One correction to a committed doc.** `LATENCY.md:503` explains the lower P100
+as "a wider HNSW search returns a more stable candidate set for **fusion** to
+work on." Fusion is not where it lands — `stage3_fuse` P100 is 0.41 vs 0.45 ms,
+flat. The tail moves in **stage 7**: `stage7_context` P100 20.41 → 9.44 ms,
+consistent across all three reps, with `stage7.dropped.budget` falling 96 → 51.
+Better candidates make context selection's drop loops terminate sooner. The
+effect is real and replicated; the stated mechanism is wrong. **Not yet fixed in
+`LATENCY.md` — this is the open item from this session.**
+
+Neither change is applied. Applying `ef_search` means re-running the run of
+record and re-deriving every number from the new file, and the re-baseline is
+smaller than it looks: the ablation's `full` arm and the 19 Aug run of record
+share the same boundary A composition and agree to 0.03 ms, so the ef-256 numbers
+are already measured on the deploy box under the same protocol.
+
+**`README.md`'s live link fixed.** It still said `` `TBD` `` — the first thing a
+judge reads, pointing at nothing, a day before the deadline. It now links to
+`docs/SUBMISSION.md` rather than repeating the URL, per that file's own
+single-source rule: the URL already feeds the form, two video descriptions and
+six posts, and inlining it here would make a hostname change an eight-place edit
+during the window when the tunnel is most likely to need one. **Uncommitted.**
+
+**Two explainer documents, written outside `task-2/`** at the user's explicit
+request, which is a deviation from `CLAUDE.md`'s isolation rule and is flagged
+rather than quietly done:
+
+- `../PROJECT_EXPLAINED.md` — the whole project for a non-technical reader.
+  Eleven sections: the librarian-versus-memory framing for RAG, the map metaphor
+  for embeddings, what the build cost and how it failed three times, the nine
+  query stages under their reader-facing names, why it refuses, the three
+  latency boundaries and why B and C are published, prompt injection as a bank
+  teller who reads your note but does not obey it, and the gaps.
+- `../TECHNICAL_OVERVIEW.md` — the dependency register. All 29 pins by role, each
+  with what imports it, why it and not the obvious alternative, and what it cost:
+  ONNX over torch, FAISS over hnswlib with ADR-015's bytes/vector table, `bm25s`
+  with the Indic tokenizer bug and the top-k fix, `pyarrow` with ADR-033's
+  two not-zero-copy traps, `libindic-soundex` with its undeclared dependency and
+  the recall it costs. Plus the negative space — no LangChain, no torch, no
+  hosted vector DB, no framework, no `dotenv`, no cache — the three models as
+  dependencies, and the two external services.
+
+Both cite only `MEASURED` numbers with their evidence files, and both state the
+weak points — recall@10 0.4464, the 0.35 false-refusal rate, two guardrail layers
+off, four failed hosting attempts.
+
+**Still left, unchanged from the last entry:** Video 1 (90 s, team and process),
+Video 2 (end-to-end demo), six posts with `#RAGInGoa` and ≥1 public Instagram
+post, the post URLs into `SUBMISSION.md`, then the form. Deadline **22 Aug 23:59
+IST**. Open items from this session: the `LATENCY.md:503` mechanism correction,
+the uncommitted `README.md` edit, and the two optional ablation changes.
