@@ -1789,3 +1789,27 @@ hostname change is one edit rather than three posts; then the form. Deadline
 **Not blockers, correctly labelled.** The remaining `PLACEHOLDER`s are tier rows
 (tiering is stage 5–6 work, unbuilt), the `s1_passage` chunking row, and stages
 5/6 themselves. The cache-hit-rate line is void, not pending: there is no cache.
+
+### 2026-08-21 — the submitted link exists, on a hostname that survives a restart
+
+**https://monday-elite-sustainer.ngrok-free.dev** — an ngrok free-tier **static**
+domain onto the dev box, claimed on the account and verified through the public
+hostname rather than locally: `GET /` 200 serving the real page with **no ngrok
+interstitial** (the warning I expected does not appear for this domain),
+`/health` reporting 3,278,022 chunks with Sarvam live, and a `POST /ask` that
+streamed 109 token events into three sentences, **all three grounded** (overlap
+0.775 / 0.647 / 0.381) with citations, at **boundary A 24.05 ms**, ttft 928 ms,
+wall clock 5,536 ms.
+
+This closes the hostname risk that ADR-036 recorded and could not solve: the
+quick tunnel issued a new hostname per process, and a dead URL on a submitted
+form cannot be corrected after the fact. Static domain, so `ngrok` can restart.
+The laptop remains the single point of failure, which is unchanged and accepted.
+
+`docs/SUBMISSION.md` now exists and is the one place the URL is written down —
+it goes on the form, into two video descriptions and into six posts, so a
+hostname change should be one edit rather than seven.
+
+**Left: the two videos, the six posts, the post URLs into `SUBMISSION.md`, and
+the form.** Deadline 22 Aug 23:59 IST. The `ef_search` and stage 4 decisions from
+the ablation are measured, recorded, and optional.
