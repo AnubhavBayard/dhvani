@@ -1927,3 +1927,47 @@ link than `PRD.md`.
 **Doc count is now fourteen**, and `PROJECT_EXPLAINED.md` §10 lists all of them —
 the earlier draft said ten and silently omitted `DEMO_SCRIPT.md` and
 `DESIGN_SYSTEM.md` along with the two new files.
+
+### 2026-08-21 — the `ef_search` P100 mechanism, corrected at the source
+
+`LATENCY.md`'s first conclusion said 256 lowers P100 "because a wider HNSW search
+returns a more stable candidate set for **fusion** to work on." That mechanism is
+wrong, and it was wrong in a way worth recording: it is the kind of claim that
+sounds mechanical, was never checked against the per-stage numbers sitting in the
+same evidence file, and would have gone into a submission unchallenged.
+
+**What the per-stage medians actually say**, 3 reps,
+[`2026-08-21-bench-ablation.json`](results/2026-08-21-bench-ablation.json):
+
+| | `full` | `ef_search` 256 | Δ |
+|---|---|---|---|
+| `stage3_fuse` P100 | 0.421 ms | 0.362 ms | −0.06 |
+| `stage3_retrieve` P100 | 15.497 ms | **16.799 ms** | **+1.30** |
+| `stage7_context` P100 | 20.413 ms | **9.444 ms** | **−10.97** |
+| boundary A P100 | 31.595 ms | 24.828 ms | −6.77 |
+
+Three things fall out. **Fusion is sub-millisecond in both arms** and cannot
+account for a 6.77 ms difference — it was never a candidate. **The retrieve tail
+goes up**, +1.30 ms, which is what a wider graph search is supposed to cost and
+which the original text managed to claim the opposite of. **The saving is
+downstream, in stage 7**: better candidates make context selection's drop loops
+terminate sooner, and `stage7.dropped.budget` falls 96 → 51 identically in all
+three reps. The change trades +1.30 ms of retrieve tail for −10.97 ms of
+context-selection tail.
+
+Fixed in `LATENCY.md` and in `TECHNICAL_OVERVIEW.md` §6, both now carrying the
+table above. The P50 note gained the reason it is so cheap, which was implicit
+before: `dense_only` spends 0.491 ms in `stage3_retrieve` against the hybrid's
+8.367, so **BM25 is ~94% of the stage** and `ef_search` scales ~3.6% of
+boundary A.
+
+**One number of my own, corrected.** The entry two above quotes `stage3_fuse`
+P100 as "0.41 vs 0.45 ms". Those were single reps picked from opposite ends —
+`full` rep 3 against `ef_search_256` rep 1 — not the medians the rest of that
+entry uses. The medians are 0.421 and 0.362. The conclusion is unchanged and if
+anything strengthened: fusion moves in the *same* direction as the saving, by
+0.06 ms, in a 6.77 ms effect. The stale pair stays in that entry because the
+change log is appended to and never rewritten; this paragraph is the correction.
+
+Still not applied — the default is `ef_search` 64. Applying means re-running the
+run of record and re-deriving every number from the new file.

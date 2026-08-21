@@ -463,12 +463,23 @@ STT emits — and the gain is larger there. Cost is **+0.163 ms P50**
 arms themselves. It is nearly free because `ef_search` scales the dense half, and
 the dense half is 0.491 ms of an 8.367 ms retrieve stage.
 
-*One correction to `LATENCY.md:503`:* it attributes the lower P100 to "a more
-stable candidate set for **fusion** to work on." `stage3_fuse` P100 is flat
-(0.41 vs 0.45 ms). The tail moves in **stage 7** — `stage7_context` P100 20.41 →
-9.44 ms, consistent across all three reps, with `dropped.budget` falling 96 → 51.
-Better candidates make context selection's drop loops terminate sooner. The
-effect is real; the stated mechanism is wrong.
+*Where the P100 saving comes from.* `LATENCY.md` first attributed it to "a more
+stable candidate set for **fusion** to work on", which is wrong and is now
+corrected there. Median of 3 reps:
+
+| | `full` | `ef_search` 256 | Δ |
+|---|---|---|---|
+| `stage3_fuse` P100 | 0.421 ms | 0.362 ms | −0.06 |
+| `stage3_retrieve` P100 | 15.497 ms | **16.799 ms** | **+1.30** |
+| `stage7_context` P100 | 20.413 ms | **9.444 ms** | **−10.97** |
+| boundary A P100 | 31.595 ms | 24.828 ms | −6.77 |
+
+Fusion is sub-millisecond in both arms and cannot account for a 6.77 ms
+difference. The retrieve tail goes **up**, which is the honest cost of a wider
+graph search. The saving is downstream in **stage 7**: better candidates make
+context selection's drop loops terminate sooner, and `stage7.dropped.budget`
+falls 96 → 51 identically in all three reps. The trade is +1.30 ms of retrieve
+tail for −10.97 ms of context-selection tail.
 
 **2. Stage 4 off** — +0.0103 recall@10. §2.4.
 

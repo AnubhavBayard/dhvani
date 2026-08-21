@@ -502,11 +502,36 @@ which is `calibrate_grounding.py`'s job, not this table's.
 
 1. **`ef_search` 64 is too low, and the fix is free.** 256 buys +0.0449 recall@10
    (+10% relative), +0.0382 MRR and +0.0749 nDCG for +0.17 ms of P50 — and it
-   *lowers* P100, 31.59 → 24.83 ms, because a wider HNSW search returns a more
-   stable candidate set for fusion to work on. This is the strongest single
-   result in the table and it argues for changing the default, which would
-   re-baseline every number of record in this file. Not done in the same commit
-   that measured it.
+   *lowers* P100, 31.59 → 24.83 ms. This is the strongest single result in the
+   table and it argues for changing the default, which would re-baseline every
+   number of record in this file. Not done in the same commit that measured it.
+
+   **Where the P50 cost is, and why it is so small.** `ef_search` scales the
+   dense half only, and the dense half is not where the time goes: `dense_only`
+   spends **0.491 ms** in `stage3_retrieve` against the hybrid's 8.367 ms, so
+   **BM25 is ~94% of the stage** and the widened graph search is scaling ~3.6% of
+   boundary A. `stage3_retrieve` P50 is 8.367 → 8.354 ms, which is to say
+   unresolvable at this precision.
+
+   **Where the P100 saving is, corrected.** This entry first attributed it to "a
+   more stable candidate set for fusion to work on". Fusion is not where it
+   lands, and the widened search does cost what physics says it should — median
+   of 3 reps:
+
+   | | `full` | `ef_search` 256 | Δ |
+   |---|---|---|---|
+   | `stage3_fuse` P100 | 0.421 ms | 0.362 ms | −0.06 |
+   | `stage3_retrieve` P100 | 15.497 ms | **16.799 ms** | **+1.30** |
+   | `stage7_context` P100 | 20.413 ms | **9.444 ms** | **−10.97** |
+   | boundary A P100 | 31.595 ms | 24.828 ms | −6.77 |
+
+   Fusion is sub-millisecond in both arms and cannot account for a 6.77 ms
+   difference. The retrieve tail goes **up**, which is the honest cost of a wider
+   graph search. The saving is downstream, in **stage 7**: better candidates make
+   context selection's drop loops terminate sooner, and `stage7.dropped.budget`
+   falls 96 → 51 identically in all three reps. So the change trades +1.30 ms of
+   retrieve tail for −10.97 ms of context-selection tail. The effect is real and
+   replicated; the mechanism first published here was wrong.
 2. **Phonetic query repair is net negative.** Turning stage 4 off is worth
    +0.0103 recall@10. It rewrote 75 of 500 queries (82 corrections) and no
    setting of it beats leaving it alone: looser thresholds are identical to the
